@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/Uren_registratie', function(){
+    return 'Uren registratie tabel';
+});

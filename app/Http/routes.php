@@ -16,14 +16,13 @@ Route::get('/', function () {
 });
 
 
-
-Route::get('/Uren_registratie', function(){
-    return 'Uren registratie tabel';
-
-});
-
-
 Route::get('/login', function () {
     return view('/login/login');
 
 });
+
+Route::get('/trainee', function () {
+    return view('/trainee/index');
+
+});
+

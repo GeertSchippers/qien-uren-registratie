@@ -26,4 +26,4 @@ Route::get('/trainee', function () {
 
 Route::resource('admin', 'AdminController');
 
-Route::post('trainee/send.blade.php','FormController@save_hours');
+Route::post('hours_declaration','Hours_declarationController@create');

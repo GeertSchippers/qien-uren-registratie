@@ -12,7 +12,7 @@ class CreateUrenDeclaratieTable extends Migration
      */
     public function up()
     {
-        Schema::create('uren_declaratie', function (Blueprint $table) {
+        Schema::create('hours_declarations', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
             $table->integer('amount');
@@ -30,6 +30,6 @@ class CreateUrenDeclaratieTable extends Migration
      */
     public function down()
     {
-        Schema::drop('uren_declaratie');
+        Schema::drop('hours_declarations');
     }
 }

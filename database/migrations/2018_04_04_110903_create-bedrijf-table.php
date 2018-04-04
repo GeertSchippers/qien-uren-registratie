@@ -12,7 +12,7 @@ class CreateBedrijfTable extends Migration
      */
     public function up()
     {
-        Schema::create('bedrijf', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('location');
@@ -30,6 +30,6 @@ class CreateBedrijfTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bedrijf');
+        Schema::drop('companies');
     }
 }

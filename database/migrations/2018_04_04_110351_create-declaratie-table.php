@@ -12,7 +12,7 @@ class CreateDeclaratieTable extends Migration
      */
     public function up()
     {
-        Schema::create('declaratie', function (Blueprint $table) {
+        Schema::create('declarations', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_receipt');
             $table->string('type');
@@ -30,6 +30,6 @@ class CreateDeclaratieTable extends Migration
      */
     public function down()
     {
-        Schema::drop('declaratie');
+        Schema::drop('declarations');
     }
 }

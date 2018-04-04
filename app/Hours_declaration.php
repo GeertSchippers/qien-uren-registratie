@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bedrijf extends Model
+class Uren_declaratie extends Model
 {
     protected $fillable = [
-        'id','name','location', 'contact_person', 'email', 'phone_number'
+        'user_id', 'date', 'amount', 'type', 'statement', 'paid'
     ];
 
 }

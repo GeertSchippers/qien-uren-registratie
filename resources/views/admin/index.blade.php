@@ -1,10 +1,12 @@
 @extends('welcome')
 @section('content')
     <h1>hello Admin</h1>
-    @if(count($users) > 1)
-        @foreach($users as $user)
+
+    <h3>gemaakte uren</h3>
+    @if(count($hours) > 1)
+        @foreach($hours as $hour)
             <div class="well">
-                <h3>{{$user->email}}</h3>
+                <h3>{{$hour->aantal}}</h3>
             </div>
         @endforeach
     @else

@@ -18,8 +18,12 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('/login/login');
-
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
 
 Route::get('/trainee', function () {
     return view('/trainee/index');

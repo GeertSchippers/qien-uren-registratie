@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('admin');
             $table->string('img_url');
             $table->string('remember_token', 100)->nullable();
+            $table->timestamps();
         });
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Declaratie extends Model
 {
      protected $fillable = [
-        'id','datum_bon','type', 'totaal_bon', 'btw', 'omschrijving'
+        'id','date_receipt','type', 'total_receipt', 'btw', 'description'
     ];
 
 }

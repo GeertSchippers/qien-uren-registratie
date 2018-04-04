@@ -5,7 +5,12 @@
  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <script>
+  function save_hours(){    
+      alert("Saved!!");
+    }
+  </script>
+      
   <style>
      table, th, td {
         border: 1px solid black;
@@ -33,7 +38,7 @@
           <td><input type="number" id="hours"></td>   
           <td>
            <select> 
-            <option value="workedhours">gewerkte uren</option>
+            <option value="workhours">gewerkte uren</option>
             <option value="extrahours">overuren</option>
             <option value="abscense">kort verlof</option>
             <option value="holiday">vakantie</option>

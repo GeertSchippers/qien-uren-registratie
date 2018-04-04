@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 
 <!DOCTYPE HMTL>
 <html>
@@ -21,8 +25,6 @@
         width: 120px;
      }
   </style>
- </head>
- <body>
     <table border="1">
       <thead>
         <tr>  
@@ -51,5 +53,4 @@
         </tr>     
       </tbody>
   </table>
- </body>
-</html>
+@endsection

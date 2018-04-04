@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('company_id');
             $table->integer('admin');
             $table->string('img_url');
+            $table->string('remember_token', 100)->nullable();
         });
     }
 

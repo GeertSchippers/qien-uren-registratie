@@ -1,7 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+  <script>
 
+    function getHoursDeclarations(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+             // Typical action to be performed when the document is ready:
+             var response = JSON.parse(xhttp.responseText);
+             response.forEach(function(item){
+                 var div = document.createElement('div');
+                 div.innerHTML = item.amount;
+                 document.getElementById('items').appendChild(div);
+             })
+          }
+      };
+      xhttp.open("GET", "/hours_declarations/<?php echo Auth::id(); ?>", true);
+      xhttp.send();
+    }
+    getHoursDeclarations();
+  </script>
   
   <style>
      table, th, td {
@@ -41,4 +60,5 @@
         </tr>     
       </tbody>
   </table>
+  <div id='items'></div>
 @endsection

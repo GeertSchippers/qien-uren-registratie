@@ -11,7 +11,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
   function save_hours(){    
-      alert("Saved!!");
+
+
+    var data = {};
+    data.date = document.getElementById("date").value;
+    data.hours = document.getElementById("hours").value;
+    data.type = document.getElementById("type").value;
+    type.options[type.selectedIndex].text;
+    data.textarea = document.getElementById('textarea').value;
+
+    console.log(data);
+//    var xml = new XMLHttpRequest();
+     
+//    xml.onreadystatechange = function (){
+//        if(xml.readyState === 4 && xml.status === 200){
+//           
+//            console.log(this.responseText);
+//        }
+//    };
+
+//    var hourdata = JSON.stringify(data);
+//    xml.open("POST", "send.blade.php", true);
+//    xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//    xml.send("data="+hourdata);
+    
     }
   </script>
       
@@ -35,22 +58,25 @@
         </tr>
       </thead>
       <tbody>
+       <form id=form>  
         <tr>
-          <td><input type="date" id="datepickerr"></td>
-          <td><input type="number" id="hours"></td>   
+          <td><input id=date type="date"></td>
+          <td><input id=hours type="number"></td>   
           <td>
-           <select> 
-            <option value="workhours">gewerkte uren</option>
-            <option value="extrahours">overuren</option>
-            <option value="abscense">kort verlof</option>
-            <option value="holiday">vakantie</option>
-            <option value="sick">ziek</option>
-            <option value="extra">overige</option>
+           <select id="type"> 
+            <option id=workhours value="workhours">gewerkte uren</option>
+            <option id=extrahours value="extrahours">overuren</option>
+            <option id=abscense value="abscense">kort verlof</option>
+            <option id=holiday value="holiday">vakantie</option>
+            <option id=sick value="sick">ziek</option>
+            <option id=extra value="extra">overige</option>
            </select>
           </td>
-          <td><textarea rows="2" cols="40"></textarea></td>  
+          <td><textarea id=textarea rows="2" cols="40"></textarea></td>  
           <td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>
-        </tr>     
+        </tr>
+       </form>
+      <a href="http://www.google.nl">send</a>
       </tbody>
   </table>
 @endsection

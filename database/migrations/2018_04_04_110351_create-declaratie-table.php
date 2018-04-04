@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUrenDeclaratieTable extends Migration
+class CreateDeclaratieTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateUrenDeclaratieTable extends Migration
      */
     public function up()
     {
-        Schema::create('uren_declaratie', function (Blueprint $table) {
+        Schema::create('declaratie', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
-            $table->integer('amount');
+            $table->date('date_receipt');
             $table->string('type');
-            $table->string('statement');
-            $table->integer('paid');
+            $table->integer('total_receipt');
+            $table->integer('btw');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUrenDeclaratieTable extends Migration
      */
     public function down()
     {
-        Schema::drop('uren_declaratie');
+        Schema::drop('declaratie');
     }
 }

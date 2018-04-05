@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Uren_declaratie;
 use App\Http\Requests;
-use App\User;
 
-class AdminController extends Controller
+class HourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.index')->with('users',$users);
+        $hours = Uren_declaratie::all();
+        return view('admin.index')->with('hours',$hours);
     }
 
     /**

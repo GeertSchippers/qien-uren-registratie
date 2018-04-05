@@ -23,7 +23,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/trainee', function () {
     return view('/trainee/index');
 });
-
-Route::resource('admin', 'AdminController');
+Route::resource('admin', 'UserController');
 
 Route::post('hours_declaration','Hours_declarationController@create');

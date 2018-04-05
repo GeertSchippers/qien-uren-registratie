@@ -24,8 +24,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/trainee', function () {
     return view('/trainee/index');
-});
-Route::resource('admin', 'UserController');
+})->name('trainee');
+
+Route::get('/admin', 'UserController@index')->name('admin');
 
 
 Route::get('/hours_declarations/{id}', function($id){
@@ -33,7 +34,6 @@ Route::get('/hours_declarations/{id}', function($id){
     return $declarations;
 });
 
-Route::resource('admin', 'AdminController');
 
 Route::post('hours_declaration','Hours_declarationController@create');
 

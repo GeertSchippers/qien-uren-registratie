@@ -1,15 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-<!DOCTYPE HMTL>
-<html>
-    
- <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
+    function getHoursDeclarations(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+             // Typical action to be performed when the document is ready:
+             var response = JSON.parse(xhttp.responseText);
+             response.forEach(function(item){
+                 var div = document.createElement('div');
+                 div.innerHTML = item.amount;
+                 document.getElementById('items').appendChild(div);
+             })
+          }
+      };
+      xhttp.open("GET", "/hours_declarations/<?php echo Auth::id(); ?>", true);
+      xhttp.send();
+    }
+    getHoursDeclarations();
+ 
         function save_hours(){    
 
 
@@ -86,6 +96,7 @@
         width: 120px;
      }
   </style>
+  
  <h2 align="center">Uren declaraties</h2>
     <table border="1" align=center>
       <thead>
@@ -157,4 +168,5 @@
        </form>
       </tbody>
   </table>
+  <div id='items'></div>
 @endsection

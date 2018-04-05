@@ -25,3 +25,5 @@ Route::get('/trainee', function () {
 });
 
 Route::resource('admin', 'AdminController');
+
+Route::post('hours_declaration','Hours_declarationController@create');

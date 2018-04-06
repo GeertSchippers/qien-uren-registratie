@@ -33,25 +33,57 @@
         @endforeach
     </table>
     <h2> gemaakte uren</h2>
-    @if(count($hours) > 1)
+        <table>
+        <tr>
+            <th>amount</th>
+            <th>type</th>
+            <th>statement</th>
+            <th>paid</th>
+            <th>created_at</th>
+            <th>user</th>
+        </tr>
         @foreach($hours as $hour)
-            <div class="well">
-                <h3>{{$hour->amount}}</h3>
-            </div>
+                    <tr>
+                        <td>{{$hour->amount}}</td>
+                        <td>{{$hour->type}}</td>
+                        <td>{{$hour->statement}}</td>
+                        <td>{{$hour->paid}}</td>
+                        <td>{{$hour->created_at}}</td>
+                            @foreach($users as $user)
+                                @if ($hour->user_id == $user->id)
+                                    <td>{{$user->email}}</td>
+                                @endif
+                            @endforeach
+                    </tr>       
         @endforeach
-    @else
-        <p>geen uren gevonden</p>
-    @endif
-    
-    <h2> gemaakte declaraties</h2>
-    @if(count($declarations) > 1)
+    </table>
+       <h2> gemaakte declaraties</h2>
+        <table>
+        <tr>
+            <th>date_receipt</th>
+            <th>type</th>
+            <th>total_receipt</th>
+            <th>btw</th>
+            <th>description</th>
+            <th>created_at</th>
+            <th>updated_at</th>
+            <th>user_id</th>
+        </tr>
         @foreach($declarations as $declaration)
-            <div class="well">
-                <h3>{{$declaration->date_receipt}}</h3>
-            </div>
+                    <tr>
+                        <td>{{$declaration->date_receipt}}</td>
+                        <td>{{$declaration->type}}</td>
+                        <td>{{$declaration->total_receipt}}</td>
+                        <td>{{$declaration->btw}}</td>
+                        <td>{{$declaration->description}}</td>
+                        <td>{{$declaration->created_at}}</td>
+                        <td>{{$declaration->updated_at}}</td>
+                            @foreach($users as $user)
+                                @if ($declaration->user_id == $user->id)
+                                    <td>{{$user->email}}</td>
+                                @endif
+                            @endforeach
+                    </tr>       
         @endforeach
-    @else
-        <p>geen decalraties gevonden</p>
-    @endif
-
+    </table>
 @endsection

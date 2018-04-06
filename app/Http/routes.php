@@ -33,7 +33,5 @@ Route::get('/hours_declarations/{id}', function($id){
     return $declarations;
 });
 
-Route::resource('admin', 'AdminController');
-
 Route::post('hours_declaration','Hours_declarationController@create');
 

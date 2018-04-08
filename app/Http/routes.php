@@ -25,15 +25,27 @@ Route::get('/home', 'HomeController@index');
 Route::get('/trainee', function () {
     return view('/trainee/index');
 });
-Route::resource('admin', 'UserController');
+Route::resource('/admin', 'UserController');
 
 
-Route::get('/hours_declarations/{id}', function($id){
+Route::get('/hours_declarations/{data}', function($id){
     $declarations = App\Hours_declaration::where('user_id',$id)->get();
     return $declarations;
 });
 
-Route::resource('admin', 'AdminController');
 
-Route::post('hours_declaration','Hours_declarationController@create');
+Route::post('verify', function(){
+   $data = $_POST;
+   return $data;
+});
 
+//Route::post('/hours_declarations', 'Hours_declarationController@create');
+    
+//Route::post('/posttest', function(\Illuminate\Http\Request $request) {
+//    return response()->json(['message' => $request['data']]);
+//    
+//})->name('edit');
+ 
+
+
+    

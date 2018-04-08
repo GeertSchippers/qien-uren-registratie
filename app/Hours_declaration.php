@@ -11,10 +11,3 @@ class Hours_declaration extends Model
     ];
 
 }
-
-// function create($request){
-//    $request_data = $request->all();
-//    $data = $request_data[$data];
-//    $data = json_encode($data);
-//    $new = new App\Hours_declaration($data);
-//}

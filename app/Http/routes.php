@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,7 @@ Route::get('/trainee', function () {
 
 
 Route::get('/admin', 'UserController@index')->name('admin');
+Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
 
 Route::get('/hours_declarations/{id}', function($id){

@@ -54,7 +54,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id',$id)->get();
+        $hours = Hours_declaration::where('user_id',$id)->get();
+        $declarations = Declaration::where('user_id',$id)->get();
+        if(isset($user->company_id)){
+          $company = Company::where('id',$user->company_id)->get();
+        } else {
+          $company = new Company;
+          $company->name = 'Geen bedrijf';
+        }
+        return view('admin.show')->with('user',$user)->with('company',$company)->with('hours',$hours)->with('declarations',$declarations);
     }
 
     /**

@@ -26,6 +26,7 @@ Route::get('/trainee', function () {
     return view('/trainee/index');
 })->name('trainee');
 
+
 Route::get('/admin', 'UserController@index')->name('admin');
 Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
@@ -35,4 +36,12 @@ Route::get('/hours_declarations/{id}', function($id){
     return $declarations;
 });
 
+
 Route::post('hours_declaration','Hours_declarationController@create');
+
+
+
+Route::post('verify', function(){
+   $data = $_POST;
+   return $data;
+});

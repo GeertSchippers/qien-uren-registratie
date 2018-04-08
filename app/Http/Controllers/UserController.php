@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\User;
 use App\Hours_declaration;
 use App\Declaration;
+use App\Company;
 
 class UserController extends Controller
 {
@@ -17,10 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $companies = Company::all();
         $declarations = Declaration::all();
         $hours = Hours_declaration::all();
         $users = User::all();
-        return view('admin.index')->with('users',$users)->with('hours',$hours)->with('declarations', $declarations);
+        return view('admin.index')->with('users',$users)->with('hours',$hours)->with('declarations', $declarations)->with('companies', $companies);
     }
 
     /**

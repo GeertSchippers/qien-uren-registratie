@@ -24,14 +24,22 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/trainee', function () {
     return view('/trainee/index');
+
 });
+
 Route::resource('/admin', 'UserController');
+
+//})->name('trainee');
+
+Route::get('/admin', 'UserController@index')->name('admin');
+
 
 
 Route::get('/hours_declarations/{data}', function($id){
     $declarations = App\Hours_declaration::where('user_id',$id)->get();
     return $declarations;
 });
+
 
 
 Route::post('verify', function(){
@@ -46,6 +54,9 @@ Route::post('verify', function(){
 //    
 //})->name('edit');
  
+
+
+Route::post('hours_declaration','Hours_declarationController@create');
 
 
     

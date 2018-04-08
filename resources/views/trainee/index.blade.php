@@ -9,10 +9,27 @@
              // Typical action to be performed when the document is ready:
              var response = JSON.parse(xhttp.responseText);
              response.forEach(function(item){
-                 var div = document.createElement('div');
-                 div.innerHTML = item.amount;
-                 document.getElementById('items').appendChild(div);
-             })
+                 var tr = document.createElement('tr');
+                 var datum = document.createElement('td');
+                 datum.innerHTML = item.date;
+                 var aantal = document.createElement('td');
+                 aantal.innerHTML = item.amount;
+                 var type = document.createElement('td');
+                 type.innerHTML = item.type;
+                 var opmerking = document.createElement('td');
+                 opmerking.innerHTML = item.statement;
+                 var betaald = document.createElement('td');
+                 betaald.innerHTML = item.paid;
+                 
+                 var table = document.getElementById('table');
+                 table.appendChild(tr);
+                 
+                 tr.appendChild(datum);
+                 tr.appendChild(aantal);
+                 tr.appendChild(type);
+                 tr.appendChild(opmerking);
+                 tr.appendChild(betaald);
+             });
           }
       };
       xhttp.open("GET", "/hours_declarations/<?php echo Auth::id(); ?>", true);
@@ -166,10 +183,19 @@
       </tbody>
  
   </table>
+
   <div id='items'></div>
        
-<!--      <script>
-        var token = '<?php Session::token ?>';
-        var url = '<?php route("edit") ?>';
-      </script>-->
+ 
+  <table id='table'>
+      <tr>
+          <th>Datum</th>
+          <th>Aantal</th>
+          <th>Type</th>
+          <th>Verklaring</th>
+          <th>Betaald</th>
+      </tr>
+      
+  </table>
+
 @endsection

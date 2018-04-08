@@ -25,12 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+         $user = Auth::user();
 
         if($user->admin == 0){
-            return view('/trainee/index');  
+            return redirect()->route('trainee');  
         } else {
-            return view('/admin/index');
+           return redirect()->route('admin');
         }
     }
 }

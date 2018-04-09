@@ -38,4 +38,10 @@ Route::get('/post', function(){
 return view('trainee.post');
 });
 
+
 Route::post('/companies', 'CompanyController@create');
+
+
+Route::get('/formulier', function(){
+   return view('trainee/formulier');
+});

@@ -1,14 +1,23 @@
 
 var i = 0;
 function add_line(){
-//    alert('Hij werkt');
+
     var original = document.getElementById('form');
     console.log(original);
-    var clone = original.cloneNode(true); // "deep" clone
+    var clone = original.cloneNode(true); 
           clone.id = "form" + ++i;
-              // or clone.id = ""; if the divs don't need an ID
+             
                 document.getElementById('extraform').appendChild(clone);
-//    original.firstChild.appendChild(clone);
+
 }
 
-
+function send(){
+//    alert("hij doet het");
+   var row = document.getElementById('form');
+   var naamvakje = row.firstChild;
+  
+   
+   console.log(naamvakje);
+   console.log(naamvakje.parentNode.children[0].value);
+   
+}

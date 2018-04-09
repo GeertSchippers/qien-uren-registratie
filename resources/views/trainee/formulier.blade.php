@@ -46,11 +46,12 @@
               </select>
                 <td><input name=date id=date type="date"></td>
                 <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
-                <td><input type="submit" value='voer in' id="submit"></td>
+                
              </div>
+                
             <div id=extraform></div>
                 
-        
+            <td><input type="button" value='voer in' id="submit" onclick=send()></td>
 
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Review</button>

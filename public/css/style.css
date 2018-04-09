@@ -1,0 +1,34 @@
+#head {
+
+    margin: 0;
+    vertical-align: baseline;
+    padding-bottom: 20%;
+    background: url('') fixed no-repeat ;
+    height: 200px ;
+        
+}
+.header {
+    margin: 0 auto;
+    width: 100%;
+    height: 20px;
+}
+
+
+body {
+    margin: 0;
+    background: white;
+    
+
+}
+
+h2, h1{
+   text-align: center;
+}
+
+.container{
+ width: 800px ;
+  margin-left: auto ;
+  margin-right: auto ;
+    
+}
+

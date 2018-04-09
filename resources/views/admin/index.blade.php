@@ -16,7 +16,6 @@
             <th>company id </th>
         </tr>
         @foreach($users as $user)
-
             @if($user->admin == 0)
                     <tr>
                         <td>{{$user->first_name}}</td>

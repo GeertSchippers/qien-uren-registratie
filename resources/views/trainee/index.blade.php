@@ -45,15 +45,15 @@
                 type.options[type.selectedIndex].text;
                 data.textarea = document.getElementById('textarea').value;
            
-//                    $.ajax({
-//                       method: 'POST',
-//                       url: url,
-//                       data: data
-//                    })   
-//                            .done(function(msg){
-//                                console.log(msg['message']);
-//                            });
-//        });
+                    $.ajax({
+                       method: 'POST',
+                       url: url,
+                       data: data
+                    })   
+                            .done(function(msg){
+                                console.log(msg['message']);
+                            });
+        });
 
           var xml = new XMLHttpRequest();
        
@@ -135,7 +135,7 @@
            </select>
           </td>
           <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
-          <td><input type="hidden" name="_token" value="{{ csrf_token() }}"></td>
+
           <td><input type="submit" value='voer in' id="submit"></td>
           <!--<td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>-->
         </tr>

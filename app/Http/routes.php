@@ -40,7 +40,7 @@ Route::post('hours_declaration','Hours_declarationController@create');
 
 
 
-Route::post('verify', function(){
-   $data = $_POST;
-   return $data;
-});
+//Route::post('verify', function(){
+//   $data = $_POST;
+//   return $data;
+//});

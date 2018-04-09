@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/trainee', function () {
   return view('/trainee/index');
-});
+})->name('trainee');
 
 Route::resource('/admin', 'UserController');
 

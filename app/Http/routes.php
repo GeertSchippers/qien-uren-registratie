@@ -23,10 +23,8 @@ Route::get('/trainee', function () {
   return view('/trainee/index');
 })->name('trainee');
 
-Route::resource('/admin', 'UserController');
 
 Route::get('/admin', 'UserController@index')->name('admin');
-
 Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
 Route::get('/hours_declarations/{data}', function($id){

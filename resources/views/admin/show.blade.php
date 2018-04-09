@@ -1,6 +1,7 @@
 <?php
 $user = $user[0];
  ?>
+
  @extends('welcome')
  @section('content')
  <style>
@@ -14,6 +15,7 @@ $user = $user[0];
      Email: {{$user->email}} <br>
      Employee Number: {{$user->employee_number}} <br>
      Company: {{$company->name}} <br>
+
      <h2> gemaakte uren</h2>
          <table>
          <tr>
@@ -33,6 +35,7 @@ $user = $user[0];
                      </tr>
          @endforeach
      </table>
+
         <h2> gemaakte declaraties</h2>
          <table>
          <tr>

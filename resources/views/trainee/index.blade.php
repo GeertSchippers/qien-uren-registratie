@@ -55,6 +55,7 @@
 //                            });
 //        });
 
+
           var xml = new XMLHttpRequest();
 
           xml.onreadystatechange = function (){
@@ -134,8 +135,8 @@
             <option id=extra value="extra">overige</option>
            </select>
           </td>
-          <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td>
-          <td><input type="hidden" name="_token" value="{{ csrf_token() }}"></td>
+
+          <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
           <td><input type="submit" value='voer in' id="submit"></td>
           <!--<td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>-->
         </tr>

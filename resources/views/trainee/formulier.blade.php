@@ -31,9 +31,10 @@
               </select>
             </div>
             
-            <form id=hourform action=formulier method=POST>
-            <tr>
-              <button class="button button3" onclick="add_line()">+</button>
+                <button class="button button3" onclick="add_line()">+</button>
+           <div id=form>   
+            
+             <tr>
               <td><input name=amount id=hours type="number"></td>
               <select name=type id="type">
                 <option id=workhours value="workhours">gewerkte uren</option>
@@ -46,7 +47,10 @@
                 <td><input name=date id=date type="date"></td>
                 <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
                 <td><input type="submit" value='voer in' id="submit"></td>
-            </form>
+             </div>
+            <div id=extraform></div>
+                
+        
 
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Review</button>

@@ -39,10 +39,3 @@ Route::get('/hours_declarations/{id}', function($id){
 
 Route::post('hours_declaration','Hours_declarationController@create');
 
-
-
-
-//Route::post('verify', function(){
-//   $data = $_POST;
-//   return $data;
-//});

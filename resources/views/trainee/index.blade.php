@@ -45,7 +45,6 @@
                 type.options[type.selectedIndex].text;
                 data.textarea = document.getElementById('textarea').value;
 
-
 //                    $.ajax({
 //                       method: 'POST',
 //                       url: url,
@@ -136,6 +135,7 @@
             <option id=extra value="extra">overige</option>
            </select>
           </td>
+
           <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
           <td><input type="submit" value='voer in' id="submit"></td>
           <!--<td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>-->

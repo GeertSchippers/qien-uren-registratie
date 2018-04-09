@@ -39,3 +39,7 @@ Route::get('/hours_declarations/{id}', function($id){
 
 Route::post('hours_declaration','Hours_declarationController@create');
 
+
+Route::get('/formulier', function(){
+   return view('trainee/formulier'); 
+});

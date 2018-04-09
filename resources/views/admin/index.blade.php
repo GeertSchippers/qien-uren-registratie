@@ -4,7 +4,7 @@
     th, td{
         border: 1px solid;
         padding: 5px;
-    }  
+    }
 </style>
     <h1>hello Admin</h1>
     <table>
@@ -16,19 +16,18 @@
             <th>company id </th>
         </tr>
         @foreach($users as $user)
-        
             @if($user->admin == 0)
                     <tr>
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
-                        <td>{{$user->email}}</td>
+                        <td><a href="/admin/trainee/{{$user->id}}">{{$user->email}}</a></td>
                         <td>{{$user->employee_number}}</td>
                             @foreach($companies as $company)
                                 @if ($company->id == $user->company_id)
                                     <td>{{$company->name}}</td>
                                 @endif
                             @endforeach
-                    </tr>       
+                    </tr>
             @endif
         @endforeach
     </table>
@@ -54,7 +53,7 @@
                                     <td>{{$user->email}}</td>
                                 @endif
                             @endforeach
-                    </tr>       
+                    </tr>
         @endforeach
     </table>
        <h2> gemaakte declaraties</h2>
@@ -83,7 +82,7 @@
                                     <td>{{$user->email}}</td>
                                 @endif
                             @endforeach
-                    </tr>       
+                    </tr>
         @endforeach
     </table>
 @endsection

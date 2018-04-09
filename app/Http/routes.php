@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,16 +12,34 @@ use Illuminate\Http\Request;
 Use App\Hours_declaration;
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
+
 Route::auth();
 Route::get('/home', 'HomeController@index');
+
 Route::get('/trainee', function () {
-    return view('/trainee/index');
+  return view('/trainee/index');
 })->name('trainee');
-Route::get('/admin', 'UserController@index')->name('admin');
+
 Route::get('/hours_declarations/{id}', function($id){
     $declarations = App\Hours_declaration::where('user_id',$id)->get();
     return $declarations;
 });
-Route::post('hours_declaration','Hours_declarationController@create');
+
+Route::get('/admin', 'UserController@index')->name('admin');
+Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
+
+Route::post('/hours_declarations','Hours_declarationController@create');
+
+Route::get('/post', function(){
+return view('trainee.post');
+});
+
+
+Route::post('/companies', 'CompanyController@create');
+
+
+Route::get('/formulier', function(){
+   return view('trainee/formulier');
+});

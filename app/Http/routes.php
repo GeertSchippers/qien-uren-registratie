@@ -10,6 +10,8 @@
 |
 */
 Use App\Hours_declaration;
+use Illuminate\Http\Request;
+use App\Client;
 
 Route::get('/', function () {
   return view('welcome');
@@ -33,11 +35,21 @@ return view('trainee.post');
 });
 
 Route::resource('/declarations','DeclarationController');
+
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::post('/companies', 'CompanyController@create');
 
 
+
 Route::get('/formulier', function(){
    return view('trainee/formulier');
 });
+
+
+
+
+    
+    
+    
+

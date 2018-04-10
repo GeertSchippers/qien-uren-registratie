@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Hours_declaration extends Model
 {
     protected $fillable = [
-        'user_id', 'date', 'amount', 'type', 'statement', 'paid', 'approved'
-    ];
 
+        'user_id', 'date', 'amount', 'type', 'statement', 'paid', 'approved'
+
+    ];
+ 
 }

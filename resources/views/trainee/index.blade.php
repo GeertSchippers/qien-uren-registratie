@@ -37,66 +37,7 @@
     }
     getHoursDeclarations();
 
-        function save_hours(){
-            var data = {};
-                data.date = document.getElementById("date").value;
-                data.hours = document.getElementById("hours").value;
-                data.type = document.getElementById("type").value;
-                type.options[type.selectedIndex].text;
-                data.textarea = document.getElementById('textarea').value;
 
-//                    $.ajax({
-//                       method: 'POST',
-//                       url: url,
-//                       data: data
-//                    })
-//                            .done(function(msg){
-//                                console.log(msg['message']);
-//                            });
-//        });
-
-
-          var xml = new XMLHttpRequest();
-
-          xml.onreadystatechange = function (){
-              if(xml.readyState == 4 && xml.status == 200){
-                  alert('gelukt');
-                  console.log(this.responseText);
-              }
-          };
-
-          var hourdata = JSON.stringify(data);
-          xml.open("POST", "/hours_declarations/", true);
-          xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          xml.send("data="+hourdata);
-          console.log(data);
-          }
-
-
-//        function save_declaration(){
-//            var data = {};
-//            data.date_receipt = document.getElementById('date_receipt').value;
-//            data.type_dec = document.getElementById('type_dec').value;
-//            type.options[type.selectedIndex].text;
-//            data.total_receipt = document.getElementById('total_receipt').value;
-//            data.btw = document.getElementById('btw').value;
-//            data.description = document.getElementById('description').value;
-//
-//            data.type = "POST";
-//            data.dataType = "JSON";
-//            data.data = JSON.stringify(data);
-//            data.contentType = "application/json";
-//            data.succes = function(response){
-//                 alert("succes");
-//            };
-//            data.error = function(response){
-//                 alert("Failed");
-//            };
-//
-//            $.ajax(data);
-//            console.log(data);
-//
-//        }
   </script>
 
   <style>

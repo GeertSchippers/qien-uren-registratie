@@ -73,8 +73,7 @@ class DeclarationController extends Controller
       $declaration = Declaration::find($id);
       $data = $request->json()->all();
 
-      $declaration->approved = $data['approved'];
-      $declaration->save();
+      $declaration->update($data);
     }
 
     /**

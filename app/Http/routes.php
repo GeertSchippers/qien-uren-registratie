@@ -30,12 +30,12 @@ Route::get('/hours_declarations/{id}', function($id){
 Route::get('/admin', 'UserController@index')->name('admin');
 Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
-Route::post('/hours_declarations','Hours_declarationController@create');
-
 Route::get('/post', function(){
 return view('trainee.post');
 });
 
+Route::resource('/declarations','DeclarationController');
+Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::post('/companies', 'CompanyController@create');
 

@@ -27,7 +27,7 @@ class Hours_declarationController extends Controller
      */
     public function create(Request $request)
 
-    {   
+    {
 
     }
 
@@ -40,11 +40,11 @@ class Hours_declarationController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
-//  
+//
         $new = new Hours_declaration();
         $user = Auth::user();
-            
-            
+
+
         $new->date = $data['date'];
         $new->amount = $data['amount'];
         $new->type = $data['type'];
@@ -89,8 +89,8 @@ class Hours_declarationController extends Controller
       $declaration = Hours_declaration::find($id);
       $data = $request->json()->all();
 
-      $declaration->approved = $data['approved'];
-      $declaration->save();
+      $declaration->update($data);
+
     }
 
     /**

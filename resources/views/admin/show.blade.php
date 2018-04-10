@@ -21,13 +21,13 @@ $user = $user[0];
      <h2>gemaakte uren</h2>
          <table>
          <tr>
-             <th>amount</th>
-             <th>type</th>
-             <th>statement</th>
-             <th>created at</th>
-             <th>updated at</th>
-             <th>approved</th>
-             <th>paid</th>
+             <th>Aantal</th>
+             <th>Type</th>
+             <th>Verklaring</th>
+             <th>Aangemaakt</th>
+             <th>Gewijzigd</th>
+             <th>Goedgekeurd</th>
+             <th>Betaald</th>
          </tr>
          @foreach($hours as $hour)
           <?php $obj = new Hours_declaration();
@@ -53,15 +53,15 @@ $user = $user[0];
         <h2> gemaakte declaraties</h2>
          <table>
          <tr>
-             <th>date_receipt</th>
-             <th>type</th>
-             <th>total_receipt</th>
-             <th>btw</th>
-             <th>description</th>
-             <th>created at</th>
-             <th>updated at</th>
-             <th>approved</th>
-             <th>paid</th>
+             <th>Datum bon</th>
+             <th>Type</th>
+             <th>Totaal bon</th>
+             <th>Btw</th>
+             <th>Beschrijving</th>
+             <th>Aangemaakt</th>
+             <th>Gewijzigd</th>
+             <th>Goedgekeurd</th>
+             <th>Betaald</th>
          </tr>
          @foreach($declarations as $declaration)
          <?php $obj = new Declaration();

@@ -4,19 +4,19 @@
 ?>
 
 <html>
-    
+
 <head>
-  <meta charset="utf-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="{{ asset('css/tabs.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">  
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
-    <title>Formulier Trainee </title>
-    
-    
-</head> 
+    <title>Formulier Trainee</title>
+
+
+</head>
  <header>
-    <h1>Welkom Trainee</h1>
+    <h1>Welkom {{ $user->first_name }}</h1>
  </header>
     <body>
       <div class="container">
@@ -34,10 +34,10 @@
                   <option value="7">Zondag</option>
               </select>
             </div>
-            
+
                 <button class="button button3" onclick="add_line()">+</button>
-           <div id=form>   
-            
+           <div id=form>
+
              <tr>
               <td><input name=amount id=hours type="number"></td>
               <select name=type id="type">
@@ -49,14 +49,13 @@
                 <option id=extra value="extra">overige</option>
               </select>
                 <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id="statement" rows="2" cols="40"></textarea></td> 
-                
+                <td><textarea name=statement id="statement" rows="2" cols="40"></textarea></td>
+
              </div>
-                
+
             <div id=extraform></div>
-                
+
             <td><input type="button" value='voer in' id="submit" onclick=send()></td>
-            <?= Auth::id() ?>
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Review</button>
           <button class="tablinks" onclick="openCity(event, 'Paris')">Goedgekeurd</button>
@@ -64,18 +63,42 @@
         </div>
 
         <div id="London" class="tabcontent">
-          <h3>Review</h3>
-          <p>hier komt de review tabel</p>
+          <table id='table'>
+            <tr>
+                <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+            </tr>
+
+          </table>
         </div>
 
         <div id="Paris" class="tabcontent">
-          <h3>Goedgekeurd</h3>
-          <p>hier komt de goedgekeurde tabel</p> 
+          <table id='table'>
+            <tr>
+                <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+            </tr>
+
+          </table>
         </div>
 
         <div id="Tokyo" class="tabcontent">
-          <h3>Betaald</h3>
-          <p>hier komt de betaalde tabel</p>
+          <table id='table'>
+            <tr>
+                <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+            </tr>
+
+          </table>
         </div>
       </div>
     <script>
@@ -95,13 +118,13 @@
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
-    
-    
-    
+
+
+
     </script>
 
     </body>
-    
+
 
 
 </html>

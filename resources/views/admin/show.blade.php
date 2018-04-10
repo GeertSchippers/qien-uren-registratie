@@ -24,8 +24,8 @@ $user = $user[0];
              <th>amount</th>
              <th>type</th>
              <th>statement</th>
-             <th>paid</th>
-             <th>created_at</th>
+             <th>created at</th>
+             <th>updated at</th>
              <th>approved</th>
              <th>paid</th>
          </tr>
@@ -43,10 +43,10 @@ $user = $user[0];
                          <td>{{$hour->amount}}</td>
                          <td>{{$hour->type}}</td>
                          <td>{{$hour->statement}}</td>
-                         <td>{{$hour->paid}}</td>
                          <td>{{$hour->created_at}}</td>
+                         <td>{{$hour->updated_at}}</td>
                          <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->approved == 1){echo 'checked';} ?> ></td>
-                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }})" <?php if($hour->paid == 1){echo 'checked';} ?> ></td>
+                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->paid == 1){echo 'checked';} ?> ></td>
                      </tr>
          @endforeach
      </table>
@@ -58,8 +58,8 @@ $user = $user[0];
              <th>total_receipt</th>
              <th>btw</th>
              <th>description</th>
-             <th>created_at</th>
-             <th>updated_at</th>
+             <th>created at</th>
+             <th>updated at</th>
              <th>approved</th>
              <th>paid</th>
          </tr>
@@ -83,7 +83,7 @@ $user = $user[0];
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
                          <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->approved == 1){echo 'checked';} ?>></td>
-                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }})" <?php if($declaration->paid == 1){echo 'checked';} ?>></td>
+                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->paid == 1){echo 'checked';} ?>></td>
                      </tr>
          @endforeach
      </table>

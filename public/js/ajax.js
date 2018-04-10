@@ -21,13 +21,13 @@ function approveDeclaration(id, obj){
   });
 }
 
-function payDeclaration(id){
+function payDeclaration(id, obj){
   var checked = document.getElementById('declaration_paid'+id).checked;
 
   if(checked){
-    var obj = { paid: 1 };
+    obj.paid = 1;
   } else {
-    var obj = { paid: 0 };
+    obj.paid = 0;
   }
 
     obj = JSON.stringify(obj);
@@ -65,13 +65,13 @@ function approveHoursDeclaration(id, obj){
   });
 }
 
-function payHoursDeclaration(id){
+function payHoursDeclaration(id, obj){
   var checked = document.getElementById('hours_declaration_paid'+id).checked;
 
   if(checked){
-    var obj = { paid: 1 };
+    obj.paid = 1;
   } else {
-    var obj = { paid: 0 };
+    obj.paid = 0;
   }
 
     obj = JSON.stringify(obj);

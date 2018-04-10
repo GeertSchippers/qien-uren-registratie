@@ -29,16 +29,21 @@ Route::get('/trainee', function () {
 Route::get('/admin', 'UserController@index')->name('admin');
 Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
+
 Route::get('/hours_declarations/{data}', function($id){
   $declarations = App\Hours_declaration::where('user_id',$id)->get();
   return $declarations;
 });
 
 
+
 Route::get('/post', function(){
 return view('trainee.post');
 });
 
+Route::resource('/declarations','DeclarationController');
+
+Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::post('/companies', 'CompanyController@create');
 
@@ -49,7 +54,7 @@ Route::get('/formulier', function(){
 });
 
 
-Route::resource('/hours_declarations', 'Hours_declarationController');
+
 
     
     

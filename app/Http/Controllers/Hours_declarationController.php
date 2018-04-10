@@ -17,7 +17,7 @@ class Hours_declarationController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -26,10 +26,11 @@ class Hours_declarationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
+
     {   
-    
+
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,7 +62,8 @@ class Hours_declarationController extends Controller
      */
     public function show($id)
     {
-        //
+      $declarations = Hours_declaration::where('user_id',$id)->get();
+      return $declarations;
     }
 
     /**
@@ -84,7 +86,11 @@ class Hours_declarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $declaration = Hours_declaration::find($id);
+      $data = $request->json()->all();
+
+      $declaration->approved = $data['approved'];
+      $declaration->save();
     }
 
     /**

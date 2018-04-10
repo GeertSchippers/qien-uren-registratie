@@ -24,7 +24,7 @@ $user = $user[0];
              <th>statement</th>
              <th>paid</th>
              <th>created_at</th>
-             <th>approve</th>
+             <th>approved</th>
          </tr>
          @foreach($hours as $hour)
                      <tr>
@@ -48,7 +48,7 @@ $user = $user[0];
              <th>description</th>
              <th>created_at</th>
              <th>updated_at</th>
-             <th>approve</th>
+             <th>approved</th>
          </tr>
          @foreach($declarations as $declaration)
                      <tr>

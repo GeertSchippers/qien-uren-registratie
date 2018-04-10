@@ -1,3 +1,5 @@
+// ----------------------- DECLARATIONS -----------------------------
+
 function approveDeclaration(id){
   var checked = document.getElementById('declaration'+id).checked;
 
@@ -18,6 +20,8 @@ function approveDeclaration(id){
       console.log('successfully updated');
   });
 }
+
+// -------------------------- HOURS DECLARATIONS -------------------------------
 
 function approveHoursDeclaration(id){
   var checked = document.getElementById('hours_declaration'+id).checked;

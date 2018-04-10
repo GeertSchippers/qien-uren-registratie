@@ -33,15 +33,10 @@ function send(){
     xhttp.open('POST', '/hours_declarations', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(objectjson);
-//                
-//                var kipjson = JSON.stringify(kip);
-//                xhttp = new XMLHttpRequest();
-//                xhttp.onreadystatechange = function(){
-//                    document.getElementById('antwoord').innerHTML = this.responseText;
-//                };
-//                
-//                xhttp.open("POST", "/voorbeeldpostman", true);
-//                xhttp.send(kipjson);
 
    
+}
+
+function send2(){
+    alert('Declaratie formulier verstuurd');
 }

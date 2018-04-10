@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,26 +12,32 @@
 Use App\Hours_declaration;
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
-
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-
 Route::get('/trainee', function () {
-    return view('/trainee/index');
+  return view('/trainee/index');
 })->name('trainee');
 
+
 Route::get('/admin', 'UserController@index')->name('admin');
+Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
 
 
-Route::get('/hours_declarations/{id}', function($id){
-    $declarations = App\Hours_declaration::where('user_id',$id)->get();
-    return $declarations;
+Route::get('/post', function(){
+return view('trainee.post');
 });
 
-Route::post('hours_declaration','Hours_declarationController@create');
+Route::resource('/declarations','DeclarationController');
+Route::resource('/hours_declarations', 'Hours_declarationController');
 
+Route::post('/companies', 'CompanyController@create');
+
+
+Route::get('/formulier', function(){
+   return view('trainee/formulier');
+});

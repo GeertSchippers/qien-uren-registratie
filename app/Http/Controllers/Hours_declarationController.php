@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+use App\Hours_declaration;
+use Illuminate\Support\Facades\Auth;
+
 class Hours_declarationController extends Controller
 {
     /**
@@ -14,7 +17,7 @@ class Hours_declarationController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -22,9 +25,24 @@ class Hours_declarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+//    $request_data = $request::all();
+//    $data = $request['data'];
+//    $data = json_decode($data);
+//
+        $id = Auth::id();
+    //
+        $new = new App\Hours_declaration();
+        $new->date = $data->date;
+        $new->amount = $data->amount;
+        $new->type = $data->type;
+        $new->statement = $data->statement;
+        $new->user_id = $id;
+        $new->paid = 0;
+        $new->save();
+
     }
 
     /**
@@ -46,7 +64,8 @@ class Hours_declarationController extends Controller
      */
     public function show($id)
     {
-        //
+      $declarations = Hours_declaration::where('user_id',$id)->get();
+      return $declarations;
     }
 
     /**
@@ -69,7 +88,11 @@ class Hours_declarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $declaration = Hours_declaration::find($id);
+      $data = $request->json()->all();
+
+      $declaration->approved = $data['approved'];
+      $declaration->save();
     }
 
     /**

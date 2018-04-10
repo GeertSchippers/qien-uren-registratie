@@ -12,6 +12,8 @@
 Use App\Hours_declaration;
 use Illuminate\Http\Request;
 use App\Client;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', function () {
   return view('welcome');
@@ -43,13 +45,5 @@ Route::post('/companies', 'CompanyController@create');
 
 
 Route::get('/formulier', function(){
-   return view('trainee/formulier');
+   return view('trainee/formulier')->with('user', Auth::user());
 });
-
-
-
-
-    
-    
-    
-

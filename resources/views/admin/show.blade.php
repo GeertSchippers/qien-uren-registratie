@@ -24,6 +24,7 @@ $user = $user[0];
              <th>statement</th>
              <th>paid</th>
              <th>created_at</th>
+             <th>approve</th>
          </tr>
          @foreach($hours as $hour)
                      <tr>
@@ -32,6 +33,7 @@ $user = $user[0];
                          <td>{{$hour->statement}}</td>
                          <td>{{$hour->paid}}</td>
                          <td>{{$hour->created_at}}</td>
+                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }})"></td>
                      </tr>
          @endforeach
      </table>
@@ -46,6 +48,7 @@ $user = $user[0];
              <th>description</th>
              <th>created_at</th>
              <th>updated_at</th>
+             <th>approve</th>
          </tr>
          @foreach($declarations as $declaration)
                      <tr>
@@ -56,6 +59,7 @@ $user = $user[0];
                          <td>{{$declaration->description}}</td>
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
+                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }})"></td>
                      </tr>
          @endforeach
      </table>

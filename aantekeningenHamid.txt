@@ -1,0 +1,20 @@
+Indeling ||
+----------
+
+
+
+
+
+
+Styling ||
+---------
+- Jack mailen voor templates en logo's etc.
+
+
+
+
+
+Features ||
+----------
+- Trainee kan bijlagen toevoegen aan declaraties.
+- Admin kan bijlagen toevoegen.

@@ -37,7 +37,6 @@ $user = $user[0];
                      </tr>
          @endforeach
      </table>
-
         <h2> gemaakte declaraties</h2>
          <table>
          <tr>

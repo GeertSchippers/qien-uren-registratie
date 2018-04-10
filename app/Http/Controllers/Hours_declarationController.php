@@ -27,22 +27,7 @@ class Hours_declarationController extends Controller
      */
     public function create(Request $request)
     {   
-
-//    $request_data = $request::all();
-//    $data = $request['data'];
-//    $data = json_decode($data);
-//    
-        $id = Auth::id();
-    //    
-        $new = new App\Hours_declaration();
-        $new->date = $data->date;
-        $new->amount = $data->amount;
-        $new->type = $data->type;
-        $new->statement = $data->statement;
-        $new->user_id = $id;
-        $new->paid = 0;
-        $new->save();
-
+    
     }
     
     /**
@@ -53,7 +38,19 @@ class Hours_declarationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->json()->all();
+//  
+        $new = new Hours_declaration();
+        $user = Auth::user();
+            
+            
+        $new->date = $data['date'];
+        $new->amount = $data['amount'];
+        $new->type = $data['type'];
+        $new->statement = $data['statement'];
+        $new->user_id = $user->id;
+        $new->paid = 0;
+        $new->save();
     }
 
     /**

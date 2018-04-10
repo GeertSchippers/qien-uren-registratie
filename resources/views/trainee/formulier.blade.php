@@ -1,4 +1,8 @@
-<!DOCTYPE HTML>
+
+
+<?php use Illuminate\Support\Facades\Auth;
+?>
+
 <html>
     
 <head>
@@ -45,14 +49,14 @@
                 <option id=extra value="extra">overige</option>
               </select>
                 <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
+                <td><textarea name=statement id="statement" rows="2" cols="40"></textarea></td> 
                 
              </div>
                 
             <div id=extraform></div>
                 
             <td><input type="button" value='voer in' id="submit" onclick=send()></td>
-
+            <?= Auth::id() ?>
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Review</button>
           <button class="tablinks" onclick="openCity(event, 'Paris')">Goedgekeurd</button>
@@ -91,6 +95,9 @@
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+    
+    
+    
     </script>
 
     </body>

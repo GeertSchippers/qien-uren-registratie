@@ -10,6 +10,8 @@
 |
 */
 Use App\Hours_declaration;
+use Illuminate\Http\Request;
+use App\Client;
 
 Route::get('/', function () {
   return view('welcome');
@@ -32,7 +34,6 @@ Route::get('/hours_declarations/{data}', function($id){
   return $declarations;
 });
 
-Route::post('/hours_declarations','Hours_declarationController@create');
 
 Route::get('/post', function(){
 return view('trainee.post');
@@ -42,6 +43,15 @@ return view('trainee.post');
 Route::post('/companies', 'CompanyController@create');
 
 
+
 Route::get('/formulier', function(){
    return view('trainee/formulier');
 });
+
+
+Route::resource('/hours_declarations', 'Hours_declarationController');
+
+    
+    
+    
+

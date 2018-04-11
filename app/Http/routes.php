@@ -12,44 +12,36 @@
 Use App\Hours_declaration;
 use Illuminate\Http\Request;
 use App\Client;
+use Illuminate\Support\Facades\Auth;
+
+// ---------------------- Custom Routes ------------------------
 
 Route::get('/', function () {
   return view('welcome');
 });
 
-Route::auth();
-
 Route::get('/home', 'HomeController@index');
 
-Route::get('/trainee', function () {
-  return view('/trainee/index');
-})->name('trainee');
-
-
-Route::get('/admin', 'UserController@index')->name('admin');
-Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
-
-
-Route::get('/post', function(){
-return view('trainee.post');
+Route::get('/formulier', function(){
+   return view('trainee/formulier')->with('user', Auth::user());
 });
+
+Route::get('/admin/trainee/{id}', 'UserController@show');
+
+// -------------------- Resourced Routes ----------------------
+
+Route::auth();
+
+Route::resource('/trainees', 'TraineeController');
+
+Route::resource('/admins', 'AdminController');
+
+
+Route::resource('admins.trainees', 'AdminTraineeController');
 
 Route::resource('/declarations','DeclarationController');
 
+
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
-Route::post('/companies', 'CompanyController@create');
-
-
-
-Route::get('/formulier', function(){
-   return view('trainee/formulier');
-});
-
-
-Route::get('/showusername', 'UserController@showUserName');
-
-    
-    
-    
-
+Route::resource('/companies', 'CompanyController');

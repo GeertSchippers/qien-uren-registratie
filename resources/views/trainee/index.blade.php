@@ -77,7 +77,7 @@
            </select>
           </td>
 
-          <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td> 
+          <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td>
           <td><input type="submit" value='voer in' id="submit"></td>
           <!--<td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>-->
         </tr>

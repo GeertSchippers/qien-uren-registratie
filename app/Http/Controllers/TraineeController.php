@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
-class CompanyController extends Controller
+use App\User;
+use App\Hours_declaration;
+use App\Declaration;
+use App\Company;
+class TraineeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-
+      return view('/trainee/index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +26,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +36,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -46,9 +44,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+      
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +56,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -71,7 +67,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

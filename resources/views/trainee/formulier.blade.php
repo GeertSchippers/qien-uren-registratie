@@ -8,8 +8,9 @@ use App\User;
 ?>
 
 <html>
-    
+
 <head>
+
   <meta charset="utf-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1"/>    
   <!--<link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">-->
@@ -21,6 +22,7 @@ use App\User;
 </head> 
  
 <header>
+    
      <div class=container-nav>
       <nav> 
        <img id=logo src="/images/qienlogo2.png" alt="QienLogo" width="40" height="50">
@@ -32,17 +34,17 @@ use App\User;
        </nav>
       </ul>
      </div>
- </header>
-    
-
+</header>
 <body>
 <!-------------------Urenregistratie formulier------------------------------>
 
      <div class=container-hours>  
       <div class="container">
+        <h2>Uren registratie</h2>
         
-          <h2>Uren registratie</h2>
+        <h3>Welkom {{ $user->first_name }}</h3>
             <span>Hier komen de totale uren</span>
+            
             <div class="custom-select" style="width:200px;">
               <select id=dag>
                   <option value="0">Select dag:</option>
@@ -55,10 +57,9 @@ use App\User;
                   <option value="7">Zondag</option>
               </select>
             </div>
-            
            <button class="button button3" onclick="add_line()">+</button>
-           <div id=form>   
-            
+           <div id=form>
+
              <tr>
               <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
               <select name=type id="type">
@@ -70,36 +71,69 @@ use App\User;
                 <option id=extra value="extra">overige</option>
               </select>
                 <td><input name=date id=date type="date"></td>
+
                 <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
-                
              </div>
-                
+
             <div id=extraform></div>
-                
+
             <td><input type="button" value='voer in' id="submit" onclick=send()></td>
-           
+
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
           <button class="tablinks" onclick="openTab(event, 'aproved')">Goedgekeurd</button>
           <button class="tablinks" onclick="openTab(event, 'paid')">Betaald</button>
         </div>
 
+
         <div id="review" class="tabcontent">
           <h3>Review</h3>
-          <p>hier komt de review tabel</p>
+           <p>
+            <table id='table'>
+              <tr>
+               <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+               </tr>
+            </table>
+           </p>
         </div>
 
         <div id="aproved" class="tabcontent">
           <h3>Goedgekeurd</h3>
-          <p>hier komt de goedgekeurde tabel</p> 
+           <p>
+            <table id='table'>
+              <tr>
+               <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+               </tr>
+            </table>
+           </p>
         </div>
-
-        <div id="paid" class="tabcontent">
+            
+         <div id="paid" class="tabcontent">
           <h3>Betaald</h3>
-          <p>hier komt de betaalde tabel</p>
+           <p>
+            <table id='table'>
+              <tr>
+               <th>Aantal</th>
+                <th>Type</th>
+                <th>Verklaring</th>
+                <th>Aangemaakt</th>
+                <th>Gewijzigd</th>
+               </tr>
+            </table>
+           </p>
+        </div>   
+
         </div>
       </div>
-    </div>
+   
       
 <!-------------------Declaratie formulier------------------------------>
  
@@ -147,27 +181,56 @@ use App\User;
             <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
 
             <div class="tab">
-              <button class="tablinks2" onclick="openCity(event, 'London')" id="defaultOpen2">London</button>
-              <button class="tablinks2" onclick="openCity(event, 'Paris')">Paris</button>
-              <button class="tablinks2" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+              <button class="tablinks2" onclick="openCity(event, 'review2')" id="defaultOpen2">Review</button>
+              <button class="tablinks2" onclick="openCity(event, 'aproved2')">Goedgekeurd</button>
+              <button class="tablinks2" onclick="openCity(event, 'paid2')">Betaald</button>
             </div>
 
-            <div id="London" class="tabcontent2">
-              <h3>London</h3>
-              <p>London is the capital city of England.</p>
+            <div id="review2" class="tabcontent2">
+              <h3>Review</h3>
+               <p>
+                <table id='table'>
+                  <tr>
+                   <th>Aantal</th>
+                    <th>Type</th>
+                    <th>Verklaring</th>
+                    <th>Aangemaakt</th>
+                    <th>Gewijzigd</th>
+                   </tr>
+                </table>
+               </p>
             </div>
 
-            <div id="Paris" class="tabcontent2">
-              <h3>Paris</h3>
-              <p>Paris is the capital of France.</p> 
+            <div id="aproved2" class="tabcontent2">
+              <h3>Goedgekeurd</h3>
+               <p>
+                <table id='table'>
+                  <tr>
+                   <th>Aantal</th>
+                    <th>Type</th>
+                    <th>Verklaring</th>
+                    <th>Aangemaakt</th>
+                    <th>Gewijzigd</th>
+                   </tr>
+                </table>
+               </p>
             </div>
 
-            <div id="Tokyo" class="tabcontent2">
-              <h3>Tokyo</h3>
-              <p>Tokyo is the capital of Japan.</p>
-            </div>
-
-        
+             <div id="paid2" class="tabcontent2">
+              <h3>Betaald</h3>
+               <p>
+                <table id='table'>
+                  <tr>
+                   <th>Aantal</th>
+                    <th>Type</th>
+                    <th>Verklaring</th>
+                    <th>Aangemaakt</th>
+                    <th>Gewijzigd</th>
+                   </tr>
+                </table>
+               </p>
+            </div>   
+      </div>
     <script>
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
@@ -183,6 +246,7 @@ use App\User;
             document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
     }
+
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
     
@@ -204,11 +268,12 @@ use App\User;
         }
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen2").click();
+
     </script>
 
 
     </body>
-    
+
 
 
 </html>

@@ -34,9 +34,9 @@ class AuthController extends Controller
         $user = Auth::user();
 
         if($user->admin == 0){
-            return '/trainee';  
+            return '/trainees';
         } else {
-           return '/admin';
+           return '/admins';
         }
     }
 

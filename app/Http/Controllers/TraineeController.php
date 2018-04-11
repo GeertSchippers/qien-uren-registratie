@@ -62,7 +62,7 @@ class TraineeController extends Controller
 
       } else {
 
-          return view('/trainee/show')->with('user',$user);
+          return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
       }
     }

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <?php
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -13,25 +15,28 @@ use App\User;
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+  <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
+  <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> -->
 
   <title>Formulier Trainee</title>
+  <style>
+  /* .container-hours{
+      background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
+      background-size: cover;
+      position: relative;
+      top: -20px;
+      height: 1000px;
+  } */
+
+  .tabcontent {
+    background-color: white;
+  }
+
+  </style>
 </head>
 
 <header>
 
-     <div class=container-nav>
-      <nav>
-       <img id=logo src="/images/qienlogo2.png" alt="QienLogo" width="40" height="50">
-       <ul class=navbar>
-        <li><a href="">mijnQien</a></li>
-        <li><a href="">Login</a></li>
-        <li><a href="">Register</a></li>
-        <li><a href="">About</a></li>
-       </nav>
-      </ul>
-     </div>
 </header>
 <body>
 <!-- ======================== Urenregistratie formulier ------------------------------>
@@ -41,7 +46,6 @@ use App\User;
         <h2>Uren registratie</h2>
 
         <h3>Welkom {{ $user->first_name }}</h3>
-            <span>Hier komen de totale uren</span>
 
             <div class="custom-select" style="width:200px;">
               <select id=dag>
@@ -163,7 +167,7 @@ use App\User;
           </table>
         </div>
 
-        </div>
+
       </div>
 
 
@@ -297,12 +301,11 @@ use App\User;
               @endforeach
             </table>
             </div>
+          </div>
       </div>
 
 
     <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
     </body>
 
-
-
-</html>
+@endsection

@@ -10,6 +10,7 @@
 |
 */
 Use App\Hours_declaration;
+Use App\Declaration;
 use Illuminate\Http\Request;
 use App\Client;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,18 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 
 Route::get('/formulier', function(){
-   return view('trainee/formulier')->with('user', Auth::user());
+  $user = Auth::user();
+  $hours_declarations = Hours_declaration::all();
+  $declarations = Declaration::all();
+
+  if(isset($user->company_id)){
+    $company = Company::where('id',$user->company_id)->get();
+  } else {
+    $company = new Company;
+    $company->name = 'Geen bedrijf';
+  }
+
+   return view('trainee/formulier')->with(compact('user','hours_declarations','declarations','company'));
 });
 
 Route::get('/admin/trainee/{id}', 'UserController@show');

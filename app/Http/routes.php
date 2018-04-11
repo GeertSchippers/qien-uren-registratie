@@ -47,7 +47,7 @@ Route::get('/formulier', function(){
 });
 
 
-
+Route::get('/showusername', 'UserController@showUserName');
 
     
     

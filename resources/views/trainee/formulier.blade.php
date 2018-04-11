@@ -1,6 +1,10 @@
 
 
-<?php use Illuminate\Support\Facades\Auth;
+<?php 
+use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+
 ?>
 
 <html>
@@ -36,6 +40,7 @@
 
      <div class=container-hours>  
       <div class="container">
+        
           <h2>Uren registratie</h2>
             <span>Hier komen de totale uren</span>
             <div class="custom-select" style="width:200px;">
@@ -166,12 +171,12 @@
     <script>
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent2");
+            tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
             }
             
-            tablinks = document.getElementsByClassName("tablinks2");
+            tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
             }

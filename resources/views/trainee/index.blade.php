@@ -89,7 +89,7 @@
  <hr>
 
  <h2 align="center">Declaraties</h2>
-     <table border="1" align="center">
+ <table border="1" align="center">
       <thead>
         <tr>
           <th>Datum bon</th>

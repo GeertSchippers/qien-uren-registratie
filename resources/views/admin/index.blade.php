@@ -1,5 +1,5 @@
-@extends('welcome')
-@section('content')
+@extends('layouts.admin')
+@section('users')
 <style>
     th, td{
         border: 1px solid;
@@ -31,31 +31,89 @@
             @endif
         @endforeach
     </table>
-    <h2> gemaakte uren</h2>
-        <table>
-        <tr>
-            <th>amount</th>
-            <th>type</th>
-            <th>statement</th>
-            <th>paid</th>
-            <th>created_at</th>
-            <th>user</th>
-        </tr>
-        @foreach($hours as $hour)
-                    <tr>
-                        <td>{{$hour->amount}}</td>
-                        <td>{{$hour->type}}</td>
-                        <td>{{$hour->statement}}</td>
-                        <td>{{$hour->paid}}</td>
-                        <td>{{$hour->created_at}}</td>
-                            @foreach($users as $user)
-                                @if ($hour->user_id == $user->id)
-                                    <td>{{$user->email}}</td>
-                                @endif
-                            @endforeach
-                    </tr>
-        @endforeach
-    </table>
+@endsection
+@section('review')
+    <table>
+        <h2>Review</h2>
+            <tr>
+                <th>Hoeveelheid</th>
+                <th>Type</th>
+                <th>Maand</th>
+                <th>Persoon</th>
+                <th>Bedrijf</th>
+                <th>Laatste update</th>
+                <th>Wijzigen</th>
+            </tr>
+            @foreach($hours as $hour)
+                @if($hour->paid == 0)
+                <tr>
+                    <td>{{$hour->amount}}</td>
+                    <td>{{$hour->type}}</td>
+                    <td>{{$hour->date}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->updated_at}}</td>
+                    <td><a>wijzig</a></td>
+                </tr>
+                @endif
+            @endforeach
+    </table>            
+@endsection
+@section('goedgekeurd')
+    <table>
+        <h2>Goedgekeurd</h2>
+            <tr>
+                <th>Hoeveelheid</th>
+                <th>Type</th>
+                <th>Maand</th>
+                <th>Persoon</th>
+                <th>Bedrijf</th>
+                <th>Laatste update</th>
+                <th>Wijzigen</th>
+            </tr>
+            @foreach($hours as $hour)
+                @if($hour->paid == 1)
+                <tr>
+                    <td>{{$hour->amount}}</td>
+                    <td>{{$hour->type}}</td>
+                    <td>{{$hour->date}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->updated_at}}</td>
+                    <td><a>wijzig</a></td>
+                </tr>
+                @endif
+            @endforeach
+    </table>            
+@endsection
+@section('betaald')
+    <table>
+        <h2>Betaald</h2>
+            <tr>
+                <th>Hoeveelheid</th>
+                <th>Type</th>
+                <th>Maand</th>
+                <th>Persoon</th>
+                <th>Bedrijf</th>
+                <th>Laatste update</th>
+                <th>Wijzigen</th>
+            </tr>
+            @foreach($hours as $hour)
+                @if($hour->paid == 2)
+                <tr>
+                    <td>{{$hour->amount}}</td>
+                    <td>{{$hour->type}}</td>
+                    <td>{{$hour->date}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->updated_at}}</td>
+                    <td><a>wijzig</a></td>
+                </tr>
+                @endif
+            @endforeach
+    </table>            
+@endsection
+@section('declarations')
        <h2> gemaakte declaraties</h2>
         <table>
         <tr>

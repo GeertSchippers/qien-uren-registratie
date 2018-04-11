@@ -43,3 +43,8 @@ Route::post('/companies', 'CompanyController@create');
 Route::get('/formulier', function(){
    return view('trainee/formulier');
 });
+
+Route::get('/segment', function(){
+    $hours = Hours_declaration::all();
+   return view('admin/test')->with('hours', $hours);
+});

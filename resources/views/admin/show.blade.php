@@ -45,7 +45,7 @@
                 <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
-                @if($hour->paid == 0)
+                @if($hour->approved == 0)
                 <tr>
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
@@ -57,11 +57,38 @@
                 </tr>
                 @endif
             @endforeach
-    </table>            
+    </table>
 @endsection
 @section('goedgekeurd')
     <table>
         <h2>Goedgekeurd</h2>
+            <tr>
+                <th>Hoeveelheid</th>
+                <th>Type</th>
+                <th>Maand</th>
+                <th>Persoon</th>
+                <th>Bedrijf</th>
+                <th>Laatste update</th>
+                <th>Wijzigen</th>
+            </tr>
+            @foreach($hours as $hour)
+                @if($hour->approved == 1)
+                <tr>
+                    <td>{{$hour->amount}}</td>
+                    <td>{{$hour->type}}</td>
+                    <td>{{$hour->date}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->user_id}}</td>
+                    <td>{{$hour->updated_at}}</td>
+                    <td><a>wijzig</a></td>
+                </tr>
+                @endif
+            @endforeach
+    </table>
+@endsection
+@section('betaald')
+    <table>
+        <h2>Betaald</h2>
             <tr>
                 <th>Hoeveelheid</th>
                 <th>Type</th>
@@ -84,34 +111,7 @@
                 </tr>
                 @endif
             @endforeach
-    </table>            
-@endsection
-@section('betaald')
-    <table>
-        <h2>Betaald</h2>
-            <tr>
-                <th>Hoeveelheid</th>
-                <th>Type</th>
-                <th>Maand</th>
-                <th>Persoon</th>
-                <th>Bedrijf</th>
-                <th>Laatste update</th>
-                <th>Wijzigen</th>
-            </tr>
-            @foreach($hours as $hour)
-                @if($hour->paid == 2)
-                <tr>
-                    <td>{{$hour->amount}}</td>
-                    <td>{{$hour->type}}</td>
-                    <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
-                </tr>
-                @endif
-            @endforeach
-    </table>            
+    </table>
 @endsection
 @section('declarations')
        <h2> gemaakte declaraties</h2>

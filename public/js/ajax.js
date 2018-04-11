@@ -24,6 +24,11 @@ function approveDeclaration(id, obj){
 function payDeclaration(id, obj){
   var checked = document.getElementById('declaration_paid'+id).checked;
 
+  if(obj.approved == 0){
+    document.getElementById('declaration_paid'+id).checked = false;
+    return alert('Declaratie moet eerst goedgekeurd worden.');
+  }
+
   if(checked){
     obj.paid = 1;
   } else {
@@ -67,6 +72,11 @@ function approveHoursDeclaration(id, obj){
 
 function payHoursDeclaration(id, obj){
   var checked = document.getElementById('hours_declaration_paid'+id).checked;
+
+  if(obj.approved == 0){
+    document.getElementById('declaration_paid'+id).checked = false;
+    return alert('Uren declaratie moet eerst goedgekeurd worden.');
+  }
 
   if(checked){
     obj.paid = 1;

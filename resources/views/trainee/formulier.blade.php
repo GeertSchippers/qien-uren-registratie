@@ -1,9 +1,9 @@
 
 
 <?php 
-use App\Http\Controllers\Auth\AuthController;
-use Illuminate\Support\Facades\Auth;
-use App\User;
+//use App\Http\Controllers\Auth\AuthController;
+//use Illuminate\Support\Facades\Auth;
+//use App\User;
 
 ?>
 
@@ -58,10 +58,10 @@ use App\User;
               </select>
             </div>
            <button class="button button3" onclick="add_line()">+</button>
-           <div id="form">
 
-             <tr>
-              <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
+            <div id="form">
+           
+              <input name=amount id=hours type="number" placeholder='Totaal Uren'>
               <select name=type id="type">
                 <option id=workhours value="workhours">gewerkte uren</option>
                 <option id=extrahours value="extrahours">overuren</option>
@@ -70,12 +70,13 @@ use App\User;
                 <option id=sick value="sick">ziek</option>
                 <option id=extra value="extra">overige</option>
               </select>
-                <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
-             </div>
+                <input name=date id=date type="date">
+                <textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
+            </div>
                 <div id=extraLine></div>
-            <td><input type="button" value="voer in" id="submit" onclick="send()"></td>
-
+                <td><input type="button" value="voer in" id="submit" onclick="send()"></td>
+             
+            
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
           <button class="tablinks" onclick="openTab(event, 'aproved')">Goedgekeurd</button>
@@ -127,7 +128,6 @@ use App\User;
             </table>
            </p>
         </div>   
-
         </div>
       </div>
    
@@ -168,7 +168,7 @@ use App\User;
               <td><input id=btw type="number" placeholder='BTW'></td>
               <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>     
              </div>
-              <div id=extraLine></div>
+              <div id=extraLine2></div>
             <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
 
             <div class="tab">
@@ -222,8 +222,6 @@ use App\User;
                </p>
             </div>   
       </div>
-
-
     <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
     </body>
     

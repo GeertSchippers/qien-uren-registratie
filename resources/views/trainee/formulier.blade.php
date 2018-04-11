@@ -15,8 +15,8 @@ use App\User;
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
-  <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
-  <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> -->
+   <!--<link href="{{ asset('css/style.css') }}" rel="stylesheet">--> 
+   <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">--> 
 
   <title>Formulier Trainee</title>
   <style>

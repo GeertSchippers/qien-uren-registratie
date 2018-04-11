@@ -36,10 +36,12 @@ Route::resource('/trainees', 'TraineeController');
 
 Route::resource('/admins', 'AdminController');
 
-Route::resource('admins.trainees', 'AdminTraineeController');
-
 Route::resource('/declarations','DeclarationController');
 
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::resource('/companies', 'CompanyController');
+
+Route::resource('trainees.declarations', 'TraineeDeclarationController');
+
+Route::resource('trainees.hours_declarations', 'TraineeHours_declarationController');

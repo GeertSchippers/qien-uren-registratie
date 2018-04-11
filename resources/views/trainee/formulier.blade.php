@@ -58,7 +58,7 @@ use App\User;
               </select>
             </div>
            <button class="button button3" onclick="add_line()">+</button>
-           <div id=form>
+           <div id="form">
 
              <tr>
               <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
@@ -73,9 +73,8 @@ use App\User;
                 <td><input name=date id=date type="date"></td>
                 <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
              </div>
-
-            <div id=extraform></div>
-            <td><input type="button" value='voer in' id="submit" onclick=send()></td>
+                <div id=extraLine></div>
+            <td><input type="button" value="voer in" id="submit" onclick="send()"></td>
 
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
@@ -169,15 +168,13 @@ use App\User;
               <td><input id=btw type="number" placeholder='BTW'></td>
               <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>     
              </div>
-                
-            <div id=extraform></div>
-                
+              <div id=extraLine></div>
             <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
 
             <div class="tab">
-              <button class="tablinks2" onclick="openCity(event, 'review2')" id="defaultOpen2">Review</button>
-              <button class="tablinks2" onclick="openCity(event, 'aproved2')">Goedgekeurd</button>
-              <button class="tablinks2" onclick="openCity(event, 'paid2')">Betaald</button>
+              <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
+              <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
+              <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
             </div>
 
             <div id="review2" class="tabcontent2">

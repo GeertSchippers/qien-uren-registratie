@@ -7,7 +7,7 @@ function add_line(){
     var clone = original.cloneNode(true); 
           clone.id = "form" + ++i;
              
-                document.getElementById('extraform').appendChild(clone);
+                document.getElementById('extraLine').appendChild(clone);
 
 }
 
@@ -58,7 +58,7 @@ function send(){
     
 
     
-        function openCity(evt, cityName) {
+        function openTab2(evt2, tabName2) {
             var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent2");
                     for (i = 0; i < tabcontent.length; i++) {
@@ -68,8 +68,8 @@ function send(){
                     for (i = 0; i < tablinks.length; i++) {
                         tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
+            document.getElementById(tabName2).style.display = "block";
+            evt2.currentTarget.className += " active";
 
         }
         // Get the element with id="defaultOpen" and click on it

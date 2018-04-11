@@ -7,7 +7,7 @@ use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
 
-class AdminController extends Controller
+class TraineeHours_declarationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,15 +43,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
     {
-        $admin = User::find($id);
-        $companies = Company::all();
-        $declarations = Declaration::all();
-        $hours = Hours_declaration::all();
-        $users = User::all();
-        return view('admin.show')->with(compact('users','hours','declarations','companies','admin'));
+
     }
     /**
      * Show the form for editing the specified resource.

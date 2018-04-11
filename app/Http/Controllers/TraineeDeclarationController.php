@@ -7,7 +7,7 @@ use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
 
-class AdminTraineeController extends Controller
+class TraineeDeclarationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +45,7 @@ class AdminTraineeController extends Controller
      */
     public function show($id)
     {
-        
+
     }
     /**
      * Show the form for editing the specified resource.

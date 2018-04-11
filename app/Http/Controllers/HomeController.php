@@ -28,9 +28,9 @@ class HomeController extends Controller
          $user = Auth::user();
 
         if($user->admin == 0){
-            return redirect('/trainees');
+            return redirect("/trainees/$user->id");
         } else {
-           return redirect('/admins');
+           return redirect("/admins/$user->id");
         }
     }
 }

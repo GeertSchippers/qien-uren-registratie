@@ -33,15 +33,51 @@ function send(){
     xhttp.open('POST', '/hours_declarations', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(objectjson);
-//                
-//                var kipjson = JSON.stringify(kip);
-//                xhttp = new XMLHttpRequest();
-//                xhttp.onreadystatechange = function(){
-//                    document.getElementById('antwoord').innerHTML = this.responseText;
-//                };
-//                
-//                xhttp.open("POST", "/voorbeeldpostman", true);
-//                xhttp.send(kipjson);
 
    
+}
+
+
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+            }
+            
+            tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+    }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+    
+
+    
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent2");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+            }
+                tablinks = document.getElementsByClassName("tablinks2");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen2").click();
+
+
+
+
+function send2(){
+    alert('Declaratie formulier verstuurd');
 }

@@ -38,6 +38,7 @@ Route::resource('/admins', 'AdminController');
 
 Route::resource('/declarations','DeclarationController');
 
+
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::resource('/companies', 'CompanyController');

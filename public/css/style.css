@@ -1,34 +1,69 @@
-#head {
 
-    margin: 0;
-    vertical-align: baseline;
-    padding-bottom: 20%;
-    background: url('') fixed no-repeat ;
-    height: 200px ;
-        
-}
+
 .header {
     margin: 0 auto;
     width: 100%;
     height: 20px;
+    
 }
 
 
-body {
-    margin: 0;
-    background: white;
+
+.container-hours{
+
     
+    background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
+    margin: 0 auto;
+    vertical-align: baseline;
+    padding-bottom: 25%;
+    background-size: cover;
+    height: 240px ;
 
 }
 
 h2, h1{
-   text-align: center;
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
 .container{
- width: 800px ;
-  margin-left: auto ;
-  margin-right: auto ;
+    
+    width: 800px ;
+    margin-left: auto ;
+    margin-right: auto ;
     
 }
 
+.tabcontent{
+    background: white;
+}
+
+/*-------------------input text style-----------------*/
+
+input{
+    width: 18%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin:8px 0;
+    outline: none;
+    padding:3px;
+    box-sizing: border;
+    font-size: 12px;
+}
+
+textarea{
+    width: 300px;
+    height: 35px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin:0px 0;
+    outline: none;
+    padding:8px;
+    box-sizing: border;
+}
+th, td{
+        border: 1px solid;
+        padding: 5px;
+}

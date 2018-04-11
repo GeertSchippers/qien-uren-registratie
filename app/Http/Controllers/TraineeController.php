@@ -1,11 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use App\Hours_declaration;
+use App\Declaration;
+use App\Company;
+use Illuminate\Support\Facades\Auth;
 
-class CompanyController extends Controller
+class TraineeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,6 @@ class CompanyController extends Controller
     {
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +38,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -46,9 +46,26 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+      $user = User::find($id);
+      $hours = Hours_declaration::where('user_id',$id)->get();
+      $declarations = Declaration::where('user_id',$id)->get();
+      if(isset($user->company_id)){
+        $company = Company::where('id',$user->company_id)->get();
+      } else {
+        $company = new Company;
+        $company->name = 'Geen bedrijf';
+      }
 
+      if( Auth::user()->admin == 1 ){
+
+          return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
+
+      } else {
+
+          return view('/trainee/show')->with(compact('user','hours','declarations','company'));
+
+      }
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +76,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -71,7 +87,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

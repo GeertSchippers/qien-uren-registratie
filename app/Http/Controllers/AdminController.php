@@ -1,11 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use App\Hours_declaration;
+use App\Declaration;
+use App\Company;
 
-class CompanyController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,6 @@ class CompanyController extends Controller
     {
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +27,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,18 +37,22 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        $admin = User::find($id);
+        $companies = Company::all();
+        $declarations = Declaration::all();
+        $hours = Hours_declaration::all();
+        $users = User::all();
+        return view('admin.show')->with(compact('users','hours','declarations','companies','admin'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +63,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -71,7 +74,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

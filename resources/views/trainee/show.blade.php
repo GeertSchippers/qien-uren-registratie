@@ -28,8 +28,16 @@ use App\User;
       height: 1000px;
   } */
 
-  .tabcontent {
+
+
+  .tabcontent,
+  .tabcontent2 {
     background-color: white;
+    margin-bottom: 50px;
+  }
+
+  th, td {
+    padding-right: 20px;
   }
 
   </style>

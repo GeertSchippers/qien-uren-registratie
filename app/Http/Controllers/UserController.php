@@ -65,6 +65,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+        public function showUserName($id)
+    {
+        $user = User::get();
+        
+        return view('trainee.formulier')->with('user',$user);
+    }
+    
+    
     public function edit($id)
     {
         //

@@ -10,39 +10,42 @@
 |
 */
 Use App\Hours_declaration;
+use Illuminate\Http\Request;
+use App\Client;
+use Illuminate\Support\Facades\Auth;
+
+// ---------------------- Custom Routes ------------------------
 
 Route::get('/', function () {
   return view('welcome');
 });
 
-Route::auth();
 Route::get('/home', 'HomeController@index');
 
-Route::get('/trainee', function () {
-  return view('/trainee/index');
-})->name('trainee');
-
-Route::get('/hours_declarations/{id}', function($id){
-    $declarations = App\Hours_declaration::where('user_id',$id)->get();
-    return $declarations;
+Route::get('/formulier', function(){
+   return view('trainee/formulier')->with('user', Auth::user());
 });
 
-Route::get('/admin', 'UserController@index')->name('admin');
-Route::get('/admin/trainee/{id}', 'UserController@show')->name('admin/trainee');
+Route::get('/admin/trainee/{id}', 'UserController@show');
 
-Route::get('/post', function(){
-return view('trainee.post');
-});
+// -------------------- Resourced Routes ----------------------
+
+Route::auth();
+
+Route::resource('/trainees', 'TraineeController');
+
+Route::resource('/admins', 'AdminController');
+
+
+Route::resource('admins.trainees', 'AdminTraineeController');
 
 Route::resource('/declarations','DeclarationController');
+
+
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
-Route::post('/companies', 'CompanyController@create');
+Route::resource('/companies', 'CompanyController');
 
-
-Route::get('/formulier', function(){
-   return view('trainee/formulier');
-});
 
 Route::get('/segment', function(){
     $hours = Hours_declaration::all();

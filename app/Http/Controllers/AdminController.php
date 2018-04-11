@@ -1,11 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use App\Hours_declaration;
+use App\Declaration;
+use App\Company;
 
-class CompanyController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,12 @@ class CompanyController extends Controller
      */
     public function index()
     {
-
+        $companies = Company::all();
+        $declarations = Declaration::all();
+        $hours = Hours_declaration::all();
+        $users = User::all();
+        return view('admin.index')->with('users',$users)->with('hours',$hours)->with('declarations', $declarations)->with('companies', $companies);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +31,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +41,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -46,9 +49,17 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id',$id)->get();
+        $hours = Hours_declaration::where('user_id',$id)->get();
+        $declarations = Declaration::where('user_id',$id)->get();
+        if(isset($user->company_id)){
+          $company = Company::where('id',$user->company_id)->get();
+        } else {
+          $company = new Company;
+          $company->name = 'Geen bedrijf';
+        }
+        return view('admin.show')->with('user',$user)->with('company',$company)->with('hours',$hours)->with('declarations',$declarations);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +70,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -71,7 +81,6 @@ class CompanyController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

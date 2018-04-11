@@ -89,7 +89,6 @@ use App\User;
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
-                      <th>Persoon</th>
                       <th>Bedrijf</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
@@ -100,8 +99,7 @@ use App\User;
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
-                          <td>{{$hour->user_id}}</td>
-                          <td>{{$hour->user_id}}</td>
+                          <td>{{$company->name}}</td>
                           <td>{{$hour->updated_at}}</td>
                           <td><a>wijzig</a></td>
                       </tr>
@@ -113,12 +111,12 @@ use App\User;
 
         <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>
-          <table>
+
+            <table>
                   <tr>
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
-                      <th>Persoon</th>
                       <th>Bedrijf</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
@@ -129,14 +127,14 @@ use App\User;
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
-                          <td>{{$hour->user_id}}</td>
-                          <td>{{$hour->user_id}}</td>
+                          <td>{{$company->name}}</td>
                           <td>{{$hour->updated_at}}</td>
                           <td><a>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
-          </table>
+            </table>
+
         </div>
 
          <div id="paid" class="tabcontent">
@@ -146,7 +144,6 @@ use App\User;
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
-                      <th>Persoon</th>
                       <th>Bedrijf</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
@@ -157,8 +154,7 @@ use App\User;
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
-                          <td>{{$hour->user_id}}</td>
-                          <td>{{$hour->user_id}}</td>
+                          <td>{{$company->name}}</td>
                           <td>{{$hour->updated_at}}</td>
                           <td><a>wijzig</a></td>
                       </tr>
@@ -220,36 +216,86 @@ use App\User;
 
             <div id="review2" class="tabcontent2">
               <h3>Review</h3>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 0)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
             </div>
 
             <div id="aproved2" class="tabcontent2">
               <h3>Goedgekeurd</h3>
-               <p>
-                <table id='table'>
-                  <tr>
-                   <th>Aantal</th>
-                    <th>Type</th>
-                    <th>Verklaring</th>
-                    <th>Aangemaakt</th>
-                    <th>Gewijzigd</th>
-                   </tr>
-                </table>
-               </p>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
             </div>
 
              <div id="paid2" class="tabcontent2">
               <h3>Betaald</h3>
-               <p>
-                <table id='table'>
-                  <tr>
-                   <th>Aantal</th>
-                    <th>Type</th>
-                    <th>Verklaring</th>
-                    <th>Aangemaakt</th>
-                    <th>Gewijzigd</th>
-                   </tr>
-                </table>
-               </p>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->paid == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
             </div>
       </div>
 

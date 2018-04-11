@@ -6,6 +6,8 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
+use Illuminate\Support\Facades\Auth;
+
 class TraineeController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class TraineeController extends Controller
      */
     public function index()
     {
-      return view('/trainee/index');
+
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +46,25 @@ class TraineeController extends Controller
      */
     public function show($id)
     {
-      
+      $user = User::find($id);
+      $hours = Hours_declaration::where('user_id',$id)->get();
+      $declarations = Declaration::where('user_id',$id)->get();
+      if(isset($user->company_id)){
+        $company = Company::where('id',$user->company_id)->get();
+      } else {
+        $company = new Company;
+        $company->name = 'Geen bedrijf';
+      }
+
+      if( Auth::user()->admin == 1 ){
+
+          return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
+
+      } else {
+
+          return view('/trainee/show')->with('user',$user);
+
+      }
     }
     /**
      * Show the form for editing the specified resource.

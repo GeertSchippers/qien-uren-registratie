@@ -16,11 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        $declarations = Declaration::all();
-        $hours = Hours_declaration::all();
-        $users = User::all();
-        return view('admin.index')->with('users',$users)->with('hours',$hours)->with('declarations', $declarations)->with('companies', $companies);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -47,18 +43,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        $user = User::where('id',$id)->get();
-        $hours = Hours_declaration::where('user_id',$id)->get();
-        $declarations = Declaration::where('user_id',$id)->get();
-        if(isset($user->company_id)){
-          $company = Company::where('id',$user->company_id)->get();
-        } else {
-          $company = new Company;
-          $company->name = 'Geen bedrijf';
-        }
-        return view('admin.show')->with('user',$user)->with('company',$company)->with('hours',$hours)->with('declarations',$declarations);
+        $admin = User::find($id);
+        $companies = Company::all();
+        $declarations = Declaration::all();
+        $hours = Hours_declaration::all();
+        $users = User::all();
+        return view('admin.show')->with(compact('users','hours','declarations','companies','admin'));
     }
     /**
      * Show the form for editing the specified resource.

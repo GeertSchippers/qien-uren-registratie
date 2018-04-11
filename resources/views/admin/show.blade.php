@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
-                        <td><a href="/admin/trainee/{{$user->id}}">{{$user->email}}</a></td>
+                        <td><a href="/trainees/{{$user->id}}">{{$user->email}}</a></td>
                         <td>{{$user->employee_number}}</td>
                             @foreach($companies as $company)
                                 @if ($company->id == $user->company_id)

@@ -1,202 +1,319 @@
 @extends('layouts.app')
-
 @section('content')
-  <script>
-    function getHoursDeclarations(){
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-             // Typical action to be performed when the document is ready:
-             var response = JSON.parse(xhttp.responseText);
-             response.forEach(function(item){
-                 var tr = document.createElement('tr');
-                 var datum = document.createElement('td');
-                 datum.innerHTML = item.date;
-                 var aantal = document.createElement('td');
-                 aantal.innerHTML = item.amount;
-                 var type = document.createElement('td');
-                 type.innerHTML = item.type;
-                 var opmerking = document.createElement('td');
-                 opmerking.innerHTML = item.statement;
-                 var betaald = document.createElement('td');
-                 betaald.innerHTML = item.paid;
+<?php
+use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
-                 var table = document.getElementById('table');
-                 table.appendChild(tr);
+?>
 
-                 tr.appendChild(datum);
-                 tr.appendChild(aantal);
-                 tr.appendChild(type);
-                 tr.appendChild(opmerking);
-                 tr.appendChild(betaald);
-             });
-          }
-      };
-      xhttp.open("GET", "/hours_declarations/<?php echo Auth::id(); ?>", true);
-      xhttp.send();
-    }
-    getHoursDeclarations();
+<html>
 
-        function save_hours(){
-            var data = {};
-                data.date = document.getElementById("date").value;
-                data.hours = document.getElementById("hours").value;
-                data.type = document.getElementById("type").value;
-                type.options[type.selectedIndex].text;
-                data.textarea = document.getElementById('textarea').value;
+<head>
 
-//                    $.ajax({
-//                       method: 'POST',
-//                       url: url,
-//                       data: data
-//                    })
-//                            .done(function(msg){
-//                                console.log(msg['message']);
-//                            });
-//        });
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
+  <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
+  <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> -->
 
-
-          var xml = new XMLHttpRequest();
-
-          xml.onreadystatechange = function (){
-              if(xml.readyState == 4 && xml.status == 200){
-                  alert('gelukt');
-                  console.log(this.responseText);
-              }
-          };
-
-          var hourdata = JSON.stringify(data);
-          xml.open("POST", "/hours_declarations/", true);
-          xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          xml.send("data="+hourdata);
-          console.log(data);
-          }
-
-
-//        function save_declaration(){
-//            var data = {};
-//            data.date_receipt = document.getElementById('date_receipt').value;
-//            data.type_dec = document.getElementById('type_dec').value;
-//            type.options[type.selectedIndex].text;
-//            data.total_receipt = document.getElementById('total_receipt').value;
-//            data.btw = document.getElementById('btw').value;
-//            data.description = document.getElementById('description').value;
-//
-//            data.type = "POST";
-//            data.dataType = "JSON";
-//            data.data = JSON.stringify(data);
-//            data.contentType = "application/json";
-//            data.succes = function(response){
-//                 alert("succes");
-//            };
-//            data.error = function(response){
-//                 alert("Failed");
-//            };
-//
-//            $.ajax(data);
-//            console.log(data);
-//
-//        }
-  </script>
-
+  <title>Formulier Trainee</title>
   <style>
-     table, th, td {
-        border: 1px solid black;
-                border-collapse: collapse;
-     }
+  /* .container-hours{
+      background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
+      background-size: cover;
+      position: relative;
+      top: -20px;
+      height: 1000px;
+  } */
 
-     td{
-        width: 120px;
-     }
+
+
+  .tabcontent,
+  .tabcontent2 {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+
+  th, td {
+    padding-right: 20px;
+  }
+
   </style>
+</head>
 
- <h2 align="center">Uren declaraties</h2>
-    <table border="1" align=center>
-      <thead>
-        <tr>
-          <th>Datum</th>
-          <th>Aantal</th>
-          <th>Type</th>
-          <th>Verklaring</th>
-        </tr>
-      </thead>
-      <tbody>
-       <form id=form name=form action=verify method=POST >
-        <tr>
-          <td><input name=date id=date type="date"></td>
-          <td><input name=amount id=hours type="number"></td>
-          <td>
-           <select name=type id="type">
-            <option id=workhours value="workhours">gewerkte uren</option>
-            <option id=extrahours value="extrahours">overuren</option>
-            <option id=abscense value="abscense">kort verlof</option>
-            <option id=holiday value="holiday">vakantie</option>
-            <option id=sick value="sick">ziek</option>
-            <option id=extra value="extra">overige</option>
-           </select>
-          </td>
+<header>
 
-          <td><textarea name=statement id=textarea rows="2" cols="40"></textarea></td>
-          <td><input type="submit" value='voer in' id="submit"></td>
-          <!--<td><input type="button" value='voer in' id="submit" onclick='save_hours()'></td>-->
-        </tr>
-       </form>
-      </tbody>
-  </table>
- <br>
- <br>
- <hr>
+</header>
+<body>
+<!-- ======================== Urenregistratie formulier ------------------------------>
 
- <h2 align="center">Declaraties</h2>
-     <table border="1" align="center">
-      <thead>
-        <tr>
-          <th>Datum bon</th>
-          <th>Type</th>
-          <th>Totaal bon</th>
-          <th>btw</th>
-          <th>Verklaring</th>
-        </tr>
-      </thead>
-      <tbody>
-       <!--'date_receipt', 'type', 'total_receipt', 'btw', 'description'-->
-       <form id=form method=POST>
-        <tr>
-          <td><input id=date_receipt type="date"></td>
-          <td>
-           <select id="type_dec" name=type_dec>
-            <option name=opleiding id=education value="education">opleiding</option>
-            <option name=reis id=travel value="travel">reis</option>
-            <option name=verblijf id=residence value="residence">verblijf</option>
-            <option name=parkeren id=parking value="parking">parkeren</option>
-            <option name=telefoon id=phone value="phone">telefoon</option>
-            <option name=lunch_diner id=lunch_diner value="lunch_diner">lunch/diner</option>
-            <option name=uitjes id=trips value="trips">uitjes</option>
-            <option name=overig id=remaining value="remaining">overig</option>
-           </select>
-          </td>
-          <td><input name=totaal_bon id=total_receipt type="number"></td>
-          <td><input name=btw id=btw type="number"></td>
-          <td><textarea name=beschrijving id=description rows="2" cols="40"></textarea></td>
-          <td><input type="button" value='voer in' id="submit" onclick='save_declaration()'></td>
-        </tr>
-       </form>
-      </tbody>
+     <div class=container-hours>
+      <div class="container">
+        <h2>Uren registratie</h2>
 
-  </table>
+        <h3>Welkom {{ $user->first_name }}</h3>
 
-  <div id='items'></div>
+            <div class="custom-select" style="width:200px;">
+              <select id=dag>
+                  <option value="0">Select dag:</option>
+                  <option value="1">Maandag</option>
+                  <option value="2">Dinsdag</option>
+                  <option value="3">Woensdag</option>
+                  <option value="4">Donderdag</option>
+                  <option value="5">Vrijdag</option>
+                  <option value="6">Zaterdag</option>
+                  <option value="7">Zondag</option>
+              </select>
+            </div>
+           <button class="button button3" onclick="add_line()">+</button>
+           <div id=form>
+
+             <tr>
+              <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
+              <select name=type id="type">
+                <option id=workhours value="workhours">gewerkte uren</option>
+                <option id=extrahours value="extrahours">overuren</option>
+                <option id=abscense value="abscense">kort verlof</option>
+                <option id=holiday value="holiday">vakantie</option>
+                <option id=sick value="sick">ziek</option>
+                <option id=extra value="extra">overige</option>
+              </select>
+                <td><input name=date id=date type="date"></td>
+                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
+             </div>
+
+            <div id=extraform></div>
+            <td><input type="button" value='voer in' id="submit" onclick=send()></td>
+
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
+          <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
+          <button class="tablinks" onclick="openTab(event, 'paid')">Betaald</button>
+        </div>
 
 
-  <table id='table'>
-      <tr>
-          <th>Datum</th>
-          <th>Aantal</th>
-          <th>Type</th>
-          <th>Verklaring</th>
-          <th>Betaald</th>
-      </tr>
+        <div id="review" class="tabcontent">
+          <h3>Review</h3>
+          <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->approved == 0)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
+          </table>
+    </div>
+        </div>
 
-  </table>
+        <div id="approved" class="tabcontent">
+          <h3>Goedgekeurd</h3>
+
+            <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->approved == 1)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
+            </table>
+
+        </div>
+
+         <div id="paid" class="tabcontent">
+          <h3>Betaald</h3>
+          <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->paid == 1)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
+          </table>
+        </div>
+
+
+      </div>
+
+
+<!---========================-Declaratie formulier------------------------------>
+
+    <div class=container-declarations>
+      <div class="container">
+          <h2>Uren declaraties</h2>
+
+            <div class="custom-select" style="width:200px;">
+              <select id=dag>
+                  <option value="0">Select dag:</option>
+                  <option value="1">Maandag</option>
+                  <option value="2">Dinsdag</option>
+                  <option value="3">Woensdag</option>
+                  <option value="4">Donderdag</option>
+                  <option value="5">Vrijdag</option>
+                  <option value="6">Zaterdag</option>
+                  <option value="7">Zondag</option>
+              </select>
+            </div>
+
+           <button class="button button3" onclick="add_lineDeclarations()">+</button>
+           <div id=form>
+
+             <tr>
+              <td><input id=date_receipt type="date"></td>
+              <select  id=type>
+                <option id=workhours2 value="workhours">gewerkte uren</option>
+                <option id=extrahours2 value="extrahours">overuren</option>
+                <option id=abscense2 value="abscense">kort verlof</option>
+                <option id=holiday2 value="holiday">vakantie</option>
+                <option id=sick2 value="sick">ziek</option>
+                <option id=extra2 value="extra">overige</option>
+              </select>
+             <td><input id=total_receipt type="number" placeholder='Totaal Bon'></td>
+              <td><input id=btw type="number" placeholder='BTW'></td>
+              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
+             </div>
+
+            <div id=extraform></div>
+
+            <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
+
+            <div class="tab">
+              <button class="tablinks2" onclick="openCity(event, 'review2')" id="defaultOpen2">Review</button>
+              <button class="tablinks2" onclick="openCity(event, 'aproved2')">Goedgekeurd</button>
+              <button class="tablinks2" onclick="openCity(event, 'paid2')">Betaald</button>
+            </div>
+
+            <div id="review2" class="tabcontent2">
+              <h3>Review</h3>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 0)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
+            </div>
+
+            <div id="aproved2" class="tabcontent2">
+              <h3>Goedgekeurd</h3>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
+            </div>
+
+             <div id="paid2" class="tabcontent2">
+              <h3>Betaald</h3>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->paid == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
+            </div>
+          </div>
+      </div>
+
+
+    <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
+    </body>
 
 @endsection

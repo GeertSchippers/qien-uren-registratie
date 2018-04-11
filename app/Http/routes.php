@@ -11,6 +11,7 @@
 */
 Use App\Hours_declaration;
 Use App\Declaration;
+Use App\Company;
 use Illuminate\Http\Request;
 use App\Client;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/formulier', function(){
   $user = Auth::user();
-  $hours_declarations = Hours_declaration::all();
-  $declarations = Declaration::all();
+  $id = $user->id;
+  $hours = Hours_declaration::where('user_id',$id)->get();
+  $declarations = Declaration::where('user_id',$id)->get();
 
   if(isset($user->company_id)){
     $company = Company::where('id',$user->company_id)->get();
@@ -35,7 +37,7 @@ Route::get('/formulier', function(){
     $company->name = 'Geen bedrijf';
   }
 
-   return view('trainee/formulier')->with(compact('user','hours_declarations','declarations','company'));
+   return view('trainee/formulier')->with(compact('user','hours','declarations','company'));
 });
 
 Route::get('/admin/trainee/{id}', 'UserController@show');

@@ -13,11 +13,11 @@ use App\User;
 
   <meta charset="utf-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1"/>    
-  <!--<link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">-->
+  <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> 
-  <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
+
   <title>Formulier Trainee </title>
 </head> 
  
@@ -27,10 +27,10 @@ use App\User;
       <nav> 
        <img id=logo src="/images/qienlogo2.png" alt="QienLogo" width="40" height="50">
        <ul class=navbar>   
-        <li><a href="default.asp">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="about.asp">About</a></li>
+        <li><a href="">mijnQien</a></li>
+        <li><a href="">Login</a></li>
+        <li><a href="">Register</a></li>
+        <li><a href="">About</a></li>
        </nav>
       </ul>
      </div>
@@ -71,12 +71,10 @@ use App\User;
                 <option id=extra value="extra">overige</option>
               </select>
                 <td><input name=date id=date type="date"></td>
-
                 <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
              </div>
 
             <div id=extraform></div>
-
             <td><input type="button" value='voer in' id="submit" onclick=send()></td>
 
         <div class="tab">
@@ -169,11 +167,7 @@ use App\User;
               </select>
              <td><input id=total_receipt type="number" placeholder='Totaal Bon'></td>
               <td><input id=btw type="number" placeholder='BTW'></td>
-              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
-
-                
-                
-                
+              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>     
              </div>
                 
             <div id=extraform></div>
@@ -231,49 +225,11 @@ use App\User;
                </p>
             </div>   
       </div>
-    <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-            }
-            
-            tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-                evt.currentTarget.className += " active";
-    }
-
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-    
-
-    
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent2");
-                    for (i = 0; i < tabcontent.length; i++) {
-                        tabcontent[i].style.display = "none";
-            }
-                tablinks = document.getElementsByClassName("tablinks2");
-                    for (i = 0; i < tablinks.length; i++) {
-                        tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-
-        }
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen2").click();
-
-    </script>
 
 
+    <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
     </body>
-
+    
 
 
 </html>

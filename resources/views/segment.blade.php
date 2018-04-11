@@ -1,4 +1,4 @@
-@section('content')
+@section('segments')
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'Review')" id="default">Review</button>
           <button class="tablinks" onclick="openTab(event, 'Goedgekeurd')">Goedgekeurd</button>

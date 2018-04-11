@@ -45,9 +45,3 @@ Route::resource('/declarations','DeclarationController');
 Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::resource('/companies', 'CompanyController');
-
-
-Route::get('/segment', function(){
-    $hours = Hours_declaration::all();
-   return view('admin/test')->with('hours', $hours);
-});

@@ -51,9 +51,11 @@ use App\User;
 
      <div class=container-hours>
       <div class="container">
-        <h2>Uren registratie</h2>
 
         <h3>Welkom {{ $user->first_name }}</h3>
+
+        <h2>Uren Declaraties</h2>
+
 
             <div class="custom-select" style="width:200px;">
               <select id=dag>
@@ -183,7 +185,7 @@ use App\User;
 
     <div class=container-declarations>
       <div class="container">
-          <h2>Uren declaraties</h2>
+          <h2>Declaraties</h2>
 
             <div class="custom-select" style="width:200px;">
               <select id=dag>

@@ -1,6 +1,6 @@
-
-
-<?php 
+@extends('layouts.app')
+@section('content')
+<?php
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -11,40 +11,42 @@ use App\User;
 
 <head>
 
-  <meta charset="utf-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> 
+  <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
+  <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> -->
 
-  <title>Formulier Trainee </title>
-</head> 
- 
+  <title>Formulier Trainee</title>
+  <style>
+  /* .container-hours{
+      background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
+      background-size: cover;
+      position: relative;
+      top: -20px;
+      height: 1000px;
+  } */
+
+  .tabcontent {
+    background-color: white;
+  }
+
+  </style>
+</head>
+
 <header>
-    
-     <div class=container-nav>
-      <nav> 
-       <img id=logo src="/images/qienlogo2.png" alt="QienLogo" width="40" height="50">
-       <ul class=navbar>   
-        <li><a href="">mijnQien</a></li>
-        <li><a href="">Login</a></li>
-        <li><a href="">Register</a></li>
-        <li><a href="">About</a></li>
-       </nav>
-      </ul>
-     </div>
+
 </header>
 <body>
-<!-------------------Urenregistratie formulier------------------------------>
+<!-- ======================== Urenregistratie formulier ------------------------------>
 
-     <div class=container-hours>  
+     <div class=container-hours>
       <div class="container">
         <h2>Uren registratie</h2>
-        
+
         <h3>Welkom {{ $user->first_name }}</h3>
-            <span>Hier komen de totale uren</span>
-            
+
             <div class="custom-select" style="width:200px;">
               <select id=dag>
                   <option value="0">Select dag:</option>
@@ -71,7 +73,7 @@ use App\User;
                 <option id=extra value="extra">overige</option>
               </select>
                 <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
+                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
              </div>
 
             <div id=extraform></div>
@@ -79,66 +81,102 @@ use App\User;
 
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
-          <button class="tablinks" onclick="openTab(event, 'aproved')">Goedgekeurd</button>
+          <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
           <button class="tablinks" onclick="openTab(event, 'paid')">Betaald</button>
         </div>
 
 
         <div id="review" class="tabcontent">
           <h3>Review</h3>
-           <p>
-            <table id='table'>
-              <tr>
-               <th>Aantal</th>
-                <th>Type</th>
-                <th>Verklaring</th>
-                <th>Aangemaakt</th>
-                <th>Gewijzigd</th>
-               </tr>
-            </table>
-           </p>
+          <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->approved == 0)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
+          </table>
+    </div>
         </div>
 
-        <div id="aproved" class="tabcontent">
+        <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>
-           <p>
-            <table id='table'>
-              <tr>
-               <th>Aantal</th>
-                <th>Type</th>
-                <th>Verklaring</th>
-                <th>Aangemaakt</th>
-                <th>Gewijzigd</th>
-               </tr>
+
+            <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->approved == 1)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
             </table>
-           </p>
+
         </div>
-            
+
          <div id="paid" class="tabcontent">
           <h3>Betaald</h3>
-           <p>
-            <table id='table'>
-              <tr>
-               <th>Aantal</th>
-                <th>Type</th>
-                <th>Verklaring</th>
-                <th>Aangemaakt</th>
-                <th>Gewijzigd</th>
-               </tr>
-            </table>
-           </p>
-        </div>   
-
+          <table>
+                  <tr>
+                      <th>Hoeveelheid</th>
+                      <th>Type</th>
+                      <th>Maand</th>
+                      <th>Bedrijf</th>
+                      <th>Laatste update</th>
+                      <th>Wijzigen</th>
+                  </tr>
+                  @foreach($hours as $hour)
+                      @if($hour->paid == 1)
+                      <tr>
+                          <td>{{$hour->amount}}</td>
+                          <td>{{$hour->type}}</td>
+                          <td>{{$hour->date}}</td>
+                          <td>{{$company->name}}</td>
+                          <td>{{$hour->updated_at}}</td>
+                          <td><a>wijzig</a></td>
+                      </tr>
+                      @endif
+                  @endforeach
+          </table>
         </div>
+
+
       </div>
-   
-      
-<!-------------------Declaratie formulier------------------------------>
- 
-    <div class=container-declarations>  
+
+
+<!---========================-Declaratie formulier------------------------------>
+
+    <div class=container-declarations>
       <div class="container">
           <h2>Uren declaraties</h2>
-           
+
             <div class="custom-select" style="width:200px;">
               <select id=dag>
                   <option value="0">Select dag:</option>
@@ -151,10 +189,10 @@ use App\User;
                   <option value="7">Zondag</option>
               </select>
             </div>
-            
+
            <button class="button button3" onclick="add_lineDeclarations()">+</button>
-           <div id=form>   
-            
+           <div id=form>
+
              <tr>
               <td><input id=date_receipt type="date"></td>
               <select  id=type>
@@ -167,11 +205,11 @@ use App\User;
               </select>
              <td><input id=total_receipt type="number" placeholder='Totaal Bon'></td>
               <td><input id=btw type="number" placeholder='BTW'></td>
-              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>     
+              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
              </div>
-                
+
             <div id=extraform></div>
-                
+
             <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
 
             <div class="tab">
@@ -182,54 +220,92 @@ use App\User;
 
             <div id="review2" class="tabcontent2">
               <h3>Review</h3>
-               <p>
-                <table id='table'>
-                  <tr>
-                   <th>Aantal</th>
-                    <th>Type</th>
-                    <th>Verklaring</th>
-                    <th>Aangemaakt</th>
-                    <th>Gewijzigd</th>
-                   </tr>
-                </table>
-               </p>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 0)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
             </div>
 
             <div id="aproved2" class="tabcontent2">
               <h3>Goedgekeurd</h3>
-               <p>
-                <table id='table'>
-                  <tr>
-                   <th>Aantal</th>
-                    <th>Type</th>
-                    <th>Verklaring</th>
-                    <th>Aangemaakt</th>
-                    <th>Gewijzigd</th>
-                   </tr>
-                </table>
-               </p>
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->approved == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
             </div>
 
              <div id="paid2" class="tabcontent2">
               <h3>Betaald</h3>
-               <p>
-                <table id='table'>
-                  <tr>
-                   <th>Aantal</th>
-                    <th>Type</th>
-                    <th>Verklaring</th>
-                    <th>Aangemaakt</th>
-                    <th>Gewijzigd</th>
-                   </tr>
-                </table>
-               </p>
-            </div>   
+              <table>
+              <tr>
+                  <th>date_receipt</th>
+                  <th>type</th>
+                  <th>total_receipt</th>
+                  <th>btw</th>
+                  <th>description</th>
+                  <th>created_at</th>
+                  <th>updated_at</th>
+              </tr>
+              @foreach($declarations as $declaration)
+                @if($declaration->paid == 1)
+                          <tr>
+                              <td>{{$declaration->date_receipt}}</td>
+                              <td>{{$declaration->type}}</td>
+                              <td>{{$declaration->total_receipt}}</td>
+                              <td>{{$declaration->btw}}</td>
+                              <td>{{$declaration->description}}</td>
+                              <td>{{$declaration->created_at}}</td>
+                              <td>{{$declaration->updated_at}}</td>
+                          </tr>
+                @endif
+              @endforeach
+            </table>
+            </div>
+          </div>
       </div>
 
 
     <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
     </body>
-    
 
-
-</html>
+@endsection

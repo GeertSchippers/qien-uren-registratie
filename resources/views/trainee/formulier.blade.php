@@ -20,7 +20,7 @@ use App\User;
 
   <title>Formulier Trainee</title>
   <style>
-  /* .container-hours{
+/*   .container-hours{
       background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
       background-size: cover;
       position: relative;
@@ -76,18 +76,19 @@ use App\User;
                 <input name=date id=date type="date">
                 <textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
             </div>
+                
                 <div id=extraLine></div>
                 <td><input type="button" value="voer in" id="submit" onclick="send()"></td>
              
            
-        <div class="tab">
-          <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
-          <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
-          <button class="tablinks" onclick="openTab(event, 'paid')">Betaald</button>
-        </div>
+            <div class="tab">
+              <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
+              <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
+              <button class="tablinks" onclick="openTab(event, 'paid')">Betaald</button>
+            </div>
 
-
-        <div id="review" class="tabcontent">
+       </div>
+         <div id="review" class="tabcontent">
           <h3>Review</h3>
           <table>
                   <tr>
@@ -111,8 +112,8 @@ use App\User;
                       @endif
                   @endforeach
           </table>
-    </div>
         </div>
+        
 
         <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>

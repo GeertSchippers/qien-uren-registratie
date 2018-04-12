@@ -31,10 +31,12 @@
             @endif
         @endforeach
     </table>
+    <h2>Uren</h2>
 @endsection
 @section('review')
+    
     <table>
-        <h2>Review</h2>
+        <h3>Review</h3>
             <tr>
                 <th>Hoeveelheid</th>
                 <th>Type</th>
@@ -61,7 +63,7 @@
 @endsection
 @section('goedgekeurd')
     <table>
-        <h2>Goedgekeurd</h2>
+        <h3>Goedgekeurd</h3>
             <tr>
                 <th>Hoeveelheid</th>
                 <th>Type</th>
@@ -88,7 +90,7 @@
 @endsection
 @section('betaald')
     <table>
-        <h2>Betaald</h2>
+        <h3>Betaald</h3>
             <tr>
                 <th>Hoeveelheid</th>
                 <th>Type</th>

@@ -22,6 +22,7 @@
     <script src="{{ URL::asset('js/lib/underscore.js')}}"></script>
     <script src="{{ URL::asset('js/lib/backbone.js')}}"></script>
     <script src="{{ URL::asset('js/ajax.js')}}"></script>
+    <script src="{{ URL::asset('js/form.js')}}"></script>
 
     <style>
         body {

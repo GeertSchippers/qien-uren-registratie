@@ -50,7 +50,7 @@ class TraineeController extends Controller
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
       if(isset($user->company_id)){
-        $company = Company::where('id',$user->company_id)->get();
+        $company = Company::find($user->company_id);
       } else {
         $company = new Company;
         $company->name = 'Geen bedrijf';

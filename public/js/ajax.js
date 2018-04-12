@@ -74,7 +74,7 @@ function payHoursDeclaration(id, obj){
   var checked = document.getElementById('hours_declaration_paid'+id).checked;
 
   if(obj.approved == 0){
-    document.getElementById('declaration_paid'+id).checked = false;
+    document.getElementById('hours_declaration_paid'+id).checked = false;
     return alert('Uren declaratie moet eerst goedgekeurd worden.');
   }
 

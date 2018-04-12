@@ -70,8 +70,7 @@ use App\User;
            <button class="button button3" onclick="add_line()">+</button>
            <div id=form>
 
-             <tr>
-              <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
+              <input name=amount id=hours type="number" placeholder='Totaal Uren'>
               <select name=type id="type">
                 <option id=workhours value="workhours">gewerkte uren</option>
                 <option id=extrahours value="extrahours">overuren</option>
@@ -80,8 +79,8 @@ use App\User;
                 <option id=sick value="sick">ziek</option>
                 <option id=extra value="extra">overige</option>
               </select>
-                <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
+                <input name=date id=date type="date">
+                <textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea>
              </div>
 
             <div id=extraform></div>

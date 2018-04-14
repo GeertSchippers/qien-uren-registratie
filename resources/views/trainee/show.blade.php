@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <?php
-use App\Http\Controllers\Auth\AuthController;
+//use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Declaration;
 
 ?>
 
@@ -111,14 +112,15 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+                          <td><a href='/trainees/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
           </table>
     </div>
-        </div>
+        
 
         <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>
@@ -139,6 +141,7 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
                           <td><a>wijzig</a></td>
                       </tr>
@@ -166,6 +169,7 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
                           <td><a>wijzig</a></td>
                       </tr>
@@ -173,7 +177,7 @@ use App\User;
                   @endforeach
           </table>
         </div>
-
+</div>
 
       </div>
 
@@ -182,10 +186,10 @@ use App\User;
 
     <div class=container-declarations>
       <div class="container">
-          <h2>Uren declaraties</h2>
+          <h2>Declaraties</h2>
 
             <div class="custom-select" style="width:200px;">
-              <select id=dag>
+              <select id=dag_dec>
                   <option value="0">Select dag:</option>
                   <option value="1">Maandag</option>
                   <option value="2">Dinsdag</option>
@@ -197,11 +201,11 @@ use App\User;
               </select>
             </div>
 
-           <button class="button button3" onclick="add_lineDeclarations()">+</button>
-           <div id=form>
+           <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
+           <div id=form_declarations>
 
-             <tr>
-              <td><input id=date_receipt type="date"></td>
+              
+              <input id=date_receipt type="date">
               <select  id=type>
                 <option id=workhours2 value="workhours">gewerkte uren</option>
                 <option id=extrahours2 value="extrahours">overuren</option>
@@ -210,19 +214,19 @@ use App\User;
                 <option id=sick2 value="sick">ziek</option>
                 <option id=extra2 value="extra">overige</option>
               </select>
-             <td><input id=total_receipt type="number" placeholder='Totaal Bon'></td>
-              <td><input id=btw type="number" placeholder='BTW'></td>
-              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
+              <input id=total_receipt type="number" placeholder='Totaal Bon'>
+              <input id=btw type="number" placeholder='BTW'>
+              <textarea id="description" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea>
              </div>
 
-            <div id=extraform></div>
+            <div id=extraform2></div>
 
-            <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
-
-            <div class="tab">
-              <button class="tablinks2" onclick="openCity(event, 'review2')" id="defaultOpen2">Review</button>
-              <button class="tablinks2" onclick="openCity(event, 'aproved2')">Goedgekeurd</button>
-              <button class="tablinks2" onclick="openCity(event, 'paid2')">Betaald</button>
+            <input type="button" value='voer in' id="submit2" onclick=send2()>
+        
+            <div class="tab2">
+              <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
+              <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
+              <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
             </div>
 
             <div id="review2" class="tabcontent2">

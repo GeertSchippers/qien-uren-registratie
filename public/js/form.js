@@ -26,8 +26,6 @@ function send(){
         object.statement = naamvakje.parentNode.children[3].value;
      
     var objectjson = JSON.stringify(object);
-        console.log(object);
-        console.log(objectjson);
 
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
@@ -81,5 +79,36 @@ function send(){
 
 
 function send2(){
-    alert('Declaratie formulier verstuurd');
+
+    
+    
+    var row = document.getElementById('form_declarations'); 
+
+    var naamvakje = row.firstChild;
+
+    var object = {};
+
+        object.date_receipt= naamvakje.parentNode.children[0].value;
+        object.type = naamvakje.parentNode.children[1].value;
+        object.total_receipt = naamvakje.parentNode.children[2].value;
+        object.btw = naamvakje.parentNode.children[3].value
+        object.description = naamvakje.parentNode.children[4].value
+        
+        
+      
+     console.log(naamvakje);
+    var objectjson = JSON.stringify(object);
+   
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+            };
+            xhttp.open('POST', '/declarations', true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(objectjson);
+  
 }
+
+
+

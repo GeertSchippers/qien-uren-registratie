@@ -74,7 +74,10 @@ class TraineeController extends Controller
      */
     public function edit($id)
     {
-        //
+       $hours = Hours_declaration::find($id);
+        $user = User::find($id);
+       
+        return view('trainee.edit')->with('user',$user)->with('hours',$hours);
     }
     /**
      * Update the specified resource in storage.
@@ -85,7 +88,24 @@ class TraineeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $this->validate($request, [
+//           'amount' => 'required',
+//            'type' => 'required',
+//            'date' => 'required',
+//            
+//        ]);
+        
+        //store post
+//        $user = User::find($id);
+        $hours = Hours_declaration::find($id);
+        $hours->amount = $request->input('amount');
+        $hours->type = $request->input('type');
+        $hours->date = $request->input('date');
+        $hours->statement = $request->input('statement');
+        $hours->updated_at = $request->input('updated_at');
+        $post->save();
+    
+        return redirect('/trainee.show');
     }
     /**
      * Remove the specified resource from storage.

@@ -61,9 +61,17 @@ textarea{
     margin:0px 0;
     outline: none;
     padding:8px;
-    box-sizing: border;
+    /*box-sizing: border;*/
+
+
+    
 }
 th, td{
         border: 1px solid;
         padding: 5px;
+}
+
+.statement{
+        display:inline-block;
+    vertical-align:middle;
 }

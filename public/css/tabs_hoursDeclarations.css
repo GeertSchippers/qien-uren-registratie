@@ -52,3 +52,9 @@
     border-radius: 20%;
 }
 
+textarea{
+
+    display:inline-block;
+    vertical-align:middle;
+}
+

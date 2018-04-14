@@ -94,8 +94,9 @@ use App\Declaration;
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
-                      <th>Wijzigen</th>
+                      <!--<th>Wijzigen</th>-->
                   </tr>
                   @foreach($hours as $hour)
                       @if($hour->approved == 0)
@@ -135,7 +136,7 @@ use App\Declaration;
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+<!--                          <td><a>wijzig</a></td>-->
                       </tr>
                       @endif
                   @endforeach
@@ -163,7 +164,7 @@ use App\Declaration;
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+                          <!--<td><a>wijzig</a></td>-->
                       </tr>
                       @endif
                   @endforeach
@@ -201,16 +202,18 @@ use App\Declaration;
                 <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
                 <input id=date_receipt type="date">
                 <select  id=type>
-                    <option id=workhours2 value="workhours">gewerkte uren</option>
-                    <option id=extrahours2 value="extrahours">overuren</option>
-                    <option id=abscense2 value="abscense">kort verlof</option>
-                    <option id=holiday2 value="holiday">vakantie</option>
-                    <option id=sick2 value="sick">ziek</option>
-                    <option id=extra2 value="extra">overige</option>
+                    <option id=education value="education">opleiding</option>
+                    <option id=travelling value="travelling">reis</option>
+                    <option id=residence value="residence">verblijf</option>
+                    <option id=parking value="parking">parkeren</option>
+                    <option id=phone value="phone">telefoon</option>
+                    <option id=lunch_diner value="sick">lunch/diner</option>
+                    <option id=outings value="outings">uitjes</option>
+                    <option id=extra value="extra">overig</option>
                 </select>
                     <input id=total_receipt type="number" placeholder='Totaal Bon'>
                     <input id=btw type="number" placeholder='BTW'>
-                    <textarea id="statement_dec" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
+                    <textarea id="description" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
 
                  <!--<div id=extraform2></div>-->
                  <input type="button" value='voer in' id="submit2" onclick=send2()>
@@ -228,13 +231,13 @@ use App\Declaration;
               <h3>Review</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->approved == 0)
@@ -244,8 +247,9 @@ use App\Declaration;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/trainees/{{$declaration->id}}/edit_decla'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach
@@ -256,13 +260,13 @@ use App\Declaration;
               <h3>Goedgekeurd</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->approved == 1)
@@ -272,7 +276,7 @@ use App\Declaration;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                           </tr>
                 @endif
@@ -284,13 +288,13 @@ use App\Declaration;
               <h3>Betaald</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->paid == 1)
@@ -300,7 +304,7 @@ use App\Declaration;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                           </tr>
                 @endif

@@ -20,10 +20,10 @@ function send(){
     var naamvakje = row.firstChild;
   
     var object = {};
-        object.amount = naamvakje.parentNode.children[0].value;
-        object.type = naamvakje.parentNode.children[1].value;
-        object.date = naamvakje.parentNode.children[2].value;
-        object.statement = naamvakje.parentNode.children[3].value;
+        object.amount = naamvakje.parentNode.children[1].value;
+        object.type = naamvakje.parentNode.children[2].value;
+        object.date = naamvakje.parentNode.children[3].value;
+        object.statement = naamvakje.parentNode.children[4].value;
      
     var objectjson = JSON.stringify(object);
 
@@ -88,12 +88,12 @@ function send2(){
 
     var object = {};
     
-        object.date_receipt= naamvakje.parentNode.children[0].value;
-        object.type = naamvakje.parentNode.children[1].value;
-        object.total_receipt = naamvakje.parentNode.children[2].value;
-        object.btw = naamvakje.parentNode.children[3].value
-        object.description = naamvakje.parentNode.children[4].value
-        
+        object.date_receipt= naamvakje.parentNode.children[1].value;
+        object.type = naamvakje.parentNode.children[2].value;
+        object.total_receipt = naamvakje.parentNode.children[3].value;
+        object.btw = naamvakje.parentNode.children[4].value
+        object.description = naamvakje.parentNode.children[5].value
+        console.log(naamvakje);
         
       
      console.log(naamvakje);

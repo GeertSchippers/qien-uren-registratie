@@ -77,7 +77,7 @@ class DeclarationController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -89,10 +89,10 @@ class DeclarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $declaration = Declaration::find($id);
-      $data = $request->json()->all();
-
-      $declaration->update($data);
+//      $declaration = Declaration::find($id);
+//      $data = $request->json()->all();
+//
+//      $declaration->update($data);
     }
 
     /**

@@ -58,7 +58,7 @@ class TraineeHours_declarationController extends Controller
     {
        $hours_id = Hours_declaration::find($id);
 
-       return view('trainee.edit')->with('user',$hours_id);
+       return view('trainee.edit')->with('hours_id',$hours_id);
     }
     /**
      * Update the specified resource in storage.

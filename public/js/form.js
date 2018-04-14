@@ -87,7 +87,7 @@ function send2(){
     var naamvakje = row.firstChild;
 
     var object = {};
-
+    
         object.date_receipt= naamvakje.parentNode.children[0].value;
         object.type = naamvakje.parentNode.children[1].value;
         object.total_receipt = naamvakje.parentNode.children[2].value;

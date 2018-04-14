@@ -176,47 +176,48 @@ use App\Declaration;
 
 <!---========================-Declaratie formulier------------------------------>
 
-    <div class=container-declarations>
-      <div class="container">
-          <h2>Declaraties</h2>
+        <div class=container-declarations>
+            <div class="container">
+              <h2>Declaraties</h2>
 
-            <div class="custom-select" style="width:200px;">
-              <select id=dag_dec>
-                  <option value="0">Select dag:</option>
-                  <option value="1">Maandag</option>
-                  <option value="2">Dinsdag</option>
-                  <option value="3">Woensdag</option>
-                  <option value="4">Donderdag</option>
-                  <option value="5">Vrijdag</option>
-                  <option value="6">Zaterdag</option>
-                  <option value="7">Zondag</option>
-              </select>
-            </div>
+                <div class="custom-select" style="width:200px;">
+                  <select id=dag_dec>
+                      <option value="0">Select dag:</option>
+                      <option value="1">Maandag</option>
+                      <option value="2">Dinsdag</option>
+                      <option value="3">Woensdag</option>
+                      <option value="4">Donderdag</option>
+                      <option value="5">Vrijdag</option>
+                      <option value="6">Zaterdag</option>
+                      <option value="7">Zondag</option>
+                  </select>
+                </div>
 
            
            
            
            
-            <fieldset id=form_declarations>
-                   <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
-                   <input id=date_receipt type="date">
-                   <select  id=type>
-                        <option id=workhours2 value="workhours">gewerkte uren</option>
-                        <option id=extrahours2 value="extrahours">overuren</option>
-                        <option id=abscense2 value="abscense">kort verlof</option>
-                        <option id=holiday2 value="holiday">vakantie</option>
-                        <option id=sick2 value="sick">ziek</option>
-                        <option id=extra2 value="extra">overige</option>
-                   </select>
-                   <input id=total_receipt type="number" placeholder='Totaal Bon'>
-                   <input id=btw type="number" placeholder='BTW'>
-                   <textarea id="description" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
+              <fieldset id=form_declarations>
+                <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
+                <input id=date_receipt type="date">
+                <select  id=type>
+                    <option id=workhours2 value="workhours">gewerkte uren</option>
+                    <option id=extrahours2 value="extrahours">overuren</option>
+                    <option id=abscense2 value="abscense">kort verlof</option>
+                    <option id=holiday2 value="holiday">vakantie</option>
+                    <option id=sick2 value="sick">ziek</option>
+                    <option id=extra2 value="extra">overige</option>
+                </select>
+                    <input id=total_receipt type="number" placeholder='Totaal Bon'>
+                    <input id=btw type="number" placeholder='BTW'>
+                    <textarea id="statement_dec" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
 
                  <!--<div id=extraform2></div>-->
                  <input type="button" value='voer in' id="submit2" onclick=send2()>
-            </fieldset>
+              </fieldset>
             
             
+        
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
               <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <?php
-//use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Declaration;

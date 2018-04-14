@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
+use App\Http\Controllers\Auth;
 use App\Hours_declaration;
 use Illuminate\Support\Facades\Auth;
 

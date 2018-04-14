@@ -6,6 +6,7 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
+use Auth;
 
 class TraineeHours_declarationController extends Controller
 {
@@ -68,16 +69,24 @@ class TraineeHours_declarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $hours = Hours_declaration::find($id);
-//        $hours->amount = $request->input('amount');
-//        $hours->type = $request->input('type');
-//        $hours->date = $request->input('date');
-//        $hours->updated_at = $request->input('updated_at');
-//        $post->save();
-//    
-//        return redirect('/trainee.show');
+//        $hours = $request->json()->all();
+////
+      
+        $user = Auth::user();
+
+        $hours = Hours_declaration::find($id);
+        $hours->amount = $request->input('amount');
+        $hours->type = $request->input('type');
+        $hours->date = $request->input('date');
+        $hours->statement = $request->input('statement');
+        $hours->updated_at = $request->input('updated_at');
+        $user->user_id = $user->id;
+
+        $hours->save();
+        return redirect()->back()->with('succes', 'Uren succesvol aangepast');
+//        return view('/trainee.show')->with('user', $user)->with('hours', $hours)->with('succes', 'Uren succesvol aangepast');
     }
-    /**
+    /**s
      * Remove the specified resource from storage.
      *
      * @param  int  $id

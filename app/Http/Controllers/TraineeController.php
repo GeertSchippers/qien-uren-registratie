@@ -97,15 +97,15 @@ class TraineeController extends Controller
         
         //store post
 //        $user = User::find($id);
-        $hours = Hours_declaration::find($id);
-        $hours->amount = $request->input('amount');
-        $hours->type = $request->input('type');
-        $hours->date = $request->input('date');
-        $hours->statement = $request->input('statement');
-        $hours->updated_at = $request->input('updated_at');
-        $post->save();
-    
-        return redirect('/trainee.show');
+//        $hours = Hours_declaration::find($id);
+//        $hours->amount = $request->input('amount');
+//        $hours->type = $request->input('type');
+//        $hours->date = $request->input('date');
+//        $hours->statement = $request->input('statement');
+//        $hours->updated_at = $request->input('updated_at');
+//        $post->save();
+//    
+//        return redirect('/trainee.show');
     }
     /**
      * Remove the specified resource from storage.

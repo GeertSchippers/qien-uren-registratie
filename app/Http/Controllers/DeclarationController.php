@@ -43,23 +43,19 @@ class DeclarationController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
+        $user = Auth::user();
 
         $new = new Declaration();
-//        $user = Auth::user();
-
 
         $new->date_receipt = $data['date_receipt'];
-
         $new->type = $data['type'];
         $new->total_receipt = $data['total_receipt'];
         $new->btw = $data['btw'];
         $new->description = $data['description'];
-//        $new->user_id = $user->id;
+        $new->user_id = $user->id;
         $new->paid = 0;
         $new->save();
-        
    
-        
     }
 
     /**

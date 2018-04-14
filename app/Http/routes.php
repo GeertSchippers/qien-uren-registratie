@@ -59,4 +59,4 @@ Route::resource('/companies', 'CompanyController');
 
 Route::resource('trainees.declarations', 'TraineeDeclarationController');
 
-Route::resource('trainees.hours_declarations', 'TraineeHours_declarationController');
+Route::resource('/test', 'TraineeHours_declarationController');

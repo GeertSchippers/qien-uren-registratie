@@ -6,7 +6,7 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
-
+use Auth;
 class AdminController extends Controller
 {
     /**
@@ -77,7 +77,19 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $user = Auth::user();
+
+        $new = User::find($id);
+
+        $new->first_name = $request->input('first_name');
+        $new->last_name = $request->input('last_name');
+        $new->email = $request->input('email');
+
+        $new->admin = $request->input('admin');
+
+
+        $new->save();        
+        return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
     }
     /**
      * Remove the specified resource from storage.

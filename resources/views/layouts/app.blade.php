@@ -25,8 +25,12 @@
     <script src="{{ URL::asset('js/lib/underscore.js')}}"></script>
     <script src="{{ URL::asset('js/lib/backbone.js')}}"></script>
     <script src="{{ URL::asset('js/ajax.js')}}"></script>
+
     <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
+
+    <script src="{{ URL::asset('js/form.js')}}"></script>
+
 
     <style>
         body {

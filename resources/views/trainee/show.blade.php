@@ -41,11 +41,13 @@ use App\Declaration;
 
      <div class=container-hours>
       <div class="container">
-        <h2>Uren registratie</h2>
 
         <h3>Welkom {{ $user->first_name }}</h3>
 
-            
+
+        <h2>Uren Declaraties</h2>
+
+
             <div class="custom-select" style="width:200px;">
               <select id=dag>
                   <option value="0">Select dag:</option>
@@ -177,6 +179,7 @@ use App\Declaration;
 
 <!---========================-Declaratie formulier------------------------------>
 
+
         <div class=container-declarations>
             <div class="container">
               <h2>Declaraties</h2>
@@ -225,6 +228,7 @@ use App\Declaration;
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
               <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
               <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
+
             </div>
 
             <div id="review2" class="tabcontent2">

@@ -61,7 +61,7 @@ class TraineeController extends Controller
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
       } else {
-
+          
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
       }
@@ -74,7 +74,10 @@ class TraineeController extends Controller
      */
     public function edit($id)
     {
-        //
+       $hours = Hours_declaration::find($id);
+       $user = User::find($id);
+
+       return view('trainee.edit')->with('user',$user)->with('hours',$hours);
     }
     /**
      * Update the specified resource in storage.
@@ -85,7 +88,7 @@ class TraineeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
     /**
      * Remove the specified resource from storage.

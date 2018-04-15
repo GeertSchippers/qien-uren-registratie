@@ -57,6 +57,6 @@ Route::resource('/hours_declarations', 'Hours_declarationController');
 
 Route::resource('/companies', 'CompanyController');
 
-Route::resource('trainees.declarations', 'TraineeDeclarationController');
+Route::resource('/traineedeclarations', 'TraineeDeclarationController');
 
-Route::resource('trainees.hours_declarations', 'TraineeHours_declarationController');
+Route::resource('/traineehoursdeclarations', 'TraineeHours_declarationController');

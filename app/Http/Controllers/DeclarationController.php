@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\User;
+use App\Hours_declaration;
 use App\Declaration;
+use App\Company;
+use Illuminate\Support\Facades\Auth;
+
 
 class DeclarationController extends Controller
 {
@@ -36,7 +42,20 @@ class DeclarationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->json()->all();
+        $user = Auth::user();
+
+        $new = new Declaration();
+
+        $new->date_receipt = $data['date_receipt'];
+        $new->type = $data['type'];
+        $new->total_receipt = $data['total_receipt'];
+        $new->btw = $data['btw'];
+        $new->description = $data['description'];
+        $new->user_id = $user->id;
+        $new->paid = 0;
+        $new->save();
+   
     }
 
     /**
@@ -58,7 +77,7 @@ class DeclarationController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -70,10 +89,10 @@ class DeclarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $declaration = Declaration::find($id);
-      $data = $request->json()->all();
-
-      $declaration->update($data);
+//      $declaration = Declaration::find($id);
+//      $data = $request->json()->all();
+//
+//      $declaration->update($data);
     }
 
     /**

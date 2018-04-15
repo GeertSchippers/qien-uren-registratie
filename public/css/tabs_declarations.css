@@ -1,7 +1,7 @@
-body {font-family: Arial;}
+body2 {font-family: Arial;}
 
 /* Style the tab */
-.tab {
+.tab2 {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #9900ff;
@@ -9,7 +9,7 @@ body {font-family: Arial;}
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab2 button {
     background-color: inherit;
     float: left;
     border: none;
@@ -22,24 +22,24 @@ body {font-family: Arial;}
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab2 button:hover {
     background-color: purple;
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+.tab2 button.active {
     background-color: black;
 }
 
 /* Style the tab content */
-.tabcontent {
+.tabcontent2 {
     display: none;
     padding: 10px 10px;
     border: 1px solid #ccc;
     border-top: none;
 }
 
-.button {
+.button2 {
     background-color: black; 
     border: none;
     color: white;

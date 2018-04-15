@@ -12,7 +12,7 @@
                         <button class="tablinks" onclick="openTab(event, 'Goedgekeurd')">Goedgekeurd</button>
                         <button class="tablinks" onclick="openTab(event, 'Betaald')">Betaald</button>
                     </div>
-
+       
                     <div id="Review" class="tabcontent">
                         @yield('review')
                     </div>

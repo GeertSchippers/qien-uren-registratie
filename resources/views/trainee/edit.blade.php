@@ -17,7 +17,7 @@
       <div class="container">
         <h2>Uren registratie</h2>
 
-        <h3>Edit </h3>
+        <h3><a href='/trainees/{{$user->id}}'class='btn btn-default'>terug</a><h3>
 
 
            <hr>

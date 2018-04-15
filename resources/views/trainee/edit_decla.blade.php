@@ -17,17 +17,17 @@
       <div class="container">
         <h2>Declaratie</h2>
 
-        <h3>Edit </h3>
+        <h3><a href='/trainees/{{$user->id}}'class='btn btn-default'>terug</a><h3>
 
 
            <hr>
         <div class=container-small>   
 	<div class="row">
-        {!! Form::open(['action' => ['TraineeDeclarationController@update', $hours->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action' => ['TraineeDeclarationController@update', $declaration->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::hidden('_method','PUT')}}
                 {{Form::label('datum bon', 'datum bon')}}
-                {{Form::number('date_receipt', $declaration->date_receipt, ['name' => 'date_receipt', 'id' => 'date_receipt', 'class' => 'form-control input-sm'])}}
+                {{Form::date('date_receipt', $declaration->date_receipt, ['name' => 'date_receipt', 'id' => 'date_receipt', 'class' => 'form-control input-sm'])}}
             </div>
             <div class="form-group">
                 {{ Form::select('type', [

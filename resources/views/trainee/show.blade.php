@@ -249,7 +249,7 @@ use App\Declaration;
                               <td>{{$declaration->description}}</td>
                               <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
-                              <td><a href='/trainees/{{$declaration->id}}/edit_decla'class='btn btn-default'>wijzig</a></td>
+                              <td><a href='/traineedeclarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach

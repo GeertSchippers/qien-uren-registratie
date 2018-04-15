@@ -61,7 +61,12 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $companies = Company::find($id);
+        $hours = Hours_declaration::find($id);
+        
+       
+        return view('admin.edit_trainee')->with(compact('user','companies'));
     }
     /**
      * Update the specified resource in storage.

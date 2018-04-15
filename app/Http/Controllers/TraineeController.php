@@ -61,7 +61,7 @@ class TraineeController extends Controller
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
       } else {
-
+          
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
       }

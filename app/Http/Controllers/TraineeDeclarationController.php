@@ -6,7 +6,7 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
-
+use Auth;
 class TraineeDeclarationController extends Controller
 {
     /**
@@ -55,7 +55,11 @@ class TraineeDeclarationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $declaration = Declaration::find($id);
+        
+       
+        return view('trainee.edit_decla')->with('declaration',$declaration)->with('user', $user);
     }
     /**
      * Update the specified resource in storage.
@@ -66,7 +70,21 @@ class TraineeDeclarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $user = Auth::user();
+
+        $new = Declaration::find($id);
+
+        $new->date_receipt = $request->input('date_receipt');
+        $new->type = $request->input('type');
+        $new->total_receipt = $request->input('total_receipt');
+        $new->btw = $request->input('btw');
+        $new->description = $request->input('description');
+        $new->user_id = $user->id;
+
+        $new->save();        
+        return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
+   
     }
     /**
      * Remove the specified resource from storage.

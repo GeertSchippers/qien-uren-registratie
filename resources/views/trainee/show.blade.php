@@ -109,7 +109,7 @@ use App\Declaration;
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a href='/trainees/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach

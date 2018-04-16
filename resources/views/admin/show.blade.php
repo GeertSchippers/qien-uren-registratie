@@ -31,7 +31,7 @@
                            
                             <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
 
-                            <td><a href='/admins/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
+                            <td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
                                
                     
                     </tr>

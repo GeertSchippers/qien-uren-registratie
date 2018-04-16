@@ -23,7 +23,7 @@
            <hr>
         <div class=container-small>   
 	<div class="row">
-        {!! Form::open(['action' => ['AdminController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action' => ['TraineeController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::hidden('_method','PUT')}}
                 {{Form::label('voornaam', 'Voornaam')}}

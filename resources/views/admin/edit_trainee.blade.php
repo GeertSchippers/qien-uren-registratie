@@ -38,7 +38,14 @@
                 {{Form::label('email', 'Email')}}
                 {{Form::text('email', $user->email, ['name' => 'email', 'id' => 'email', 'class' => 'form-control input-sm'])}}
             </div>
-
+      
+            <div class="form-group">
+                {{Form::label('bedrijf', 'Bedrijf')}}
+ 
+     
+                {{Form::select('company', $select , $user->company_id ,['name' => 'company', 'id' => 'company', 'class'=>'form-control'])}}
+    
+            </div>
             <div class="form-group">
                 {{Form::label('admin', 'admin')}}
                 {{Form::number('admin', $user->admin, ['name' => 'admin', 'id' => 'admin', 'class' => 'form-control input-sm'])}}

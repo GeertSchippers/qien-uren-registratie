@@ -75,11 +75,17 @@ class TraineeController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $companies = Company::find($id);
+        $company = Company::find($user->company_id);
         $hours = Hours_declaration::find($id);
         
-       
-        return view('admin.edit_trainee')->with(compact('user','companies'));
+        
+        $companies = Company::all();
+        $select = [];
+        foreach($companies as $company2){
+            $select[$company2->id] = $company2->name;
+            error_log(http_build_query($select));
+        }
+        return view('admin.edit_trainee')->with(compact('user','company', 'select'));
     }
     /**
      * Update the specified resource in storage.
@@ -95,9 +101,8 @@ class TraineeController extends Controller
         $new->first_name = $request->input('first_name');
         $new->last_name = $request->input('last_name');
         $new->email = $request->input('email');
-
+        $new->company_id = $request->input('company');
         $new->admin = $request->input('admin');
-
 
         $new->save();        
         return redirect()->back();

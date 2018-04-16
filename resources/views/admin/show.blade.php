@@ -14,6 +14,7 @@
             <th>Achternaam</th>
             <th>email </th>
             <th>Werknemers nr</th>
+            <th>Bedrijf</th>
             
         </tr>
         @foreach($users as $user)

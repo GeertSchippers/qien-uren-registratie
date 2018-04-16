@@ -7,20 +7,6 @@
     
 }
 
-
-
-.container-hours{
-
-    
-    background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
-    margin: 0 auto;
-    vertical-align: baseline;
-    padding-bottom: 25%;
-    background-size: cover;
-    height: 240px ;
-
-}
-
 h2, h1{
     margin-top: 50px;
     text-align: center;
@@ -61,9 +47,13 @@ textarea{
     margin:0px 0;
     outline: none;
     padding:8px;
-    box-sizing: border;
+    /*box-sizing: border;*/
+
+
+    
 }
 th, td{
         border: 1px solid;
         padding: 5px;
 }
+

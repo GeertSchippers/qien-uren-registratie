@@ -6,27 +6,34 @@
         padding: 5px;
     }
 </style>
-    <h1>hello Admin</h1>
+    <h1>Hallo Admin</h1>
+    <h3>Overzicht trainees</h3>
     <table>
         <tr>
-            <th>first name </th>
-            <th>last name </th>
+            <th>Voornaam </th>
+            <th>Achternaam</th>
             <th>email </th>
-            <th>employee number </th>
-            <th>company id </th>
+            <th>Werknemers nr</th>
+            
         </tr>
         @foreach($users as $user)
             @if($user->admin == 0)
                     <tr>
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
-                        <td><a href="/trainees/{{$user->id}}">{{$user->email}}</a></td>
+                        <td>{{$user->email}}</td>
                         <td>{{$user->employee_number}}</td>
                             @foreach($companies as $company)
                                 @if ($company->id == $user->company_id)
                                     <td>{{$company->name}}</td>
                                 @endif
                             @endforeach
+                           
+                            <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
+
+                            <td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
+                               
+                    
                     </tr>
             @endif
         @endforeach

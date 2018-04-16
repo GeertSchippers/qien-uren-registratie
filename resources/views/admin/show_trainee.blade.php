@@ -5,17 +5,18 @@ use App\Declaration;
 
  @extends('welcome')
  @section('content')
+ 
  <style>
      th, td{
          border: 1px solid;
          padding: 5px;
      }
  </style>
-     First Name: {{$user->first_name}} <br>
-     Last Name: {{$user->last_name}} <br>
+     Voornaam: {{$user->first_name}} <br>
+     Achternaam: {{$user->last_name}} <br>
      Email: {{$user->email}} <br>
-     Employee Number: {{$user->employee_number}} <br>
-     Company: {{$company->name}} <br>
+     Werknemers Nummer: {{$user->employee_number}} <br>
+     Bedrijf: {{$company->name}} <br>
 
      <h2>gemaakte uren</h2>
          <table>

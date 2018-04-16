@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
+use App\User;
 use App\Hours_declaration;
-use Illuminate\Support\Facades\Auth;
+use App\Declaration;
+use App\Company;
+use Auth;
 
 class Hours_declarationController extends Controller
 {

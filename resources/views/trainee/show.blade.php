@@ -4,6 +4,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Declaration;
 
 ?>
 
@@ -20,18 +21,7 @@ use App\User;
 
   <title>Formulier Trainee</title>
   <style>
-  /* .container-hours{
-      background: linear-gradient(rgba(140, 13, 255, 0.76), rgba(162, 13, 255, 0.76)), url('/images/flipperqien.jpg') fixed no-repeat ;
-      background-size: cover;
-      position: relative;
-      top: -20px;
-      height: 1000px;
-  } */
-
-
-
-  .tabcontent,
-  .tabcontent2 {
+  .tabcontent, .tabcontent2 {
     background-color: white;
     margin-bottom: 50px;
   }
@@ -54,6 +44,7 @@ use App\User;
 
         <h3>Welkom {{ $user->first_name }}</h3>
 
+
         <h2>Uren Declaraties</h2>
 
 
@@ -69,26 +60,27 @@ use App\User;
                   <option value="7">Zondag</option>
               </select>
             </div>
-           <button class="button button3" onclick="add_line()">+</button>
-           <div id=form>
+        
+            
+            <fieldset id='form'>            
+                <button class="button button3" onclick="add_line()">+</button>
+                <input name=amount id=hours type="number" placeholder='Totaal Uren'>
+                <select name=type id="type">
+                    <option id=workhours value="workhours">gewerkte uren</option>
+                    <option id=extrahours value="extrahours">overuren</option>
+                    <option id=abscense value="abscense">kort verlof</option>
+                    <option id=holiday value="holiday">vakantie</option>
+                    <option id=sick value="sick">ziek</option>
+                    <option id=extra value="extra">overige</option>
+                </select>
+                <input name=date id=date type="date">
+                <textarea name=statement id="statement" rows="1.8" cols="40" placeholder='Vul hier een beschrijving in'></textarea>         
 
-             <tr>
-              <td><input name=amount id=hours type="number" placeholder='Totaal Uren'></td>
-              <select name=type id="type">
-                <option id=workhours value="workhours">gewerkte uren</option>
-                <option id=extrahours value="extrahours">overuren</option>
-                <option id=abscense value="abscense">kort verlof</option>
-                <option id=holiday value="holiday">vakantie</option>
-                <option id=sick value="sick">ziek</option>
-                <option id=extra value="extra">overige</option>
-              </select>
-                <td><input name=date id=date type="date"></td>
-                <td><textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
-             </div>
-
-            <div id=extraform></div>
-            <td><input type="button" value='voer in' id="submit" onclick=send()></td>
-
+                <!--            <div id=extraform></div>-->
+                <input type="button" value='voer in' id="submit" onclick=send()>             
+            </fieldset>
+        
+        
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
           <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
@@ -104,8 +96,9 @@ use App\User;
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
-                      <th>Wijzigen</th>
+                      <!--<th>Wijzigen</th>-->
                   </tr>
                   @foreach($hours as $hour)
                       @if($hour->approved == 0)
@@ -114,14 +107,15 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
           </table>
     </div>
-        </div>
+        
 
         <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>
@@ -142,8 +136,9 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+<!--                          <td><a>wijzig</a></td>-->
                       </tr>
                       @endif
                   @endforeach
@@ -169,76 +164,84 @@ use App\User;
                           <td>{{$hour->type}}</td>
                           <td>{{$hour->date}}</td>
                           <td>{{$company->name}}</td>
+                          <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <td><a>wijzig</a></td>
+                          <!--<td><a>wijzig</a></td>-->
                       </tr>
                       @endif
                   @endforeach
           </table>
         </div>
-
+</div>
 
       </div>
 
 
 <!---========================-Declaratie formulier------------------------------>
 
-    <div class=container-declarations>
-      <div class="container">
-          <h2>Declaraties</h2>
 
-            <div class="custom-select" style="width:200px;">
-              <select id=dag>
-                  <option value="0">Select dag:</option>
-                  <option value="1">Maandag</option>
-                  <option value="2">Dinsdag</option>
-                  <option value="3">Woensdag</option>
-                  <option value="4">Donderdag</option>
-                  <option value="5">Vrijdag</option>
-                  <option value="6">Zaterdag</option>
-                  <option value="7">Zondag</option>
-              </select>
-            </div>
+        <div class=container-declarations>
+            <div class="container">
+              <h2>Declaraties</h2>
 
-           <button class="button button3" onclick="add_lineDeclarations()">+</button>
-           <div id=form>
+                <div class="custom-select" style="width:200px;">
+                  <select id=dag_dec>
+                      <option value="0">Select dag:</option>
+                      <option value="1">Maandag</option>
+                      <option value="2">Dinsdag</option>
+                      <option value="3">Woensdag</option>
+                      <option value="4">Donderdag</option>
+                      <option value="5">Vrijdag</option>
+                      <option value="6">Zaterdag</option>
+                      <option value="7">Zondag</option>
+                  </select>
+                </div>
 
-             <tr>
-              <td><input id=date_receipt type="date"></td>
-              <select  id=type>
-                <option id=workhours2 value="workhours">gewerkte uren</option>
-                <option id=extrahours2 value="extrahours">overuren</option>
-                <option id=abscense2 value="abscense">kort verlof</option>
-                <option id=holiday2 value="holiday">vakantie</option>
-                <option id=sick2 value="sick">ziek</option>
-                <option id=extra2 value="extra">overige</option>
-              </select>
-             <td><input id=total_receipt type="number" placeholder='Totaal Bon'></td>
-              <td><input id=btw type="number" placeholder='BTW'></td>
-              <td><textarea id="statement_dec" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
-             </div>
+           
+           
+           
+           
+              <fieldset id=form_declarations>
+                <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
+                <input id=date_receipt type="date">
+                <select  id=type>
+                    <option id=education value="education">opleiding</option>
+                    <option id=travelling value="travelling">reis</option>
+                    <option id=residence value="residence">verblijf</option>
+                    <option id=parking value="parking">parkeren</option>
+                    <option id=phone value="phone">telefoon</option>
+                    <option id=lunch_diner value="sick">lunch/diner</option>
+                    <option id=outings value="outings">uitjes</option>
+                    <option id=extra value="extra">overig</option>
+                </select>
+                    <input id=total_receipt type="number" placeholder='Totaal Bon'>
+                    <input id=btw type="number" placeholder='BTW'>
+                    <textarea id="description" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
 
-            <div id=extraform></div>
+                 <!--<div id=extraform2></div>-->
+                 <input type="button" value='voer in' id="submit2" onclick=send2()>
+              </fieldset>
+            
+            
+        
+            <div class="tab2">
+              <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
+              <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
+              <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
 
-            <td><input type="button" value='voer in' id="submit2" onclick=send2()></td>
-
-            <div class="tab">
-              <button class="tablinks2" onclick="openCity(event, 'review2')" id="defaultOpen2">Review</button>
-              <button class="tablinks2" onclick="openCity(event, 'aproved2')">Goedgekeurd</button>
-              <button class="tablinks2" onclick="openCity(event, 'paid2')">Betaald</button>
             </div>
 
             <div id="review2" class="tabcontent2">
               <h3>Review</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->approved == 0)
@@ -248,8 +251,9 @@ use App\User;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/traineedeclarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach
@@ -260,13 +264,13 @@ use App\User;
               <h3>Goedgekeurd</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->approved == 1)
@@ -276,7 +280,7 @@ use App\User;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                           </tr>
                 @endif
@@ -288,13 +292,13 @@ use App\User;
               <h3>Betaald</h3>
               <table>
               <tr>
-                  <th>date_receipt</th>
+                  <th>datum bon</th>
                   <th>type</th>
-                  <th>total_receipt</th>
+                  <th>totaal bon</th>
                   <th>btw</th>
-                  <th>description</th>
-                  <th>created_at</th>
-                  <th>updated_at</th>
+                  <th>beschrijving</th>
+                  <!--<th>created_at</th>-->
+                  <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
                 @if($declaration->paid == 1)
@@ -304,7 +308,7 @@ use App\User;
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <td>{{$declaration->created_at}}</td>
+                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                           </tr>
                 @endif
@@ -313,8 +317,6 @@ use App\User;
             </div>
           </div>
       </div>
-
-
     <script type="text/javascript" src="{{URL::asset('js/form.js')}}"> </script>
     </body>
 

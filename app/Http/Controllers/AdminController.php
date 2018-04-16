@@ -6,7 +6,7 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
-
+use Auth;
 class AdminController extends Controller
 {
     /**
@@ -61,7 +61,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
     /**
      * Update the specified resource in storage.
@@ -72,7 +72,6 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
     /**
      * Remove the specified resource from storage.

@@ -50,7 +50,7 @@ class TraineeController extends Controller
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
       if(isset($user->company_id)){
-        $company = Company::where('id',$user->company_id)->get();
+        $company = Company::find($user->company_id);
       } else {
         $company = new Company;
         $company->name = 'Geen bedrijf';
@@ -61,7 +61,7 @@ class TraineeController extends Controller
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
       } else {
-
+          
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
       }
@@ -74,7 +74,12 @@ class TraineeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $companies = Company::find($id);
+        $hours = Hours_declaration::find($id);
+        
+       
+        return view('admin.edit_trainee')->with(compact('user','companies'));
     }
     /**
      * Update the specified resource in storage.
@@ -85,7 +90,17 @@ class TraineeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $new = User::find($id);
+
+        $new->first_name = $request->input('first_name');
+        $new->last_name = $request->input('last_name');
+        $new->email = $request->input('email');
+
+        $new->admin = $request->input('admin');
+
+
+        $new->save();        
+        return redirect()->back();
     }
     /**
      * Remove the specified resource from storage.

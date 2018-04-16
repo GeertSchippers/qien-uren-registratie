@@ -6,6 +6,7 @@ use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
+
 class UserController extends Controller
 {
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @extends('segment')
 @section('register')
-    <li><a href="{{ url('/register') }}">Register</a></li>
+    <li><a href='/register'>Register</a></li>
 @endsection
 @section('content')
 <div class="container">

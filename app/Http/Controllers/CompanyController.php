@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Company;
 
 class CompanyController extends Controller
 {
@@ -35,7 +36,16 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $company = $request->json()->all();
+
+      $company['password'] = bcrypt($company['password']);
+
+      if(Company::create($company)){
+        return Response(200);
+      } else {
+        return Response(500);
+      };
+
     }
 
     /**

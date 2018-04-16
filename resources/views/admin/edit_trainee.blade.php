@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
   <title>Wijzig trainee gegevens</title>
@@ -21,7 +21,7 @@
 
 
            <hr>
-        <div class=container-small>   
+        <div class=container-small>
 	<div class="row">
         {!! Form::open(['action' => ['TraineeController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
@@ -29,11 +29,11 @@
                 {{Form::label('voornaam', 'Voornaam')}}
                 {{Form::text('first_name', $user->first_name, ['name' => 'first_name', 'id' => 'first_name', 'class' => 'form-control input-sm'])}}
             </div>
-             
+
             <div class="form-group">
                 {{Form::label('achternaam', 'Achternaam')}}
                 {{Form::text('last_name', $user->last_name, ['name' => 'last_name', 'id' => 'last_name', 'class' => 'form-control input-sm'])}}
-            </div>         
+            </div>
             <div class="form-group">
                 {{Form::label('email', 'Email')}}
                 {{Form::text('email', $user->email, ['name' => 'email', 'id' => 'email', 'class' => 'form-control input-sm'])}}
@@ -42,17 +42,17 @@
             <div class="form-group">
                 {{Form::label('admin', 'admin')}}
                 {{Form::number('admin', $user->admin, ['name' => 'admin', 'id' => 'admin', 'class' => 'form-control input-sm'])}}
-            </div>          
+            </div>
 
             <div class="form-group">
                 {{Form::file('cover_image')}}
             </div>
-                
+
                 {{Form::submit('updaten', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
-	</div>	
+	</div>
         </div><!-- end of .row (form) -->
         <hr>
-       </div>  
+       </div>
     </div>
 @endsection

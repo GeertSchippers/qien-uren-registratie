@@ -119,29 +119,25 @@ function getMonth(user_id){
     
     var selectedMonth = selectMonth.selectedOptions[0].value;
     var selectedYear = selectYear.selectedOptions[0].value;
-        console.log(selectedMonth+" "+selectedYear);
+       
+    var date = selectedYear+"-"+selectedMonth;
     
-    var obj = {};
 
-        obj.month = selectedMonth;
-        obj.year = selectedYear;
-      
  
-
-    var date = JSON.stringify(obj);
 
         $(document).ready(function(){
             
             
                 $.ajax({
                    
-                    url: '/adminsmonths/',
-                    type: 'POST',
-                    data: date,
-                    dataType: 'JSON',
+                    url: '/adminsmonths/'+date,
+                    type: 'GET',
+                 
+                    
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) { 
-                        $(".writeinfo").append(data.msg); 
+                        $(".gelukt").append(data.msg);
+//                            alert('gelukt');
                     }
                 }); 
             });

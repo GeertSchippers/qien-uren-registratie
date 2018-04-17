@@ -23,6 +23,18 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function showMonth($date)
+    {
+        $declarations = Declaration::where('date_receipt','like',"$date%")->get();
+
+        error_log($declarations);
+        
+        
+
+//        return view('admin.check')->with(compact('users', 'date'));
+    }
+    
     public function create()
     {
         //

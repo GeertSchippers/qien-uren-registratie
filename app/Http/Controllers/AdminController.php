@@ -80,22 +80,23 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $admin = User::find($id);
+//        $admin = User::find($id);
         
         
-        $user = Auth::user();
+//        $user = Auth::user();
 
         $month = $request->input('month');
         $year = $request->input('year');
+       
         
         
         if(isset($_POST['data'])){
         $date = json_decode($_POST['data'], true);
             error_log($date);
         }  
-        return view('admin.check')->with(compact('users'));
+        return view('admin.check')->with(compact('users', 'date'));
     }
     /**
      * Remove the specified resource from storage.

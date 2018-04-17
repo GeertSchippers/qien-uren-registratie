@@ -128,18 +128,18 @@
 @section('declarations')
        <h2> gemaakte declaraties</h2>
        <select id="select_month">
-           <option>Januari</option>
-           <option>Februari</option>
-           <option>Maart</option>
-           <option>April</option>
-           <option>Mei</option>
-           <option>Juni</option>
-           <option>Juli</option>
-           <option>Augustus</option>
-           <option>September</option>
-           <option>Oktober</option>
-           <option>November</option>
-           <option>December</option>    
+           <option>01</option>
+           <option>02</option>
+           <option>03</option>
+           <option>04</option>
+           <option>05</option>
+           <option>06</option>
+           <option>07</option>
+           <option>08</option>
+           <option>09</option>
+           <option>10</option>
+           <option>11</option>
+           <option>12</option>    
        </select>
        
        <select id="select_year">    

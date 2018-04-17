@@ -15,6 +15,8 @@
             <th>email </th>
             <th>Werknemers nr</th>
             <th>Bedrijf</th>
+            <th>Bekijk</th>
+            <th>Wijzig</th>
             
         </tr>
         @foreach($users as $user)
@@ -125,6 +127,39 @@
 @endsection
 @section('declarations')
        <h2> gemaakte declaraties</h2>
+       <select id="select_month">
+           <option>Januari</option>
+           <option>Februari</option>
+           <option>Maart</option>
+           <option>April</option>
+           <option>Mei</option>
+           <option>Juni</option>
+           <option>Juli</option>
+           <option>Augustus</option>
+           <option>September</option>
+           <option>Oktober</option>
+           <option>November</option>
+           <option>December</option>    
+       </select>
+       
+       <select id="select_year">    
+        <?php
+           $currentYear = date('Y');          
+           echo '<option>'.$currentYear.'</option>';
+           
+       
+
+        ?>
+        </select>
+        <input type=button value="Select Maand" onclick="getMonth(<?php echo $admin->id; ?>)">
+        <?php 
+            if(isset($date)){
+          echo($date);
+           
+           }
+      echo "TEST";
+        ?>
+      
         <table>
         <tr>
             <th>date_receipt</th>
@@ -136,7 +171,18 @@
             <th>updated_at</th>
             <th>user_id</th>
         </tr>
+        
+        <?php 
+        if(isset($_POST['obj'])){
+        $date = json_decode($_POST['obj'], true);
+        }
+//        error_log($date);
+        ?>
         @foreach($declarations as $declaration)
+        
+       
+        
+   
                     <tr>
                         <td>{{$declaration->date_receipt}}</td>
                         <td>{{$declaration->type}}</td>

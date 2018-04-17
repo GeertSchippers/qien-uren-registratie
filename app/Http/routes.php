@@ -42,6 +42,8 @@ Route::get('/formulier', function(){
 
 Route::get('/admin/trainee/{id}', 'UserController@show');
 
+Route::post('/adminsmonths', 'AdminController@update');
+
 // -------------------- Resourced Routes ----------------------
 
 Route::auth();

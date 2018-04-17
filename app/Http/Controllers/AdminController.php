@@ -35,7 +35,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
     /**
      * Display the specified resource.
@@ -44,6 +44,12 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function showMonth(Request $request, $id)
+    {
+        
+
+    }
+    
     public function show($id)
     {
         $admin = User::find($id);
@@ -51,7 +57,11 @@ class AdminController extends Controller
         $declarations = Declaration::all();
         $hours = Hours_declaration::all();
         $users = User::all();
-        return view('admin.show')->with(compact('users','hours','declarations','companies','admin'));
+          
+       
+        
+        
+        return view('admin.show')->with(compact('users','hours','declarations','companies','admin', 'date'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -72,6 +82,20 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $admin = User::find($id);
+        
+        
+        $user = Auth::user();
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+        
+        
+        if(isset($_POST['data'])){
+        $date = json_decode($_POST['data'], true);
+            error_log($date);
+        }  
+        return view('admin.check')->with(compact('users'));
     }
     /**
      * Remove the specified resource from storage.

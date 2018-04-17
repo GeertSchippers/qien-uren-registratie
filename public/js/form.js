@@ -112,3 +112,43 @@ function send2(){
 
 
 
+function getMonth(user_id){
+    
+    var selectMonth = document.getElementById('select_month');
+    var selectYear = document.getElementById('select_year');
+    
+    var selectedMonth = selectMonth.selectedOptions[0].value;
+    var selectedYear = selectYear.selectedOptions[0].value;
+        console.log(selectedMonth+" "+selectedYear);
+    
+    var obj = {};
+
+        obj.month = selectedMonth;
+        obj.year = selectedYear;
+      
+ 
+
+    var date = JSON.stringify(obj);
+
+        $(document).ready(function(){
+            
+            
+                $.ajax({
+                   
+                    url: '/adminsmonths/',
+                    type: 'POST',
+                    data: date,
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) { 
+                        $(".writeinfo").append(data.msg); 
+                    }
+                }); 
+            });
+       
+}
+    
+    
+
+
+

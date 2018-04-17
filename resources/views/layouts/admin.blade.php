@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @extends('segment')
 @section('register')
-    <li><a href="{{ url('/register') }}">Register</a></li>
+    <li><a href="{{ url('/register') }}">Trainee Aanmaken</a></li>
+    <li><a href="{{ url('/companies/create') }}">Bedrijf Aanmaken</a></li>
 @endsection
 @section('content')
 <div class="container">
@@ -15,7 +16,7 @@
                         <button class="tablinks" onclick="openTab(event, 'Goedgekeurd')">Goedgekeurd</button>
                         <button class="tablinks" onclick="openTab(event, 'Betaald')">Betaald</button>
                     </div>
-       
+
                     <div id="Review" class="tabcontent">
                         @yield('review')
                     </div>

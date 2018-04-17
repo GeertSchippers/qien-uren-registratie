@@ -7,14 +7,17 @@ use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ApiController;
 
-class TraineeController extends Controller
+
+class TraineeController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
 
@@ -39,10 +42,26 @@ class TraineeController extends Controller
         //
     }
     /**
-     * Display the specified resource.
+     * Display the specified User and it's Declarations and Company.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/trainees/{trainees}",
+     *     description="Returns trainee showpage.",
+     *     operationId="trainees.show",
+     *     produces={"application/json"},
+     *     tags={"trainees"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Trainees showpage."
+     *     ),
+     *     @SWG\Response(
+     *         response=401,
+     *         description="Unauthorized action.",
+     *     )
+     * )
      */
     public function show($id)
     {
@@ -61,7 +80,7 @@ class TraineeController extends Controller
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
       } else {
-          
+
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
       }
@@ -77,8 +96,8 @@ class TraineeController extends Controller
         $user = User::find($id);
         $companies = Company::find($id);
         $hours = Hours_declaration::find($id);
-        
-       
+
+
         return view('admin.edit_trainee')->with(compact('user','companies'));
     }
     /**
@@ -95,11 +114,10 @@ class TraineeController extends Controller
         $new->first_name = $request->input('first_name');
         $new->last_name = $request->input('last_name');
         $new->email = $request->input('email');
-
         $new->admin = $request->input('admin');
 
 
-        $new->save();        
+        $new->save();
         return redirect()->back();
     }
     /**

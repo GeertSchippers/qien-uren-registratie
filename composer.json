@@ -4,11 +4,16 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "platform":{
+        "php":"7.0"
+    },
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "laravel/framework": "5.2.*",
         "doctrine/dbal": "v2.5.13",
-        "laravelcollective/html": "^5.2.0"
+        "laravelcollective/html": "^5.2.0",
+        "lithiumdev/l5-swagger": "~1.0",
+        "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

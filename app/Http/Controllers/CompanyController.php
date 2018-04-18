@@ -37,50 +37,17 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     protected function validator(array $data)
-     {
-         return Validator::make($data, [
-             'name' => 'required|max:255',
-             'location' => 'required|max:255',
-             'email' => 'required|email|max:255|unique:companies',
-             'phone_number' => 'required|min:10',
-             'contact_person' => 'required|max:255',
-             'password' => 'required|min:6|confirmed',
-         ]);
-     }
-
-     public function register(Request $request)
-     {
-         // $validator = $this->validator($request->all());
-         // if ($validator->fails()) {
-         //     $this->throwValidationException(
-         //         $request, $validator
-         //     );
-         // }
-         // Auth::guard($this->getGuard())->login($this->create($request->all()));
-         // return redirect($this->redirectPath());
-     }
-
     public function store(Request $request)
     {
       $company = $request->json()->all();
 
-      $validator = $this->validator($company);
-      if ($validator->fails()) {
-          $this->throwValidationException(
-              $request, $validator
-          );
+      if(Company::create($company)){
+        return Response(200);
       } else {
-
-        $company['password'] = bcrypt($company['password']);
-
-        if(Company::create($company)){
-          return Response(200);
-        } else {
-          return Response(500);
-        };
-      }
+        return Response(500);
+      };
     }
+
 
     /**
      * Display the specified resource.

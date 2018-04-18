@@ -3,31 +3,31 @@
     "info": {
         "title": "Sample API",
         "contact": {
-            "name": "Floris Meininger",
-            "url": ""
+            "name": "Marco Raddatz",
+            "url": "https://www.marcoraddatz.com"
         },
         "version": "1.0"
     },
-    "host": "localhost:8000",
+    "host": "laravel.localhost",
     "basePath": "",
     "schemes": [
         "http"
     ],
     "paths": {
-        "/trainees": {
+        "/trainees/{trainees}": {
             "get": {
                 "tags": [
                     "trainees"
                 ],
-                "summary": "Display a listing of the resource.",
-                "description": "Returns trainee overview.",
-                "operationId": "trainees.index",
+                "summary": "Display the specified User and it's Declarations and Company.",
+                "description": "Returns trainee showpage.",
+                "operationId": "trainees.show",
                 "produces": [
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trainees overview."
+                        "description": "Trainees showpage."
                     },
                     "401": {
                         "description": "Unauthorized action."

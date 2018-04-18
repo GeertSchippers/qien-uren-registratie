@@ -58,7 +58,7 @@ class TraineeDeclarationController extends Controller
         $user = User::find($user_id);
         $declaration = Declaration::find($declaration_id);
 
-        return view('trainee.edit_decla')->with('declaration',$declaration)->with('user', $user);
+        return view('trainee.declarations.edit')->with('declaration',$declaration)->with('user', $user);
     }
     /**
      * Update the specified resource in storage.

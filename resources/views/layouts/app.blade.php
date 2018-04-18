@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-   
+
 
     <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
@@ -72,6 +72,7 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
+                        @yield('register')
                     @else
                         <li><a href="{{ url('/logout') }}">Logout</a></li>
                         @yield('register')

@@ -53,12 +53,11 @@ class TraineeDeclarationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id, $declaration_id)
     {
-        $user = User::find($id);
-        $declaration = Declaration::find($id);
-        
-       
+        $user = User::find($user_id);
+        $declaration = Declaration::find($declaration_id);
+
         return view('trainee.edit_decla')->with('declaration',$declaration)->with('user', $user);
     }
     /**
@@ -82,9 +81,9 @@ class TraineeDeclarationController extends Controller
         $new->description = $request->input('description');
         $new->user_id = $user->id;
 
-        $new->save();        
+        $new->save();
         return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
-   
+
     }
     /**
      * Remove the specified resource from storage.

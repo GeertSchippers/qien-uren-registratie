@@ -74,11 +74,19 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['company_id'] != ''){
+          $company_id = $data['company_id'];
+        } else {
+          $company_id = null;
+        }
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'employee_number' => $data['employee_number'],
+            'company_id' => $company_id
         ]);
     }
 }

@@ -48,10 +48,10 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('employee_number') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">employee_number</label>
+                            <label for="name" class="col-md-4 control-label">Werknemers nummer</label>
 
                             <div class="col-md-6">
-                                <input id="employee_number" type="text" class="form-control" name="name" value="{{ old('employee_number') }}">
+                                <input id="employee_number" type="text" class="form-control" name="employee_number" value="{{ old('employee_number') }}">
 
                                 @if ($errors->has('employee_number'))
                                     <span class="help-block">
@@ -89,10 +89,10 @@
                         </div>
 
                          <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">company_id</label>
+                            <label for="name" class="col-md-4 control-label">Bedrijf</label>
 
                             <div class="col-md-6">
-                                <input id="employee_number" type="text" class="form-control" name="name" value="{{ old('company_id') }}">
+                                <input id="company_id" type="text" class="form-control" name="company_id" value="{{ old('company_id') }}">
 
                                 @if ($errors->has('company_id'))
                                     <span class="help-block">

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Company;
+use Validator;
+
 
 class CompanyController extends Controller
 {
@@ -24,7 +27,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+      return view('company.create');
     }
 
     /**
@@ -33,10 +36,18 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+      $company = $request->json()->all();
+
+      if(Company::create($company)){
+        return Response(200);
+      } else {
+        return Response(500);
+      };
     }
+
 
     /**
      * Display the specified resource.

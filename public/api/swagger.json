@@ -1,0 +1,58 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Sample API",
+        "contact": {
+            "name": "Marco Raddatz",
+            "url": "https://www.marcoraddatz.com"
+        },
+        "version": "1.0"
+    },
+    "host": "laravel.localhost",
+    "basePath": "",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/trainees/{trainees}": {
+            "get": {
+                "tags": [
+                    "trainees"
+                ],
+                "summary": "Display the specified User and it's Declarations and Company.",
+                "description": "Returns trainee showpage.",
+                "operationId": "trainees.show",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trainees showpage."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "Class ApiController",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "Class ApiController",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

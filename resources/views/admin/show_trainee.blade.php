@@ -3,9 +3,9 @@ use App\Hours_declaration;
 use App\Declaration;
  ?>
 
- @extends('welcome')
+ @extends('layouts.admin')
  @section('content')
- 
+
  <style>
      th, td{
          border: 1px solid;

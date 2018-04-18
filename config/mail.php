@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 25),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'qientestemail@gmail.com', 'name' => 'no-reply-Qien'],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +108,11 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-
+    'stream' => [
+    'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+                ],
+            ]
 ];

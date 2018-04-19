@@ -95,8 +95,6 @@ function send2(){
         object.description = naamvakje.parentNode.children[5].value
         console.log(naamvakje);
         
-      
-     console.log(naamvakje);
     var objectjson = JSON.stringify(object);
    
 
@@ -112,7 +110,7 @@ function send2(){
 
 
 
-function getMonth(user_id){
+function getMonth(id){
     
     var selectMonth = document.getElementById('select_month');
     var selectYear = document.getElementById('select_year');
@@ -126,18 +124,12 @@ function getMonth(user_id){
  
 
         $(document).ready(function(){
-            
-            
                 $.ajax({
                    
-                    url: '/adminsmonths/'+date,
+                    url: '/adminsmonths/'+id,
                     type: 'GET',
-                 
-                    
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) { 
-                        $(".gelukt").append(data.msg);
-//                            alert('gelukt');
+                    success: function () { 
+
                     }
                 }); 
             });

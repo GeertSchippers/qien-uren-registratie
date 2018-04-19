@@ -3,12 +3,9 @@
 
   <title>Wijzig trainee gegevens</title>
   <style>
-
-
-  .tabcontent {
-    background-color: white;
-  }
-
+    .tabcontent {
+      background-color: white;
+    }
   </style>
 
 <!-- ======================== Urenregistratie formulier ------------------------------>

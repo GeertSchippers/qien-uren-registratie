@@ -16,7 +16,7 @@
         <div id="Betaald" class="tabcontent">
           @yield('betaald')
         </div>
-      </div>
+ 
       <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;

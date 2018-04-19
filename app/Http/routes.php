@@ -42,7 +42,7 @@ Route::get('/formulier', function(){
 
 Route::get('/admin/trainee/{id}', 'UserController@show');
 
-Route::get('/adminsmonths/{date}', 'TraineeDeclarationController@showMonth');
+Route::get('/adminsmonths/{id}', 'TraineeDeclarationController@index');
 
 // -------------------- Resourced Routes ----------------------
 

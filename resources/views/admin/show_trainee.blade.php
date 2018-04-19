@@ -8,6 +8,11 @@ use App\Company;
  @extends('layouts.admin')
  @section('content')
 
+ <script>
+
+
+ </script>
+
  <style>
      th, td{
          border: 1px solid;
@@ -65,26 +70,26 @@ use App\Company;
            <option>09</option>
            <option>10</option>
            <option>11</option>
-           <option>12</option>    
+           <option>12</option>
        </select>
-       
-       <select id="select_year">    
+
+       <select id="select_year">
         <?php
-           $currentYear = date('Y');          
+           $currentYear = date('Y');
            echo '<option>'.$currentYear.'</option>';
-           
-       
+
+
 
         ?>
         </select>
         <input type=button value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
-        <?php 
+        <?php
             if(isset($date)){
           echo($date);
-           
+
            }
       echo "TEST";
-        ?>        
+        ?>
          <table>
          <tr>
              <th>Datum bon</th>
@@ -135,7 +140,7 @@ use App\Company;
             </tr>
             <tr>
             @foreach($hours as $hour)
-            <?php 
+            <?php
                 $obj = new Hours_declaration();
                 $obj->amount = $hour->amount;
                 $obj->date = $hour->date;
@@ -152,9 +157,9 @@ use App\Company;
             <td>@if($hour->type == 'holiday'){{$hour->amount}}@endif</td>
             <td>@if($hour->type == 'sick'){{$hour->amount}}@endif</td>
             <td>@if($hour->type == 'extra'){{$hour->amount}}@endif</td>
-            <td>{{$hour->statement}}</td>           
+            <td>{{$hour->statement}}</td>
         </tr>
         @endforeach
-    <table>
+    </table>
         <br><br><br><br><br><br>
  @endsection

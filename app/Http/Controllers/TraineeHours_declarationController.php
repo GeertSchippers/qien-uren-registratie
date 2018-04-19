@@ -54,12 +54,12 @@ class TraineeHours_declarationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id, $declaration_id)
     {
-       $user = User::find($id);
-       $hours = Hours_declaration::find($id);
+       $user = User::find($user_id);
+       $hours = Hours_declaration::find($declaration_id);
 
-       return view('trainee.edit')->with('hours',$hours)->with('user', $user);
+       return view('trainee.hours_declarations.edit')->with('hours',$hours)->with('user', $user);
     }
     /**
      * Update the specified resource in storage.
@@ -82,7 +82,9 @@ class TraineeHours_declarationController extends Controller
         $user->user_id = $user->id;
 
         $hours->save();
-        return redirect()->back()->with('succes', 'Uren succesvol aangepast');
+//        return redirect()->back()->with('succes', 'Uren succesvol aangepast');
+        return redirect('/');
+ 
 
     }
     /**s

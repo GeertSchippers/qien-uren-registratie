@@ -63,8 +63,7 @@ class Hours_declarationController extends Controller
      */
     public function show($id)
     {
-      $declarations = Hours_declaration::where('user_id',$id)->get();
-      return $declarations;
+      
     }
 
     /**

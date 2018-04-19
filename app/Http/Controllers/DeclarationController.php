@@ -55,7 +55,7 @@ class DeclarationController extends Controller
         $new->user_id = $user->id;
         $new->paid = 0;
         $new->save();
-   
+
     }
 
     /**
@@ -66,7 +66,8 @@ class DeclarationController extends Controller
      */
     public function show($id)
     {
-        //
+
+
     }
 
     /**
@@ -89,10 +90,10 @@ class DeclarationController extends Controller
      */
     public function update(Request $request, $id)
     {
-//      $declaration = Declaration::find($id);
-//      $data = $request->json()->all();
-//
-//      $declaration->update($data);
+     $declaration = Declaration::find($id);
+     $data = $request->json()->all();
+
+     $declaration->update($data);
     }
 
     /**

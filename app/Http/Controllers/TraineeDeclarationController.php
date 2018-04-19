@@ -14,8 +14,21 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $id)
     {
+//        $company = Company::find($id);
+//        
+//        $user = User::find($id);
+//  
+//        $date = $request->input('date');
+//  
+//
+//        $declarations = Declaration::where('date_receipt','like',"$date%")->get();
+//
+//
+//        
+//
+//        return view('admin.check')->with(compact('user', 'declarations', 'company'));
 
     }
     /**
@@ -23,6 +36,9 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
+    
     public function create()
     {
         //
@@ -53,13 +69,13 @@ class TraineeDeclarationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    public function edit($user_id, $declaration_id)
     {
-        $user = User::find($id);
-        $declaration = Declaration::find($id);
-        
-       
-        return view('trainee.edit_decla')->with('declaration',$declaration)->with('user', $user);
+        $user = User::find($user_id);
+        $declaration = Declaration::find($declaration_id);
+
+
     }
     /**
      * Update the specified resource in storage.
@@ -71,10 +87,9 @@ class TraineeDeclarationController extends Controller
     public function update(Request $request, $id)
     {
 
+
         $user = Auth::user();
-
         $new = Declaration::find($id);
-
         $new->date_receipt = $request->input('date_receipt');
         $new->type = $request->input('type');
         $new->total_receipt = $request->input('total_receipt');
@@ -82,9 +97,11 @@ class TraineeDeclarationController extends Controller
         $new->description = $request->input('description');
         $new->user_id = $user->id;
 
-        $new->save();        
+
+        $new->save();
+
         return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
-   
+
     }
     /**
      * Remove the specified resource from storage.

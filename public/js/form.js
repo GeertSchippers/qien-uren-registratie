@@ -95,8 +95,6 @@ function send2(){
         object.description = naamvakje.parentNode.children[5].value
         console.log(naamvakje);
         
-      
-     console.log(naamvakje);
     var objectjson = JSON.stringify(object);
    
 
@@ -109,6 +107,36 @@ function send2(){
             xhttp.send(objectjson);
   
 }
+
+
+
+function getMonth(id){
+    
+    var selectMonth = document.getElementById('select_month');
+    var selectYear = document.getElementById('select_year');
+    
+    var selectedMonth = selectMonth.selectedOptions[0].value;
+    var selectedYear = selectYear.selectedOptions[0].value;
+       
+    var date = selectedYear+"-"+selectedMonth;
+    
+
+ 
+
+        $(document).ready(function(){
+                $.ajax({
+                   
+                    url: '/adminsmonths/'+id,
+                    type: 'GET',
+                    success: function () { 
+
+                    }
+                }); 
+            });
+       
+}
+    
+    
 
 
 

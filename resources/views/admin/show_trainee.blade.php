@@ -121,4 +121,40 @@ use App\Company;
                      </tr>
          @endforeach
      </table>
+        <hr>
+        <table>
+            <tr>
+                <th>Datum</th>
+                <th>Opdracht</th>
+                <th>Overuren</th>
+                <th>Kort verlof</th>
+                <th>vakantie</th>
+                <th>Ziek</th>
+                <th>Overig</th>
+                <th>Verklaring</th>
+            </tr>
+            <tr>
+            @foreach($hours as $hour)
+            <?php 
+                $obj = new Hours_declaration();
+                $obj->amount = $hour->amount;
+                $obj->date = $hour->date;
+                $obj->type = $hour->type;
+                $obj->statement = $hour->statement;
+                $obj->paid = $hour->paid;
+                $obj->approved = $hour->approved;
+                $obj->created_at = $hour->created_at;
+           ?>
+            <td>{{$hour->date}}</td>
+            <td>@if($hour->type == 'workhours'){{$hour->amount}}@endif</td>
+            <td>@if($hour->type == 'extrahours'){{$hour->amount}}@endif</td>
+            <td>@if($hour->type == 'abscense'){{$hour->amount}}@endif</td>
+            <td>@if($hour->type == 'holiday'){{$hour->amount}}@endif</td>
+            <td>@if($hour->type == 'sick'){{$hour->amount}}@endif</td>
+            <td>@if($hour->type == 'extra'){{$hour->amount}}@endif</td>
+            <td>{{$hour->statement}}</td>           
+        </tr>
+        @endforeach
+    <table>
+        <br><br><br><br><br><br>
  @endsection

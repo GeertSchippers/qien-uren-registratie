@@ -710,6 +710,107 @@
             "time": "2018-03-21T22:21:57+00:00"
         },
         {
+            "name": "kevupton/auto-swagger-ui",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevupton/auto-swagger-ui.git",
+                "reference": "382f11af9ae763933bbe7e93be145f373c55ff6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevupton/auto-swagger-ui/zipball/382f11af9ae763933bbe7e93be145f373c55ff6d",
+                "reference": "382f11af9ae763933bbe7e93be145f373c55ff6d",
+                "shasum": ""
+            },
+            "require": {
+                "kevupton/laravel-swagger": "^1.4",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^2.2",
+                "laravel/framework": "5.5.*",
+                "laravel/lumen-framework": "5.5.*"
+            },
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "Kevupton\\AutoSwaggerUI\\": "src/Kevupton/AutoSwaggerUI"
+                },
+                "files": [
+                    "src/Kevupton/AutoSwaggerUI/Helpers/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Upton",
+                    "email": "uptonkg@gmail.com"
+                }
+            ],
+            "description": "Want the swagger ui without having to set it up. Just install this package.",
+            "keywords": [
+                "php",
+                "swagger-ui"
+            ],
+            "time": "2017-10-11T05:13:13+00:00"
+        },
+        {
+            "name": "kevupton/laravel-swagger",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevupton/laravel-swagger.git",
+                "reference": "ed5e5d8e2326763d478ef904b47f4493ba017cac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevupton/laravel-swagger/zipball/ed5e5d8e2326763d478ef904b47f4493ba017cac",
+                "reference": "ed5e5d8e2326763d478ef904b47f4493ba017cac",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~2.3",
+                "php": ">=5.3",
+                "zircote/swagger-php": "^2.0"
+            },
+            "require-dev": {
+                "laravel/laravel": "^5.5",
+                "laravel/lumen": "^5.5"
+            },
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "Kevupton\\LaravelSwagger\\": "src/Kevupton/LaravelSwagger/"
+                },
+                "files": [
+                    "src/Kevupton/LaravelSwagger/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Upton",
+                    "email": "kevin@upton.tech"
+                }
+            ],
+            "description": "Laravel Swagger generator for the Model",
+            "keywords": [
+                "Swagger-PHP",
+                "eloquent",
+                "laravel",
+                "model",
+                "swagger"
+            ],
+            "time": "2017-10-11T05:21:45+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v5.2.45",
             "source": {

@@ -21,7 +21,7 @@
 
 
            <hr>
-        <div class=container-small>   
+        <div class=container-small>
             <div class="row">
                 {!! Form::open(['action' => ['TraineeDeclarationController@update', $user->id, $declaration->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
@@ -39,8 +39,8 @@
                            'lunch_diner' => 'lunch/diner',
                            'outings' => 'uitjes',
                            'extra' => 'overig']
-                        ) }} 
-                    </div>    
+                        ) }}
+                    </div>
                     <div class="form-group">
                         {{Form::label('totaal bon', 'totaal bon')}}
                         {{Form::number('total_receipt', $declaration->total_receipt, ['name' => 'total_receipt', 'id' => 'total_receipt', 'class' => 'form-control input-sm'])}}
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         {{Form::label('btw', 'btw')}}
                         {{Form::number('btw', $declaration->btw, ['name' => 'btw', 'id' => 'btw', 'class' => 'form-control input-sm'])}}
-                    </div>           
+                    </div>
                     <div class="form-group">
                         {{Form::label('beschrijving', 'beschrijving')}}
                         {{Form::textarea('description', $declaration->description, ['name' => 'description', 'id' => 'description', 'class' => 'form-control input-sm'])}}
@@ -60,9 +60,9 @@
 
                     {{Form::submit('updaten', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
-	</div>	
+	</div>
         </div><!-- end of .row (form) -->
         <hr>
-       </div>  
+       </div>
     </div>
 @endsection

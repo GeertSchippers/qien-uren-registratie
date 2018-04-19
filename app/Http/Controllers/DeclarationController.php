@@ -66,7 +66,8 @@ class DeclarationController extends Controller
      */
     public function show($id)
     {
-        //
+
+
     }
 
     /**

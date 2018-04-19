@@ -15,6 +15,8 @@
             <th>email </th>
             <th>Werknemers nr</th>
             <th>Bedrijf</th>
+            <th>Bekijk</th>
+            <th>Wijzig</th>
             
         </tr>
         @foreach($users as $user)
@@ -125,6 +127,8 @@
 @endsection
 @section('declarations')
        <h2> gemaakte declaraties</h2>
+
+      
         <table>
         <tr>
             <th>date_receipt</th>
@@ -136,7 +140,18 @@
             <th>updated_at</th>
             <th>user_id</th>
         </tr>
+        
+        <?php 
+        if(isset($_POST['obj'])){
+        $date = json_decode($_POST['obj'], true);
+        }
+//        error_log($date);
+        ?>
         @foreach($declarations as $declaration)
+        
+       
+        
+   
                     <tr>
                         <td>{{$declaration->date_receipt}}</td>
                         <td>{{$declaration->type}}</td>

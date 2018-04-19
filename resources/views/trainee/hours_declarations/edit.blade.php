@@ -23,7 +23,7 @@
            <hr>
         <div class=container-small>   
 	<div class="row">
-        {!! Form::open(['action' => ['TraineeHours_declarationController@update', $user->id ,$hours->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action' => ['TraineeHours_declarationController@update',$hours->id, $user->id ], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::hidden('_method','PUT')}}
                 {{Form::label('hoeveelheid', 'hoeveelheid')}}

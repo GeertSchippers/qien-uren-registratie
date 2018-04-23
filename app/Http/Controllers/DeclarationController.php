@@ -107,8 +107,16 @@ class DeclarationController extends Controller
         //
     }
     
-    public function sendDeclarations(){
-        echo " JOJOJO huP HUP goog BULK";
+    public function sendDeclarations($id,$status){
+
+        $declaration = Declaration::find($id);
         
-    }
+        
+            $declaration->status = $status;
+            $declaration->save();
+        
+    }     
+    
+        
 }
+

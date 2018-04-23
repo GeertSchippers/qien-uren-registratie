@@ -99,9 +99,9 @@ use App\Company;
              <th>Beschrijving</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" <?php if($hour->status == 1){echo 'checked';} ?>)" ></th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" <?php if($hour->status == 1){echo 'checked';} ?> ></th>
              
-             <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" ></th>
+             <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" <?php if($hour->status == 2){echo 'checked';} ?> ></th>
          </tr>
          @foreach($declarations as $declaration)
          <?php 

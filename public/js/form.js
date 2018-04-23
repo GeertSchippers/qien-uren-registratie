@@ -134,41 +134,94 @@ function getAll(id){
       location.reload();  
 }
     
-function selectAllChecked(){
-       
-    $('.checkbox').each(function(){
-
-        $(this).prop('checked',true);        
-//        alert($(this).attr('id'));
-        var declaratie_id = $(this).attr('id');
-        var last2 = declaratie_id.slice(11);
-        
-        
-        console.log(last2);
-        
-        $.get( "/bulkdeclarations/"+last2, function( data ) {
-                alert( "Data Loaded: " + data );
-        
-        });
-
-
-
-
-    });
+function selectAllChecked(id){
+    if ($('#selectAllChecked').is(":checked")){
     
- 
+            $('.checkbox').each(function(){
+
+              $(this).prop('checked',true);        
+                //alert($(this).attr('id'));
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(11);
+                var status = 1;
+
+                $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+
+                });
+
+            });
+    }else{
+    
+            $('.checkbox').each(function(){
+             
+              $(this).removeAttr('checked');
+
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(11);
+                var status = 0;
+
+                $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+
+                });
+
+            });
+    }
 }
     
   
-    
+ 
  
  
 
 //
-function selectAllPaid(){
-   $(".declarationtr .paid input[type='checkbox']").prop("checked", true);
-}
+function selectAllPaid(id){
+     if ($('#selectAllPaid').is(":checked") && $('#selectAllChecked').is(":checked")){
+         console.log("ischecked");
+    
+            $('.checkbox_paid').each(function(){
 
+              $(this).prop('checked',true);        
+                //alert($(this).attr('id'));
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(16);
+                var status = 2;
+
+                $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+
+                });
+
+            });
+    }else{
+        var declaratie_id = $(this).attr('id'); 
+        
+        if($('#selectAllChecked').not(":checked") || declaratie_id.not(":checked")) {
+                $('#selectAllPaid').removeAttr('checked');
+                alert("Eerst goedkeuren a.u.b.");
+            
+        }
+            $('.checkbox_paid').each(function(){
+             
+              $(this).removeAttr('checked');
+
+              var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(16);
+                var status = 1;
+
+                $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+
+                });
+
+            });
+    }
+}
 
 
 

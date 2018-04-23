@@ -139,7 +139,17 @@ function selectAllChecked(){
     $('.checkbox').each(function(){
 
         $(this).prop('checked',true);        
-
+//        alert($(this).attr('id'));
+        var declaratie_id = $(this).attr('id');
+        var last2 = declaratie_id.slice(11);
+        
+        
+        console.log(last2);
+        
+        $.get( "/bulkdeclarations/"+last2, function( data ) {
+                alert( "Data Loaded: " + data );
+        
+        });
 
 
 

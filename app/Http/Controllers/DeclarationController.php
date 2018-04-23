@@ -106,4 +106,9 @@ class DeclarationController extends Controller
     {
         //
     }
+    
+    public function sendDeclarations(){
+        echo " JOJOJO huP HUP goog BULK";
+        
+    }
 }

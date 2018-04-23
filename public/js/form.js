@@ -55,7 +55,7 @@ function send(){
     }
 
                        // Get the element with id="defaultOpen" and click on it
-                       document.getElementById("defaultOpen").click();
+//                       document.getElementById("defaultOpen").click();
 
 
 
@@ -74,7 +74,7 @@ function send(){
 
         }
                        // Get the element with id="defaultOpen" and click on it
-                       document.getElementById("defaultOpen2").click();
+//                       document.getElementById("defaultOpen2").click();
 
 
 
@@ -135,29 +135,21 @@ function getAll(id){
 }
     
 function selectAllChecked(){
-    
-    var checkbox = $('#selectAllChecked');
-     
-    var checkboxes = $(".declarationtr .checked input[type='checkbox']");
- 
-   
-    if(checkbox.is(':checked')){
-       checkboxes.prop("checked", true);
        
-            for (i = 0; i < checkboxes.length; i++) { 
-            console.log('Checked verzonden');
-        }
+    $('.checkbox').each(function(){
 
-    }else{
-        
-        checkboxes.removeAttr('checked');
-       
-        for (i = 0; i < checkboxes.length; i++) { 
-            console.log('Unchecked verzonden');
-              
-        }
-    }
+        $(this).prop('checked',true);        
+
+
+
+
+
+    });
+    
+ 
 }
+    
+  
     
  
  
@@ -166,3 +158,9 @@ function selectAllChecked(){
 function selectAllPaid(){
    $(".declarationtr .paid input[type='checkbox']").prop("checked", true);
 }
+
+
+
+
+
+

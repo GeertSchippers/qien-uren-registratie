@@ -98,7 +98,8 @@ use App\Company;
              <th>Betaald</th>
          </tr>
          @foreach($declarations as $declaration)
-         <?php $obj = new Declaration();
+         <?php 
+                 $obj = new Declaration();
                $obj->date_receipt = $declaration->date_receipt;
                $obj->total_receipt = $declaration->total_receipt;
                $obj->type = $declaration->type;

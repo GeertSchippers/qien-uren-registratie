@@ -2,11 +2,6 @@
 @section('content')
 
   <title>Wijzig trainee gegevens</title>
-  <style>
-    .tabcontent {
-      background-color: white;
-    }
-  </style>
 
 <!-- ======================== Urenregistratie formulier ------------------------------>
 
@@ -14,10 +9,10 @@
       <div class="container">
         <h2>Wijzig Trainee gegevens</h2>
 
-        <h3><a href='/admins/{{$user->id}}'class='btn btn-default'>terug</a><h3>
+        <h3><a href=''class='btn btn-default'>terug</a><h3>
 
 
-           <hr>
+        <hr>
         <div class=container-small>
 	<div class="row">
         {!! Form::open(['action' => ['TraineeController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}

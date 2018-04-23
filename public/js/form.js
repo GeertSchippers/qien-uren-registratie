@@ -49,6 +49,7 @@ function send(){
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
+                       
                        document.getElementById(tabName).style.display = "block";
                        evt.currentTarget.className += " active";
     }
@@ -119,20 +120,11 @@ function getMonth(id){
     var selectedYear = selectYear.selectedOptions[0].value;
        
     var date = selectedYear+"-"+selectedMonth;
-    
 
- 
-
-        $(document).ready(function(){
-                $.ajax({
-                   
-                    url: '/adminsmonths/'+id,
-                    type: 'GET',
-                    success: function () { 
-
-                    }
-                }); 
-            });
+        $.get( `/trainees/${id}/declarations/date/`+date, function( data ) {
+          alert( "Data Loaded: " + data );
+//         
+        });
        
 }
     

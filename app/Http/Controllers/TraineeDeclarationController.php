@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
@@ -7,6 +8,8 @@ use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
 use Auth;
+use Illuminate\Support\Facades\Input;
+
 class TraineeDeclarationController extends Controller
 {
     /**
@@ -14,21 +17,20 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $id)
+    public function index($id)
     {
 //        $company = Company::find($id);
-//        
 //        $user = User::find($id);
-//  
-//        $date = $request->input('date');
-//  
-//
-//        $declarations = Declaration::where('date_receipt','like',"$date%")->get();
-//
-//
+//        $date = Input::get('date');
+//        var_dump($date);
 //        
+//        $declarations = Declaration::where('date_receipt','like',"$date%")->get();   
+//     
+//        echo $declarations;
+//        
+//        return view('admin.show_trainee')->with(compact('user', 'declarations', 'company'));
 //
-//        return view('admin.check')->with(compact('user', 'declarations', 'company'));
+//
 
     }
     /**
@@ -59,9 +61,16 @@ class TraineeDeclarationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $date)
     {
+      $user = User::find($id);  
 
+      return $date;
+//      echo "pietpiet";
+//     
+//      $declarations = Declaration::where('user_id',$id)->get();
+//      
+//      return view('admin.check')->with(compact('declarations', 'user'));
     }
     /**
      * Show the form for editing the specified resource.

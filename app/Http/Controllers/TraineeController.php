@@ -8,6 +8,7 @@ use App\Declaration;
 use App\Company;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Input;
 
 
 class TraineeController extends ApiController
@@ -20,6 +21,7 @@ class TraineeController extends ApiController
 
     public function index()
     {
+
 
     }
     /**
@@ -39,8 +41,7 @@ class TraineeController extends ApiController
      */
     public function store(Request $request)
     {
-        //
-    }
+         }
     /**
      * Display the specified User and it's Declarations and Company.
      *
@@ -64,7 +65,7 @@ class TraineeController extends ApiController
      * )
      */
     public function show($id)
-    {
+    {  
       $user = User::find($id);
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
@@ -101,7 +102,7 @@ class TraineeController extends ApiController
         $select = [];
         foreach($companies as $company2){
             $select[$company2->id] = $company2->name;
-            error_log(http_build_query($select));
+ 
         }
         return view('admin.edit_trainee')->with(compact('user','company', 'select'));
 

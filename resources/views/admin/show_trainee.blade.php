@@ -78,6 +78,8 @@ use App\Company;
         ?>
         </select>
         <input type=button value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
+        <input type=button value="Select All" onclick="getAll(<?php echo $user->id; ?>)">
+        
         <?php 
             if(isset($date)){
           echo($date);
@@ -109,7 +111,7 @@ use App\Company;
                $obj->approved = $declaration->approved;
                $obj->created_at = $declaration->created_at;
           ?>
-                     <tr>
+                     <tr class="declarationtr">
                          <td>{{$declaration->date_receipt}}</td>
                          <td>{{$declaration->type}}</td>
                          <td>{{$declaration->total_receipt}}</td>

@@ -113,6 +113,8 @@ function send2(){
 
 function getMonth(id){
     
+    var html = document.getElementsByTagName('html');
+    console.log(html);
     var selectMonth = document.getElementById('select_month');
     var selectYear = document.getElementById('select_year');
     
@@ -122,12 +124,20 @@ function getMonth(id){
     var date = selectedYear+"-"+selectedMonth;
 
         $.get( `/trainees/${id}/declarations/date/`+date, function( data ) {
-          alert( "Data Loaded: " + data );
-//         
+
+          $(".declarationtr:not(:contains("+date+"))").remove();
+     
         });
        
 }
-    
+
+
+  function getAll(id){
+      location.reload();
+
+      
+      
+  }
     
 
 

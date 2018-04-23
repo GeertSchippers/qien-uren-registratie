@@ -33,10 +33,12 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
-        if($user->admin == 0){
+        if($user->role == 0){
             return '/trainees';
-        } else {
+        } elseif($user->role == 1){
            return '/admins';
+        } else{
+           return "/companies/$user->id";
         }
     }
 

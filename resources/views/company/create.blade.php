@@ -7,11 +7,15 @@
       urlRoot: '/companies'
     });
 
+    var User = Backbone.Model.extend({
+      urlRoot: '/register'
+    })
+
     var company = new Company();
 
     var saveOptions = {
       success: function (model, response, options) {
-        console.log('Succesfully saved');
+        console.log('Succesfully saved company with id: '+response);
       },
       error: function (model, response, options) {
           console.log("Could not save");

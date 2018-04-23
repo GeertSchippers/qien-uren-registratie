@@ -114,7 +114,7 @@ function send2(){
 function getMonth(id){
     
     var html = document.getElementsByTagName('html');
-    console.log(html);
+
     var selectMonth = document.getElementById('select_month');
     var selectYear = document.getElementById('select_year');
     
@@ -132,12 +132,9 @@ function getMonth(id){
 }
 
 
-  function getAll(id){
-      location.reload();
-
-      
-      
-  }
+function getAll(id){
+      location.reload();  
+}
     
 
 

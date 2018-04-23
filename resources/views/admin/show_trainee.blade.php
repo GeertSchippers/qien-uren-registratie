@@ -42,8 +42,7 @@ use App\Company;
                 $obj->date = $hour->date;
                 $obj->type = $hour->type;
                 $obj->statement = $hour->statement;
-                $obj->paid = $hour->paid;
-                $obj->approved = $hour->approved;
+                $obj->status = $hour->status;
                 $obj->created_at = $hour->created_at;
            ?>
                      <tr>
@@ -52,8 +51,8 @@ use App\Company;
                          <td>{{$hour->statement}}</td>
                          <td>{{$hour->created_at}}</td>
                          <td>{{$hour->updated_at}}</td>
-                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->approved == 1){echo 'checked';} ?> ></td>
-                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->paid == 1){echo 'checked';} ?> ></td>
+                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 1){echo 'checked';} ?> ></td>
+                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 2){echo 'checked';} ?> ></td>
                      </tr>
          @endforeach
      </table>
@@ -109,8 +108,7 @@ use App\Company;
                $obj->type = $declaration->type;
                $obj->btw = $declaration->btw;
                $obj->description = $declaration->description;
-               $obj->paid = $declaration->paid;
-               $obj->approved = $declaration->approved;
+               $obj->status = $declaration->status;
                $obj->created_at = $declaration->created_at;
           ?>
                      <tr>
@@ -121,8 +119,8 @@ use App\Company;
                          <td>{{$declaration->description}}</td>
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
-                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->approved == 1){echo 'checked';} ?>></td>
-                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->paid == 1){echo 'checked';} ?>></td>
+                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
+                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
                      </tr>
          @endforeach
      </table>
@@ -146,8 +144,7 @@ use App\Company;
                 $obj->date = $hour->date;
                 $obj->type = $hour->type;
                 $obj->statement = $hour->statement;
-                $obj->paid = $hour->paid;
-                $obj->approved = $hour->approved;
+                $obj->status = $hour->status;
                 $obj->created_at = $hour->created_at;
            ?>
             <td>{{$hour->date}}</td>

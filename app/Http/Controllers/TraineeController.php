@@ -75,11 +75,11 @@ class TraineeController extends ApiController
         $company->name = 'Geen bedrijf';
       }
 
-      if( Auth::user()->admin == 1 ){
+      if( Auth::user()->role == 1 ){
 
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
-      } else {
+      } elseif ( Auth::user()->role == 0 ) {
 
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
@@ -122,9 +122,9 @@ class TraineeController extends ApiController
         $new->email = $request->input('email');
 
         $new->company_id = $request->input('company');
-        $new->admin = $request->input('admin');
+        $new->role = $request->input('admin');
 
-        $new->save();        
+        $new->save();
 
         return redirect()->back();
     }

@@ -15,8 +15,8 @@ use App\User;
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
-   <!--<link href="{{ asset('css/style.css') }}" rel="stylesheet">--> 
-   <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">--> 
+   <!--<link href="{{ asset('css/style.css') }}" rel="stylesheet">-->
+   <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">-->
 
   <title>Formulier Trainee</title>
   <style>
@@ -54,7 +54,7 @@ use App\User;
            <button class="button button3" onclick="add_line()">+</button>
 
             <div id="form">
-           
+
               <input name=amount id=hours type="number" placeholder='Totaal Uren'>
               <select name=type id="type">
                 <option id=workhours value="workhours">gewerkte uren</option>
@@ -66,13 +66,13 @@ use App\User;
               </select>
 
                 <input name=date id=date type="date">
-                <textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td> 
+                <textarea name=statement id="statement" rows="2" cols="40" placeholder='Vul hier een beschrijving in'></textarea></td>
             </div>
-                
+
                 <div id=extraLine></div>
                 <td><input type="button" value="voer in" id="submit" onclick="send()"></td>
-             
-           
+
+
             <div class="tab">
               <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpen">Review</button>
               <button class="tablinks" onclick="openTab(event, 'approved')">Goedgekeurd</button>
@@ -92,7 +92,7 @@ use App\User;
                       <th>Wijzigen</th>
                   </tr>
                   @foreach($hours as $hour)
-                      @if($hour->approved == 0)
+                      @if($hour->status == 0)
                       <tr>
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
@@ -105,7 +105,7 @@ use App\User;
                   @endforeach
           </table>
         </div>
-        
+
 
         <div id="approved" class="tabcontent">
           <h3>Goedgekeurd</h3>
@@ -120,7 +120,7 @@ use App\User;
                       <th>Wijzigen</th>
                   </tr>
                   @foreach($hours as $hour)
-                      @if($hour->approved == 1)
+                      @if($hour->status == 1)
                       <tr>
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
@@ -147,7 +147,7 @@ use App\User;
                       <th>Wijzigen</th>
                   </tr>
                   @foreach($hours as $hour)
-                      @if($hour->paid == 1)
+                      @if($hour->status == 2)
                       <tr>
                           <td>{{$hour->amount}}</td>
                           <td>{{$hour->type}}</td>
@@ -223,7 +223,7 @@ use App\User;
                   <th>updated_at</th>
               </tr>
               @foreach($declarations as $declaration)
-                @if($declaration->approved == 0)
+                @if($declaration->status == 0)
                           <tr>
                               <td>{{$declaration->date_receipt}}</td>
                               <td>{{$declaration->type}}</td>
@@ -251,7 +251,7 @@ use App\User;
                   <th>updated_at</th>
               </tr>
               @foreach($declarations as $declaration)
-                @if($declaration->approved == 1)
+                @if($declaration->status == 1)
                           <tr>
                               <td>{{$declaration->date_receipt}}</td>
                               <td>{{$declaration->type}}</td>
@@ -279,7 +279,7 @@ use App\User;
                   <th>updated_at</th>
               </tr>
               @foreach($declarations as $declaration)
-                @if($declaration->paid == 1)
+                @if($declaration->status == 2)
                           <tr>
                               <td>{{$declaration->date_receipt}}</td>
                               <td>{{$declaration->type}}</td>

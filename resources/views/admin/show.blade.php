@@ -17,10 +17,10 @@
             <th>Bedrijf</th>
             <th>Bekijk</th>
             <th>Wijzig</th>
-            
+
         </tr>
         @foreach($users as $user)
-            @if($user->admin == 0)
+            @if($user->role == 0)
                     <tr>
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
@@ -31,12 +31,12 @@
                                     <td>{{$company->name}}</td>
                                 @endif
                             @endforeach
-                           
+
                             <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
 
                             <td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
-                               
-                    
+
+
                     </tr>
             @endif
         @endforeach
@@ -44,7 +44,7 @@
     <h2>Uren</h2>
 @endsection
 @section('review')
-    
+
     <table>
         <h3>Review</h3>
             <tr>
@@ -57,7 +57,7 @@
                 <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
-                @if($hour->approved == 0)
+                @if($hour->status == 0)
                 <tr>
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
@@ -84,7 +84,7 @@
                 <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
-                @if($hour->approved == 1)
+                @if($hour->status == 1)
                 <tr>
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
@@ -111,7 +111,7 @@
                 <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
-                @if($hour->paid == 1)
+                @if($hour->status == 2)
                 <tr>
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
@@ -128,7 +128,7 @@
 @section('declarations')
        <h2> gemaakte declaraties</h2>
 
-      
+
         <table>
         <tr>
             <th>date_receipt</th>
@@ -140,18 +140,18 @@
             <th>updated_at</th>
             <th>user_id</th>
         </tr>
-        
-        <?php 
+
+        <?php
         if(isset($_POST['obj'])){
         $date = json_decode($_POST['obj'], true);
         }
 //        error_log($date);
         ?>
         @foreach($declarations as $declaration)
-        
-       
-        
-   
+
+
+
+
                     <tr>
                         <td>{{$declaration->date_receipt}}</td>
                         <td>{{$declaration->type}}</td>

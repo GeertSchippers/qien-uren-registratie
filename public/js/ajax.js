@@ -4,9 +4,9 @@ function approveDeclaration(id, obj){
   var checked = document.getElementById('declaration'+id).checked;
 
     if(checked){
-      obj.approved = 1;
+      obj.status = 1;
     } else {
-      obj.approved = 0;
+      obj.status = 0;
     }
 
     obj = JSON.stringify(obj);
@@ -24,15 +24,15 @@ function approveDeclaration(id, obj){
 function payDeclaration(id, obj){
   var checked = document.getElementById('declaration_paid'+id).checked;
 
-  if(obj.approved == 0){
+  if(obj.status == 0){
     document.getElementById('declaration_paid'+id).checked = false;
     return alert('Declaratie moet eerst goedgekeurd worden.');
   }
 
   if(checked){
-    obj.paid = 1;
+    obj.status = 2;
   } else {
-    obj.paid = 0;
+    obj.status = 1;
   }
 
     obj = JSON.stringify(obj);
@@ -53,9 +53,9 @@ function approveHoursDeclaration(id, obj){
   var checked = document.getElementById('hours_declaration'+id).checked;
 
   if(checked){
-    obj.approved = 1;
+    obj.status = 1;
   } else {
-    obj.approved = 0;
+    obj.status = 0;
   }
 
     obj = JSON.stringify(obj);
@@ -73,15 +73,15 @@ function approveHoursDeclaration(id, obj){
 function payHoursDeclaration(id, obj){
   var checked = document.getElementById('hours_declaration_paid'+id).checked;
 
-  if(obj.approved == 0){
+  if(obj.status == 0){
     document.getElementById('hours_declaration_paid'+id).checked = false;
     return alert('Uren declaratie moet eerst goedgekeurd worden.');
   }
 
   if(checked){
-    obj.paid = 1;
+    obj.status = 2;
   } else {
-    obj.paid = 0;
+    obj.status = 1;
   }
 
     obj = JSON.stringify(obj);

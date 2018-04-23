@@ -4,9 +4,9 @@ function add_line(){
 
     var original = document.getElementById('form');
 //    console.log(original);
-    var clone = original.cloneNode(true); 
+    var clone = original.cloneNode(true);
           clone.id = "form" + ++i;
-             
+
                 document.getElementById('extraLine').appendChild(clone);
 
 }
@@ -14,17 +14,17 @@ function add_line(){
 
 function send(){
 
-    
-    var row = document.getElementById('form'); 
+
+    var row = document.getElementById('form');
 
     var naamvakje = row.firstChild;
-  
+
     var object = {};
         object.amount = naamvakje.parentNode.children[1].value;
         object.type = naamvakje.parentNode.children[2].value;
         object.date = naamvakje.parentNode.children[3].value;
         object.statement = naamvakje.parentNode.children[4].value;
-     
+
     var objectjson = JSON.stringify(object);
 
             xhttp = new XMLHttpRequest();
@@ -34,7 +34,7 @@ function send(){
             xhttp.open('POST', '/hours_declarations', true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(objectjson);
-  
+
 }
 
 
@@ -44,7 +44,7 @@ function send(){
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
             }
-            
+
             tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -56,9 +56,9 @@ function send(){
 
                        // Get the element with id="defaultOpen" and click on it
                        document.getElementById("defaultOpen").click();
-    
 
-    
+
+
     function openTab2(evt2, tabName2) {
         var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent2");
@@ -81,23 +81,23 @@ function send(){
 
 function send2(){
 
-    
-    
-    var row = document.getElementById('form_declarations'); 
+
+
+    var row = document.getElementById('form_declarations');
 
     var naamvakje = row.firstChild;
 
     var object = {};
-    
+
         object.date_receipt= naamvakje.parentNode.children[1].value;
         object.type = naamvakje.parentNode.children[2].value;
         object.total_receipt = naamvakje.parentNode.children[3].value;
         object.btw = naamvakje.parentNode.children[4].value
         object.description = naamvakje.parentNode.children[5].value
         console.log(naamvakje);
-        
+
     var objectjson = JSON.stringify(object);
-   
+
 
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
@@ -106,21 +106,19 @@ function send2(){
             xhttp.open('POST', '/declarations', true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(objectjson);
-  
+
 }
 
 
 
 function getMonth(id){
-    
-    var html = document.getElementsByTagName('html');
 
     var selectMonth = document.getElementById('select_month');
     var selectYear = document.getElementById('select_year');
-    
+
     var selectedMonth = selectMonth.selectedOptions[0].value;
     var selectedYear = selectYear.selectedOptions[0].value;
-       
+
     var date = selectedYear+"-"+selectedMonth;
 
         $.get( `/trainees/${id}/declarations/date/`+date, function( data ) {
@@ -136,6 +134,4 @@ function getAll(id){
       location.reload();  
 }
     
-
-
 

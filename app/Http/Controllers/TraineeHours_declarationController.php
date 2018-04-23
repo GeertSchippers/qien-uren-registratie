@@ -84,7 +84,6 @@ class TraineeHours_declarationController extends Controller
         $hours->save();
 //        return redirect()->back()->with('succes', 'Uren succesvol aangepast');
         return redirect("/trainees/$user->id");
- 
 
     }
     /**s

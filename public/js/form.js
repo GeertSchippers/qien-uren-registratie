@@ -134,4 +134,17 @@ function getAll(id){
       location.reload();  
 }
     
+function selectAllChecked(){
 
+           $(".declarationtr .checked input[type='checkbox']").prop("checked", true);
+//            alert($(this).attr('id'));
+}
+    
+ 
+ 
+
+
+function selectAllPaid(){
+    alert('werk2t');
+//    $(".checked: contains().remove();
+}

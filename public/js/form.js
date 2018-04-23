@@ -135,9 +135,8 @@ function getAll(id){
 }
     
 function selectAllChecked(){
+   $(".declarationtr .checked input[type='checkbox']").prop("checked", true);
 
-           $(".declarationtr .checked input[type='checkbox']").prop("checked", true);
-//            alert($(this).attr('id'));
 }
     
  
@@ -145,6 +144,5 @@ function selectAllChecked(){
 
 
 function selectAllPaid(){
-    alert('werk2t');
-//    $(".checked: contains().remove();
+   $(".declarationtr .paid input[type='checkbox']").prop("checked", true);
 }

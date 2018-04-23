@@ -89,7 +89,7 @@
                         </div>
 
                          <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Bedrijf</label>
+                            <label for="company_id" class="col-md-4 control-label">Bedrijf</label>
 
                             <div class="col-md-6">
                                 <input id="company_id" type="text" class="form-control" name="company_id" value="{{ old('company_id') }}">
@@ -97,6 +97,20 @@
                                 @if ($errors->has('company_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('company_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">Rol</label>
+
+                            <div class="col-md-6">
+                                <input id="role" type="text" class="form-control" name="role" value="{{ old('role') }}">
+
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                                 @endif
                             </div>

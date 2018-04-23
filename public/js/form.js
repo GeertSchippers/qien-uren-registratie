@@ -135,14 +135,34 @@ function getAll(id){
 }
     
 function selectAllChecked(){
-   $(".declarationtr .checked input[type='checkbox']").prop("checked", true);
+    
+    var checkbox = $('#selectAllChecked');
+     
+    var checkboxes = $(".declarationtr .checked input[type='checkbox']");
+ 
+   
+    if(checkbox.is(':checked')){
+       checkboxes.prop("checked", true);
+       
+            for (i = 0; i < checkboxes.length; i++) { 
+            console.log('Checked verzonden');
+        }
 
+    }else{
+        
+        checkboxes.removeAttr('checked');
+       
+        for (i = 0; i < checkboxes.length; i++) { 
+            console.log('Unchecked verzonden');
+              
+        }
+    }
 }
     
  
  
 
-
+//
 function selectAllPaid(){
    $(".declarationtr .paid input[type='checkbox']").prop("checked", true);
 }

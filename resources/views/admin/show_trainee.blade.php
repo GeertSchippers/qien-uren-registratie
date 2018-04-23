@@ -99,7 +99,8 @@ use App\Company;
              <th>Beschrijving</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" ></th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 1){echo 'checked';} ?>)" ></th>
+             
              <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" ></th>
          </tr>
          @foreach($declarations as $declaration)
@@ -123,6 +124,7 @@ use App\Company;
                          <td>{{$declaration->updated_at}}</td>
                          <td class="checked"><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
                          <td class="paid"><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
+                         
                      </tr>
          @endforeach
      </table>

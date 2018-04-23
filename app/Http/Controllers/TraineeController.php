@@ -20,7 +20,7 @@ class TraineeController extends ApiController
 
     public function index()
     {
-
+      echo " Hallo ";
     }
     /**
      * Show the form for creating a new resource.

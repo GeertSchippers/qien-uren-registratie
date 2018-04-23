@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
          $user = Auth::user();
-
+        
         if($user->role == 0){
             return redirect("/trainees/$user->id");
         } elseif($user->role == 1) {

@@ -38,7 +38,7 @@ class AuthController extends Controller
         } elseif($user->role == 1){
            return '/admins';
         } else{
-           return "/companies/$user->id";
+           return "/companies/$user->company_id";
         }
     }
 

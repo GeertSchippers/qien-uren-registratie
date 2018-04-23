@@ -26,13 +26,13 @@ class HomeController extends Controller
     public function index()
     {
          $user = Auth::user();
-        
+
         if($user->role == 0){
             return redirect("/trainees/$user->id");
         } elseif($user->role == 1) {
            return redirect("/admins/$user->id");
         } else {
-           return redirect("/companies/$user->id");
+           return redirect("/companies/$user->company_id");
         }
     }
 }

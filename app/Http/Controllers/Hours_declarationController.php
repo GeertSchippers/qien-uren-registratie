@@ -53,6 +53,7 @@ class Hours_declarationController extends Controller
         $new->user_id = $user->id;
         $new->status = 0;
         $new->save();
+        return redirect()->back();
     }
 
     /**

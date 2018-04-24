@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
+
+<?php
+use App\Company;
+$companies = Company::all();
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -92,8 +98,19 @@
                             <label for="company_id" class="col-md-4 control-label">Bedrijf</label>
 
                             <div class="col-md-6">
-                                <input id="company_id" type="text" class="form-control" name="company_id" value="{{ old('company_id') }}">
-
+                                <!--<input id="company_id" type="text" class="form-control" name="company_id" value="{{ old('company_id') }}">-->
+                                <select id="company_id" name="company_id">
+                                    <option id="company_id" name="company_id" selected="selected" value="" class="form-control">Geen bedrijf</option>
+                                       
+                                        <?php
+                                             foreach($companies as $company) {  ?>
+                                    
+                                                <option name="company_id" value='{{$company->id}}' class="form-control">{{$company->name}}</option>
+                                        
+                                        <?php } ?>  
+                                                
+                                </select> 
+                                
                                 @if ($errors->has('company_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('company_id') }}</strong>
@@ -106,8 +123,14 @@
                             <label for="role" class="col-md-4 control-label">Rol</label>
 
                             <div class="col-md-6">
-                                <input id="role" type="text" class="form-control" name="role" value="{{ old('role') }}">
-
+                                <!--<input id="role" type="text" class="form-control" name="role" value="{{ old('role') }}">-->
+                                <select id="role" name="role">
+                                    <option id="role" name="role" selected="selected" value=0 class="form-control">Trainee</option>
+                                    <option id="role" name="role" selected="selected" value=1 class="form-control">Admin</option>
+                                    <option id="role" name="role" selected="selected" value=2 class="form-control">Bedrijf</option>
+                                               
+                                </select> 
+     
                                 @if ($errors->has('role'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>

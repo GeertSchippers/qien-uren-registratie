@@ -6,25 +6,30 @@ use App\Company;
  ?>
  @extends('layouts.admin')
  @section('content')
-
- <script>
-
-
- </script>
-
  <style>
      th, td{
          border: 1px solid;
          padding: 5px;
      }
+    
  </style>
+   <div class=container-hours>
+    <div class="container">
      Voornaam: {{$user->first_name}} <br>
      Achternaam: {{$user->last_name}} <br>
      Email: {{$user->email}} <br>
      Werknemers Nummer: {{$user->employee_number}} <br>
      Bedrijf: {{$company->name}} <br>
 
-     <h2>gemaakte uren</h2>
+         <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'review')" id="defaultOpentrainees">Gemaakte uren</button>
+          <button class="tablinks" onclick="openTab(event, 'approved')">Declaraties</button>
+         
+        </div>
+
+
+        <div id="review" class="tabcontent">
+              <h2>Gemaakte uren</h2>
          <table>
          <tr>
              <th>Aantal</th>
@@ -54,8 +59,18 @@ use App\Company;
                          <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 2){echo 'checked';} ?> ></td>
                      </tr>
          @endforeach
+         
      </table>
-        <h2> gemaakte declaraties</h2>
+    </div>
+   </div>
+ </div>
+
+
+
+  <div class=container-hours>
+    <div class="container">
+     <div id="approved" class="tabcontent">
+        <h2> Gemaakte declaraties</h2>
        <select id="select_month">
            <option>01</option>
            <option>02</option>
@@ -72,13 +87,11 @@ use App\Company;
        </select>
 
        <select id="select_year">
-        <?php
-           $currentYear = date('Y');
-           echo '<option>'.$currentYear.'</option>';
+            <?php
+               $currentYear = date('Y');
+               echo '<option>'.$currentYear.'</option>';
 
-
-
-        ?>
+            ?>
         </select>
         <input type=button id="select_button" value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
         <input type=button value="Select All" onclick="getAll(<?php echo $user->id; ?>)">
@@ -88,7 +101,7 @@ use App\Company;
           echo($date);
           }
         ?>
-        
+
          <table>
              
          <tr>
@@ -128,8 +141,12 @@ use App\Company;
                      </tr>
          @endforeach
      </table>
+
+        
+
+  </div>    
         <hr>
-        <table>
+<!--        <table>
             <tr>
                 <th>Datum</th>
                 <th>Opdracht</th>
@@ -161,6 +178,11 @@ use App\Company;
             <td>{{$hour->statement}}</td>
         </tr>
         @endforeach
-    </table>
+    </table>-->
         <br><br><br><br><br><br>
+        
+ <script>
+     document.getElementById("defaultOpentrainees").click();
+    
+ </script>
  @endsection

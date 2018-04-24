@@ -47,6 +47,7 @@ Route::get('/trainees/{id}/declarations/date/{date}', 'TraineeDeclarationControl
 
 
 Route::get('/bulkdeclarations/{id}/{status}', 'DeclarationController@sendDeclarations');
+
 // -------------------- Resourced Routes ----------------------
 
 Route::auth();

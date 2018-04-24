@@ -38,6 +38,7 @@
                 {{Form::select('company', $select , $user->company_id ,['name' => 'company', 'id' => 'company', 'class'=>'form-control'])}}
 
             </div>
+        <?php print_r($select);?>
             <div class="form-group">
                 {{Form::label('admin', 'admin')}}
                 {{Form::number('admin', $user->role, ['name' => 'admin', 'id' => 'admin', 'class' => 'form-control input-sm'])}}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @extends('segment')
 @section('register')
-    <li><a href="{{ url('/register') }}">Trainee Aanmaken</a></li>
+    <li><a href="{{ url('/register') }}">Gebruiker Aanmaken</a></li>
     <li><a href="{{ url('/companies/create') }}">Bedrijf Aanmaken</a></li>
 @endsection
 @section('content')

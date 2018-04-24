@@ -5,6 +5,9 @@
     
 }
 
+hr{
+    background: #9900ff;
+}
 h2, h1{
     margin-top: 50px;
     text-align: center;
@@ -65,4 +68,3 @@ th, td{
         border: 1px solid;
         padding: 5px;
 }
-

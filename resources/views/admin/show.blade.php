@@ -1,11 +1,50 @@
 @extends('layouts.admin')
 @section('users')
+<script>
+  function openFile(filename){
+
+    $("#bijlageContainer").css("display","inline-block");
+    $("#bijlage").attr("src","/storage/"+filename);
+  }
+
+  function closeFile(){
+    $("#bijlageContainer").css("display","none");
+  }
+
+</script>
 <style>
     th, td{
         border: 1px solid;
         padding: 5px;
     }
+
+    #bijlageContainer {
+      text-align: center;
+      position:absolute;
+      bottom: 100px;
+      width: 100%;
+      height: 600px;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+    }
+
+    #bijlage {
+      height: 100%;
+    }
+
+    .fa-times-circle {
+       color: white;
+       font-size: 30px;
+       position: absolute;
+       left: 10px;
+       top: 10px;
+    }
 </style>
+  <div id="bijlageContainer">
+    <a onclick=closeFile()><i class="fas fa-times-circle"></i></a>
+    <img id="bijlage" />
+  </div>
+
     <h1>Hallo Admin</h1>
     <h3>Overzicht trainees</h3>
     <table>
@@ -174,6 +213,7 @@
             <th>created_at</th>
             <th>updated_at</th>
             <th>user_id</th>
+            <th>Bijlage</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 0)
@@ -190,6 +230,12 @@
                                 <td>{{$user->email}}</td>
                             @endif
                         @endforeach
+                        <td>
+                          @if($declaration->include != 'No File')
+
+                            <a onclick="openFile('{{$declaration->include}}')" class='btn btn-default'>Zie Bijlage </a>
+                          @endif
+                        </td>
                 </tr>
         @endif
     @endforeach
@@ -240,6 +286,7 @@
             <th>created_at</th>
             <th>updated_at</th>
             <th>user_id</th>
+            <th>Bijlagen</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 2)

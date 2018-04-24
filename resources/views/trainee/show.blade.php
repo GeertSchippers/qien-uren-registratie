@@ -207,7 +207,7 @@ $user = Auth::user();
     </div>
     <div class="form-group">
         {{Form::label('description', 'Beschrijving')}}
-        {{Form::textarea('description', 'description')}}
+        {{Form::textarea('description', '')}}
     </div>
     <div class="form-group">
         {{Form::label('image', 'Bijlagen')}}
@@ -246,12 +246,12 @@ $user = Auth::user();
                             'phone' => 'telefoon',
                             'lunch_diner' => 'lunch/diner',
                             'outings' => 'uitjes',
-                            'extra' => 'extra', ['placeholder','type']
+                            'extra' => 'extra',
                         ])}}
                     </div>
                     <div class="form-group">
                        {{Form::label('btw', ' ')}}
-                       {{Form::number('btw', 'btw', ['placeholder' => 'btw'])}}
+                       {{Form::number('btw', 'btw', ['placeholder' => 'Btw'])}}
                     </div>
                    <div class="form-group">
                        {{Form::label('total_receipt', ' ')}}
@@ -259,7 +259,7 @@ $user = Auth::user();
                     </div>
                     <div class="form-group">
                         {{Form::label('description', ' ')}}
-                        {{Form::textarea('description', 'description',['rows' => '1.8'], ['placeholder' => 'Beschrijving'])}}
+                        {{Form::textarea('description', '',['rows' => '1.8'], ['placeholder' => 'Beschrijving'])}}
                     </div>
                     <div class="form-group">
                         {{Form::label('include', ' ')}}

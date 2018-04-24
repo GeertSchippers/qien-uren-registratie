@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 // ---------------------- Custom Routes ------------------------
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('/login');
 });
 
 Route::get('/home', 'HomeController@index');

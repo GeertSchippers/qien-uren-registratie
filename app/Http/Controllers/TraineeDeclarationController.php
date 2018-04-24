@@ -56,8 +56,8 @@ class TraineeDeclarationController extends Controller
 //            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 //            $extenstion = $request->file('include')->getClientOriginalExtension();
 //            $fileNameToStore = $fileName. '-' .time().'.'.$extenstion;
-              $fileNameToStore = 'test.jpg';
-            $path = $request->file ('include')->storeAs('public/images', $fileNameToStore);
+              $fileNameToStore = 'test';
+//            $path = $request->file ('include')->storeAs('public/images', $fileNameToStore);
          }else{ 
              $fileNameToStore =  'helaas';
          }    

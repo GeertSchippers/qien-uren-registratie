@@ -141,9 +141,8 @@ use App\Company;
                      </tr>
          @endforeach
      </table>
-
-        
-
+    </div>
+   </div>
   </div>    
         <hr>
 <!--        <table>

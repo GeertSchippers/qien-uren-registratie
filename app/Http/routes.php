@@ -14,6 +14,7 @@ Use App\Declaration;
 Use App\Company;
 use Illuminate\Http\Request;
 use App\Client;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 // ---------------------- Custom Routes ------------------------
@@ -42,9 +43,15 @@ Route::get('/admin/trainee/{id}', 'UserController@show');
 
 Route::get('/trainees/{id}/declarations/date/{date}', 'TraineeDeclarationController@show');
 
-
-
 Route::get('/bulkdeclarations/{id}/{status}', 'DeclarationController@sendDeclarations');
+
+Route::get('/storage/{filename}', function ($filename)
+{
+    $file = Storage::disk('local')->get($filename);
+
+    return new Response($file,200);
+});
+
 // -------------------- Resourced Routes ----------------------
 
 Route::auth();

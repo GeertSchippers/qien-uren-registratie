@@ -114,19 +114,28 @@ function send2(){
 
 
 
-function getMonth(id){
+function getMonthDeclarations(id){
 
-    var selectMonth = $( "#select_month option:selected" ).val();
-    var selectYear = $( "#select_year option:selected" ).val();
+    var selectMonth = $( "#select_month_declarations option:selected" ).val();
+    var selectYear = $( "#select_year_declarations option:selected" ).val();
 
 
     var date = selectYear+"-"+selectMonth;
         console.log(date);
-        $.get( `/trainees/${id}/declarations/date/`+date, function( ) {
-
           $(".declarationtr:not(:contains("+date+"))").remove();
-          $( "#select_button" ).hide();
-        });
+          $( "#select_button_declarations" ).hide();
+}
+
+function getMonthHourDeclarations(id){
+
+    var selectMonth = $( "#select_month_hour_declarations option:selected" ).val();
+    var selectYear = $( "#select_year_hour_declarations option:selected" ).val();
+
+
+    var date = selectYear+"-"+selectMonth;
+        console.log(date);
+          $(".hour_declarationtr:not(:contains("+date+"))").remove();
+          $( "#select_button_hour_declarations" ).hide();
 }
 
 
@@ -134,11 +143,11 @@ function getAll(id){
       location.reload();
 }
 
-function selectAllChecked(id){
+function selectAllCheckedDeclarations(){
 
     if ($('#selectAllChecked').is(":checked")){
 
-            $('.checkbox').each(function(){
+            $('.checkbox_declarations').each(function(){
 
               $(this).prop('checked',true);
                 //alert($(this).attr('id'));
@@ -156,7 +165,7 @@ function selectAllChecked(id){
             ;
     }else{
 
-            $('.checkbox').each(function(){
+            $('.checkbox_declarations').each(function(){
 
               $(this).removeAttr('checked');
 
@@ -177,11 +186,11 @@ function selectAllChecked(id){
 }
 
 
-function selectAllPaid(id){
-     if ($('#selectAllPaid').is(":checked") && $('#selectAllChecked').is(":checked")){
+function selectAllPaidDeclarations(){
+     if ($('#selectAllPaidDeclarations').is(":checked") && $('#selectAllCheckedDeclarations').is(":checked")){
          console.log("ischecked");
 
-            $('.checkbox_paid').each(function(){
+            $('.checkbox_paid_declarations').each(function(){
 
               $(this).prop('checked',true);
                 //alert($(this).attr('id'));
@@ -199,12 +208,12 @@ function selectAllPaid(id){
     }else{
         var declaratie_id = $(this).attr('id');
 
-        if($('#selectAllChecked').not(":checked") || declaratie_id.not(":checked")) {
-                $('#selectAllPaid').removeAttr('checked');
+        if($('#selectAllCheckedDeclarations').not(":checked") || declaratie_id.not(":checked")) {
+                $('#selectAllPaidDeclarations').removeAttr('checked');
                 alert("Eerst goedkeuren a.u.b.");
 
         }
-            $('.checkbox_paid').each(function(){
+            $('.checkbox_paid_declarations').each(function(){
 
               $(this).removeAttr('checked');
 
@@ -213,6 +222,95 @@ function selectAllPaid(id){
                 var status = 1;
 
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+                          window.location.reload();
+
+                });
+
+            });
+    }
+}
+
+function selectAllCheckedHourDeclarations(){
+
+    if ($('#selectAllCheckedHourDeclarations').is(":checked")){
+
+            $('.checkbox_hour_declarations').each(function(){
+
+              $(this).prop('checked',true);
+                //alert($(this).attr('id'));
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(17);
+                var status = 1;
+                console.log(last2);
+                $.get( "/bulkhourdeclarations/"+last2+"/"+status, function( data ) {
+
+
+
+                });
+
+            });
+            ;
+    }else{
+
+            $('.checkbox_hour_declarations').each(function(){
+
+              $(this).removeAttr('checked');
+
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(17);
+                var status = 0;
+
+                $.get( "/bulkhourdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+                          window.location.reload();
+
+                });
+
+            });
+
+    }
+}
+
+
+function selectAllPaidHourDeclarations(){
+     if ($('#selectAllPaidHourDeclarations').is(":checked") && $('#selectAllCheckedHourDeclarations').is(":checked")){
+         console.log("ischecked");
+
+            $('.checkbox_paid_hour_declarations').each(function(){
+
+              $(this).prop('checked',true);
+                //alert($(this).attr('id'));
+                var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(22);
+                var status = 2;
+
+                $.get( "/bulkhourdeclarations/"+last2+"/"+status, function( data ) {
+
+                          console.log("All succesfully updated");
+                          window.location.reload();
+                });
+
+            });
+    }else{
+        var declaratie_id = $(this).attr('id');
+
+        if($('#selectAllCheckedHourDeclarations').not(":checked") || declaratie_id.not(":checked")) {
+                $('#selectAllPaidHourDeclarations').removeAttr('checked');
+                alert("Eerst goedkeuren a.u.b.");
+
+        }
+            $('.checkbox_paid_hour_declarations').each(function(){
+
+              $(this).removeAttr('checked');
+
+              var declaratie_id = $(this).attr('id');
+                var last2 = declaratie_id.slice(22);
+                var status = 1;
+
+                $.get( "/bulkhourdeclarations/"+last2+"/"+status, function( data ) {
 
                           console.log("All succesfully updated");
                           window.location.reload();

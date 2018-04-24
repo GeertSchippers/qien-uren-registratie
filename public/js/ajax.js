@@ -10,7 +10,7 @@ function approveDeclaration(id, obj){
     }
 
     obj = JSON.stringify(obj);
-
+ 
   $.ajax({
     url: "/declarations/"+id,
     method: "PUT",

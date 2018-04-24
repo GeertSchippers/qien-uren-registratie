@@ -42,8 +42,11 @@ Route::get('/formulier', function(){
 
 Route::get('/admin/trainee/{id}', 'UserController@show');
 
-Route::get('/adminsmonths/{id}', 'TraineeDeclarationController@index');
+Route::get('/trainees/{id}/declarations/date/{date}', 'TraineeDeclarationController@show');
 
+
+
+Route::get('/bulkdeclarations/{id}/{status}', 'DeclarationController@sendDeclarations');
 // -------------------- Resourced Routes ----------------------
 
 Route::auth();

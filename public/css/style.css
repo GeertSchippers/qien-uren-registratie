@@ -24,6 +24,17 @@ h2, h1{
     background: white;
 }
 
+
+  .tabcontent, .tabcontent2 {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+
+  th, td {
+    padding-right: 20px;
+  }
+
+
 /*-------------------input text style-----------------*/
 
 input{

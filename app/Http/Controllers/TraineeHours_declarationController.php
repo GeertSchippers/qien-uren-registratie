@@ -34,9 +34,9 @@ class TraineeHours_declarationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+
     }
     /**
      * Display the specified resource.
@@ -84,7 +84,6 @@ class TraineeHours_declarationController extends Controller
         $hours->save();
 //        return redirect()->back()->with('succes', 'Uren succesvol aangepast');
         return redirect("/trainees/$user->id");
-
 
     }
     /**s

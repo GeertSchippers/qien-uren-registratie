@@ -51,18 +51,15 @@ class TraineeDeclarationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-           'include' => 'image']);
-        
         if($request->hasFile('include')){
-            $fileNameWithExt = $request->file('include')->getClientOriginalName();
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            $extenstion = $request->file('include')->getClientOriginalExtension();
-            $fileNameToStore = $fileName. '-' .time().'.'.$extenstion;
+//            $fileNameWithExt = $request->file('include')->getClientOriginalName();
+//            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+//            $extenstion = $request->file('include')->getClientOriginalExtension();
+//            $fileNameToStore = $fileName. '-' .time().'.'.$extenstion;
+              $fileNameToStore = 'test.jpg';
             $path = $request->file ('include')->storeAs('public/images', $fileNameToStore);
          }else{ 
-             $fileNameToStore = 'null'; 
-             
+             $fileNameToStore =  'helaas';
          }    
         $user = Auth::user();
         $declaration = new Declaration;
@@ -72,7 +69,7 @@ class TraineeDeclarationController extends Controller
         $declaration->total_receipt = $request->input('total_receipt');
         $declaration->description = $request->input('description');
         $declaration->user_id = $user->id;
-        $declaration->image = $fileNameToStore;
+        $declaration->include = $fileNameToStore;
         $declaration->save();
         error_log($declaration);
         return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');

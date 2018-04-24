@@ -179,7 +179,7 @@ use App\Declaration;
 <!---========================-Declaratie formulier 2.0------------------------------>
 {!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
     <div class="form-group">
-        {{Form::label('date_receipt', 'date_receipt')}}
+        {{Form::label('date_receipt', 'Datum bon')}}
         {{Form::date('date_receipt', \Carbon\Carbon::now())}}
     </div>  
     <div class="form-group">

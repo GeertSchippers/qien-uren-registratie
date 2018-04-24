@@ -49,7 +49,6 @@ $user = Auth::user();
         <h2>Uren Declaraties</h2>
         
             <fieldset id='form'>
-                <button class="button button3" onclick="add_line()">+</button>
                 <input name=amount id=hours type="number" placeholder='Totaal Uren'>
                 <select name=type id="type">
                     <option id=workhours value="workhours">gewerkte uren</option>
@@ -103,12 +102,13 @@ $user = Auth::user();
 
 
         <div id="approved" class="tabcontent">
-            <table>
+           <table>
                   <tr>
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
                   </tr>
@@ -121,12 +121,11 @@ $user = Auth::user();
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-<!--                          <td><a>wijzig</a></td>-->
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
-            </table>
-
+          </table>
         </div>
 
          <div id="paid" class="tabcontent">
@@ -136,6 +135,7 @@ $user = Auth::user();
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
                   </tr>
@@ -148,7 +148,7 @@ $user = Auth::user();
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <!--<td><a>wijzig</a></td>-->
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
@@ -236,17 +236,16 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                               <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
-
+                          </tr>
                 @endif
               @endforeach
             </table>
             </div>
 
             <div id="aproved2" class="tabcontent2">
-              <table>
+                            <table>
               <tr>
                   <th>datum bon</th>
                   <th>type</th>
@@ -264,8 +263,8 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach
@@ -280,7 +279,7 @@ $user = Auth::user();
                   <th>totaal bon</th>
                   <th>btw</th>
                   <th>beschrijving</th>
-                  <!--<th>created_at</th>-->
+                  <th>created_at</th>
                   <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
@@ -291,8 +290,8 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach

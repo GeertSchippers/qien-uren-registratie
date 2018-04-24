@@ -1,5 +1,3 @@
-
-
 .header {
     margin: 0 auto;
     width: 100%;
@@ -7,6 +5,9 @@
     
 }
 
+hr{
+    background: #9900ff;
+}
 h2, h1{
     margin-top: 50px;
     text-align: center;
@@ -25,6 +26,17 @@ h2, h1{
 .tabcontent{
     background: white;
 }
+
+
+  .tabcontent, .tabcontent2 {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+
+  th, td {
+    padding-right: 20px;
+  }
+
 
 /*-------------------input text style-----------------*/
 
@@ -56,4 +68,3 @@ th, td{
         border: 1px solid;
         padding: 5px;
 }
-

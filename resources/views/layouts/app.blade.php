@@ -16,6 +16,10 @@
     <!-- Styles -->
 
 
+    <!--<link href="{{ asset('css/style.css') }}" rel="stylesheet">-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
     <link href="{{ asset('css/tabs_hoursDeclarations.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -30,8 +34,6 @@
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
 
     <script src="{{ URL::asset('js/form.js')}}"></script>
-
-
     <style>
         body {
             font-family: 'Lato';
@@ -56,23 +58,19 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     MijnQien
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
-                        @yield('register')
                     @else
                         <li><a href="{{ url('/logout') }}">Logout</a></li>
                         @yield('register')

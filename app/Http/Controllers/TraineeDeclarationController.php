@@ -1,12 +1,17 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Hours_declaration;
 use App\Declaration;
 use App\Company;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Auth;
+use Illuminate\Support\Facades\Input;
+
 class TraineeDeclarationController extends Controller
 {
     /**
@@ -14,21 +19,20 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $id)
+    public function index($id)
     {
 //        $company = Company::find($id);
-//        
 //        $user = User::find($id);
-//  
-//        $date = $request->input('date');
-//  
+//        $date = Input::get('date');
+//        var_dump($date);
 //
 //        $declarations = Declaration::where('date_receipt','like',"$date%")->get();
 //
+//        echo $declarations;
 //
-//        
+//        return view('admin.show_trainee')->with(compact('user', 'declarations', 'company'));
 //
-//        return view('admin.check')->with(compact('user', 'declarations', 'company'));
+//
 
     }
     /**
@@ -36,9 +40,9 @@ class TraineeDeclarationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
 
-    
+
+
     public function create()
     {
         //
@@ -49,9 +53,31 @@ class TraineeDeclarationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+
+        if($request->hasFile('image')){
+//            $fileNameWithExt = $request->file('include')->getClientOriginalName();
+//            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+              $extension = $request->file('image')->getClientOriginalExtension();
+//            $fileNameToStore = $fileName. '-' .time().'.'.$extenstion;
+              $fileNameToStore = $user->id.$user->last_name.time().'.'.$extension;
+              $file = $request->file('image');
+              Storage::disk('local')->put($fileNameToStore, File::get($file));
+         }else{
+             $fileNameToStore =  'No File';
+         }
+        $declaration = new Declaration;
+        $declaration->date_receipt = $request->input('date_receipt');
+        $declaration->type = $request->input('type');
+        $declaration->btw = $request->input('btw');
+        $declaration->total_receipt = $request->input('total_receipt');
+        $declaration->description = $request->input('description');
+        $declaration->user_id = $user->id;
+        $declaration->include = $fileNameToStore;
+        $declaration->save();
+        return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
     }
     /**
      * Display the specified resource.
@@ -59,9 +85,15 @@ class TraineeDeclarationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $date)
     {
+      $user = User::find($id);
 
+      return $date;
+
+//      $declarations = Declaration::where('user_id',$id)->get();
+////
+//      return view('admin.show_trainee')->with(compact('declarations', 'user'));
     }
     /**
      * Show the form for editing the specified resource.

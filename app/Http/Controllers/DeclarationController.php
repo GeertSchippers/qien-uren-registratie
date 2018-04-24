@@ -53,7 +53,7 @@ class DeclarationController extends Controller
         $new->btw = $data['btw'];
         $new->description = $data['description'];
         $new->user_id = $user->id;
-        $new->paid = 0;
+        $new->status = 0;
         $new->save();
 
     }
@@ -106,4 +106,17 @@ class DeclarationController extends Controller
     {
         //
     }
+    
+    public function sendDeclarations($id,$status){
+
+        $declaration = Declaration::find($id);
+        
+        
+            $declaration->status = $status;
+            $declaration->save();
+        
+    }     
+    
+        
 }
+

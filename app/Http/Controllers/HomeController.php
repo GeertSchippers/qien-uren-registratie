@@ -27,10 +27,12 @@ class HomeController extends Controller
     {
          $user = Auth::user();
 
-        if($user->admin == 0){
+        if($user->role == 0){
             return redirect("/trainees/$user->id");
-        } else {
+        } elseif($user->role == 1) {
            return redirect("/admins/$user->id");
+        } else {
+           return redirect("/companies/$user->company_id");
         }
     }
 }

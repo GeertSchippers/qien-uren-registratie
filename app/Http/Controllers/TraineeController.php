@@ -8,6 +8,7 @@ use App\Declaration;
 use App\Company;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Input;
 
 
 class TraineeController extends ApiController
@@ -39,8 +40,7 @@ class TraineeController extends ApiController
      */
     public function store(Request $request)
     {
-        //
-    }
+         }
     /**
      * Display the specified User and it's Declarations and Company.
      *
@@ -66,6 +66,7 @@ class TraineeController extends ApiController
     public function show($id)
     {
       $user = User::find($id);
+      
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
       if(isset($user->company_id)){
@@ -75,11 +76,11 @@ class TraineeController extends ApiController
         $company->name = 'Geen bedrijf';
       }
 
-      if( Auth::user()->admin == 1 ){
+      if( Auth::user()->role == 1 ){
 
           return view('admin.show_trainee')->with(compact('user','company','hours','declarations'));
 
-      } else {
+      } elseif ( Auth::user()->role == 0 ) {
 
           return view('/trainee/show')->with(compact('user','hours','declarations','company'));
 
@@ -101,7 +102,7 @@ class TraineeController extends ApiController
         $select = [];
         foreach($companies as $company2){
             $select[$company2->id] = $company2->name;
-            error_log(http_build_query($select));
+
         }
         return view('admin.edit_trainee')->with(compact('user','company', 'select'));
 
@@ -122,11 +123,11 @@ class TraineeController extends ApiController
         $new->email = $request->input('email');
 
         $new->company_id = $request->input('company');
-        $new->admin = $request->input('admin');
+        $new->role = $request->input('admin');
 
-        $new->save();        
+        $new->save();
 
-        return redirect()->back();
+        return redirect('admins/{id}');
     }
     /**
      * Remove the specified resource from storage.
@@ -138,4 +139,5 @@ class TraineeController extends ApiController
     {
         //
     }
+
 }

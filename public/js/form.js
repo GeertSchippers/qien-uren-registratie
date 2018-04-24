@@ -162,7 +162,7 @@ function selectAllChecked(id){
 
                 });
 
-            });
+            });             
     }else{
     
             $('.checkbox').each(function(){

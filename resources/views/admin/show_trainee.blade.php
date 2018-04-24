@@ -4,7 +4,6 @@ use App\Declaration;
 use App\User;
 use App\Company;
  ?>
-
  @extends('layouts.admin')
  @section('content')
 

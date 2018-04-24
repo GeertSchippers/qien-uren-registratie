@@ -176,51 +176,49 @@ use App\Declaration;
 
       </div>
 
-
+<!---========================-Declaratie formulier 2.0------------------------------>
+{!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+    <div class="form-group">
+        {{Form::label('date_receipt', 'date_receipt')}}
+        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
+    </div>  
+    <div class="form-group">
+        {{Form::label('type', 'Type')}}
+        {{Form::select('type', [    
+            'travelling' => 'reis',
+            'education' => 'Opleiding',
+            'residence' => 'verblijf',
+            'parking' => 'parkeren',
+            'phone' => 'telefoon',
+            'lunch_diner' => 'lunch/diner',
+            'outings' => 'uitjes',
+            'extra' => 'extra',
+        ])}}
+    </div>
+    <div class="form-group">
+       {{Form::label('btw', 'Btw')}}
+       {{Form::number('btw', 'btw')}}
+    </div>
+   <div class="form-group">
+       {{Form::label('total_receipt', 'Totaal')}}
+       {{Form::number('total_receipt', 'total_receipt')}}
+    </div>
+    <div class="form-group">
+        {{Form::label('description', 'Beschrijving')}}
+        {{Form::textarea('description', 'description')}}
+    </div>
+    <div class="form-group">
+        {{Form::label('include', 'Bijlagen')}}
+        {{Form::file('include')}}
+    </div> 
+    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
+{!! Form::close() !!}
 <!---========================-Declaratie formulier------------------------------>
 
 
         <div class=container-declarations>
             <div class="container">
-              <h2>Declaraties</h2>
-
-                <div class="custom-select" style="width:200px;">
-                  <select id=dag_dec>
-                      <option value="0">Select dag:</option>
-                      <option value="1">Maandag</option>
-                      <option value="2">Dinsdag</option>
-                      <option value="3">Woensdag</option>
-                      <option value="4">Donderdag</option>
-                      <option value="5">Vrijdag</option>
-                      <option value="6">Zaterdag</option>
-                      <option value="7">Zondag</option>
-                  </select>
-                </div>
-
-           
-           
-           
-           
-              <fieldset id=form_declarations>
-                <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
-                <input id=date_receipt type="date">
-                <select  id=type>
-                    <option id=education value="education">opleiding</option>
-                    <option id=travelling value="travelling">reis</option>
-                    <option id=residence value="residence">verblijf</option>
-                    <option id=parking value="parking">parkeren</option>
-                    <option id=phone value="phone">telefoon</option>
-                    <option id=lunch_diner value="sick">lunch/diner</option>
-                    <option id=outings value="outings">uitjes</option>
-                    <option id=extra value="extra">overig</option>
-                </select>
-                    <input id=total_receipt type="number" placeholder='Totaal Bon'>
-                    <input id=btw type="number" placeholder='BTW'>
-                    <textarea id="description" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
-
-                 <!--<div id=extraform2></div>-->
-                 <input type="button" value='voer in' id="submit2" onclick=send2()>
-              </fieldset>
+              <h2>Declaraties</h2>           
             
             
         

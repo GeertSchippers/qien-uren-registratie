@@ -30,8 +30,6 @@
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
 
     <script src="{{ URL::asset('js/form.js')}}"></script>
-
-
     <style>
         body {
             font-family: 'Lato';

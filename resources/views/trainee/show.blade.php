@@ -172,7 +172,9 @@ $user = Auth::user();
                     }
                 </style>
                 <h2>Declaraties</h2>
-                <?php $id = Auth::user()->id; ?>
+
+                <div class="form">
+                    <?php $id = Auth::user()->id; ?>
                     {!! Form::open(['url' => "/trainees/$id/declarations",'method' => 'POST' , 'enctype' => 'multipart/form-data', 'files' => true ]) !!}
 
                         <div class="form-group">
@@ -189,20 +191,20 @@ $user = Auth::user();
                                 'phone' => 'telefoon',
                                 'lunch_diner' => 'lunch/diner',
                                 'outings' => 'uitjes',
-                                'extra' => 'extra',
+                                'extra' => 'extra'
                             ])}}
                         </div>
                         <div class="form-group">
                            {{Form::label('btw', ' ')}}
-                           {{Form::number('btw', 'btw', ['placeholder'=>'Btw'])}}
+                           {{Form::number('btw', 'btw', ['placeholder' => 'btw'])}}
                         </div>
                        <div class="form-group">
                            {{Form::label('total_receipt', ' ')}}
-                           {{Form::number('total_receipt', 'total_receipt', ['placeholder'=>'Totaal'])}}
+                           {{Form::number('total_receipt', 'total_receipt', ['placeholder' => 'Totaal'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('description', ' ')}}
-                            {{Form::textarea('description', 'description', ['placeholder'=>'Beschrijving', 'rows' => '1.8', 'cols' => '30'])}}
+                            {{Form::textarea('description', 'description',['rows' => '1.8','cols' => '30'], ['placeholder' => 'Beschrijving'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('image', ' ')}}
@@ -210,6 +212,7 @@ $user = Auth::user();
                         </div>
                         {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
                     {!! Form::close() !!}
+                </div>
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
               <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>

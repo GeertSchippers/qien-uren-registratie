@@ -26,25 +26,26 @@
                         <div id="Betaald" class="tabcontent">
                             @yield('betaald')
                         </div>
-                </div>
+                
                         @yield('declarations')
-                 <div class="panel-body">
-                    <div class="tab2">
-                        <button class="tablinks2" onclick="openTab2(event, 'review2')" id="default2">Review</button>
-                        <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
-                        <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
-                      </div>
+                    <div class="panel-body">
+                       <div class="tab2">
+                           <button class="tablinks2" onclick="openTab2(event, 'review2')" id="default2">Review</button>
+                           <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>
+                           <button class="tablinks2" onclick="openTab2(event, 'paid2')">Betaald</button>
+                         </div>
 
-                    <div id="review2" class="tabcontent2">
-                        @yield('d-review')
-                    </div>
-                        <div id="aproved2" class="tabcontent2">
-                            @yield('d-goedgekeurd')
-                        </div>
+                       <div id="review2" class="tabcontent2">
+                           @yield('d-review')
+                       </div>
+                           <div id="aproved2" class="tabcontent2">
+                               @yield('d-goedgekeurd')
+                           </div>
 
-                        <div id="paid2" class="tabcontent2">
-                            @yield('d-betaald')
-                        </div>
+                           <div id="paid2" class="tabcontent2">
+                               @yield('d-betaald')
+                           </div>
+                   </div>
                 </div>
             </div>
         </div>

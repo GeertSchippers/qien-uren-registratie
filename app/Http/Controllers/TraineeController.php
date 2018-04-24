@@ -64,8 +64,9 @@ class TraineeController extends ApiController
      * )
      */
     public function show($id)
-    {  
+    {
       $user = User::find($id);
+      
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
       if(isset($user->company_id)){
@@ -101,7 +102,7 @@ class TraineeController extends ApiController
         $select = [];
         foreach($companies as $company2){
             $select[$company2->id] = $company2->name;
- 
+
         }
         return view('admin.edit_trainee')->with(compact('user','company', 'select'));
 

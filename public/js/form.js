@@ -34,7 +34,7 @@ function send(){
             xhttp.open('POST', '/hours_declarations', true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(objectjson);
-
+            window.location.reload();
 }
 
 
@@ -110,7 +110,7 @@ function send2(){
             xhttp.open('POST', '/declarations', true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(objectjson);
-
+            window.location.reload();
 }
 
 

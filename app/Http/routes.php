@@ -18,11 +18,9 @@ use Illuminate\Support\Facades\Auth;
 
 // ---------------------- Custom Routes ------------------------
 
-Route::get('/', function () {
-  return view('welcome');
-});
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/formulier', function(){
   $user = Auth::user();

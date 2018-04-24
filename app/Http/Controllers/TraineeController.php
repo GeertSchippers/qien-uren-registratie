@@ -22,7 +22,6 @@ class TraineeController extends ApiController
     public function index()
     {
 
-
     }
     /**
      * Show the form for creating a new resource.

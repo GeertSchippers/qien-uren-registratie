@@ -41,8 +41,9 @@ class CompanyController extends Controller
     {
       $company = $request->json()->all();
 
-      if(Company::create($company)){
-        return Response(200);
+      if($comp = Company::create($company)){
+        return Response("$comp->id", 200)
+                  ->header('Content-Type', 'text/plain');
       } else {
         return Response(500);
       };
@@ -57,7 +58,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+      $company = Company::find($id);
+      return view('company.show')->with('company',$company);
     }
 
     /**

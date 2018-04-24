@@ -32,7 +32,7 @@ class HomeController extends Controller
         } elseif($user->role == 1) {
            return redirect("/admins/$user->id");
         } else {
-           return redirect("/companies/$user->id");
+           return redirect("/companies/$user->company_id");
         }
     }
 }

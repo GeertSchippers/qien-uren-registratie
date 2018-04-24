@@ -16,8 +16,7 @@
         <div id="Betaald" class="tabcontent">
           @yield('betaald')
         </div>
-@endsection
-@section('d-segments')
+
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'Review')" id="default">Review</button>
           <button class="tablinks" onclick="openTab(event, 'Goedgekeurd')">Goedgekeurd</button>

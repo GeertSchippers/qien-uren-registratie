@@ -74,7 +74,7 @@ class TraineeDeclarationController extends Controller
         $declaration->include = $fileNameToStore;
         $declaration->save();
         error_log($declaration);
-        return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
+        return redirect()->back();
     }
     /**
      * Display the specified resource.

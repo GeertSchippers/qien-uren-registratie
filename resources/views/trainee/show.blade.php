@@ -176,8 +176,6 @@ $user = Auth::user();
 
       </div>
 
-<!---========================-Declaratie formulier 2.0------------------------------>
-
 <!---========================-Declaratie formulier------------------------------>
 
 
@@ -232,6 +230,43 @@ $user = Auth::user();
                         </div>
                         {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
                     {!! Form::close() !!}
+                {!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+                    <div class="form-group">
+                        {{Form::label('date_receipt', ' ')}}
+                        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('type', ' ')}}
+                        {{Form::select('type', [
+                            'travelling' => 'reis',
+                            'education' => 'Opleiding',
+                            'residence' => 'verblijf',
+                            'parking' => 'parkeren',
+                            'phone' => 'telefoon',
+                            'lunch_diner' => 'lunch/diner',
+                            'outings' => 'uitjes',
+                            'extra' => 'extra',
+                        ])}}
+                    </div>
+                    <div class="form-group">
+                       {{Form::label('btw', ' ')}}
+                       {{Form::number('btw', 'btw', ['placeholder' => 'Btw'])}}
+                    </div>
+                   <div class="form-group">
+                       {{Form::label('total_receipt', ' ')}}
+                       {{Form::number('total_receipt', 'total_receipt', ['placeholder' => 'Totaal'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('description', ' ')}}
+                        {{Form::textarea('description', '',['rows' => '1.8'], ['placeholder' => 'Beschrijving'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('include', ' ')}}
+                        {{Form::file('include')}}
+                    </div>
+                    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
+                {!! Form::close() !!}
+>>>>>>> 9ee4677155ea0681301c4bd8a03680bd745c87b1
                 </div>
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>

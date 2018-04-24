@@ -6,6 +6,7 @@
         padding: 5px;
     }
 </style>
+<!--------------------------------- [ overzicht trainees ] --------------------------------->
     <h1>Hallo Admin</h1>
     <h3>Overzicht trainees</h3>
     <table>
@@ -41,7 +42,7 @@
             @endif
         @endforeach
     </table>
-
+<!--------------------------------- [ overzicht admins ] --------------------------------->
     <h3>Overzicht admins</h3>
     <table>
         <tr>
@@ -76,6 +77,35 @@
             @endif
         @endforeach
     </table>
+<!--------------------------------- [ overzicht companies ] ---------------------------------> 
+    <h3>Overzicht Bedrijven</h3>
+    <table>
+        <tr>
+            <th>Naam </th>
+            <th>Locatie</th>
+            <th>Contact persoon </th>
+            <th>E-mail</th>
+            <th>Telefoon nummer</th>
+<!--            <th>Bekijk</th>
+            <th>Wijzig</th>-->
+
+        </tr>
+        @foreach($companies as $company)
+                    <tr>
+                        <td>{{$company->name}}</td>
+                        <td>{{$company->location}}</td>
+                        <td>{{$company->contact_person}}</td>
+                        <td>{{$company->email}}</td>
+                        <td>{{$company->phone_number}}</td>
+
+                            <!--<td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>-->
+
+                            <!--<td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>-->
+
+
+                    </tr>
+        @endforeach
+    </table>
 
 
     <h2>Uren</h2>
@@ -89,8 +119,9 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th> 
                 <th>Laatste update</th>
+                               
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 0)
@@ -98,8 +129,12 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
                 </tr>
                 @endif
@@ -114,7 +149,7 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th>
                 <th>Laatste update</th>
             </tr>
             @foreach($hours as $hour)
@@ -123,8 +158,12 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
                 </tr>
                 @endif
@@ -139,7 +178,7 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th>
                 <th>Laatste update</th>
             </tr>
             @foreach($hours as $hour)
@@ -148,8 +187,12 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
                 </tr>
                 @endif

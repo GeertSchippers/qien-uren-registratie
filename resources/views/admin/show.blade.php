@@ -65,11 +65,13 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->employee_number}}</td>
+                        <td>
                             @foreach($companies as $company)
                                 @if ($company->id == $user->company_id)
-                                    <td>{{$company->name}}</td>
+                                    {{$company->name}}
                                 @endif
                             @endforeach
+                        </td>
 
                             <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
 

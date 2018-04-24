@@ -139,4 +139,5 @@ class TraineeController extends ApiController
     {
         //
     }
+
 }

@@ -3,7 +3,6 @@ var i = 0;
 function add_line(){
 
     var original = document.getElementById('form');
-//    console.log(original);
     var clone = original.cloneNode(true);
           clone.id = "form" + ++i;
 
@@ -117,17 +116,9 @@ function send2(){
 
 function getMonth(id){
 
-//    var selectMonth = document.getElementById('select_month');
-//    var selectMonth = $( "#myselect option:selected" ).text();
     var selectMonth = $( "#select_month option:selected" ).val();
     var selectYear = $( "#select_year option:selected" ).val();
 
-
-
-//    var selectYear = document.getElementById('select_year');
-
-//    var selectedMonth = selectMonth.selectedOptions[0].value;
-//    var selectedYear = selectYear.selectedOptions[0].value;
 
     var date = selectYear+"-"+selectMonth;
         console.log(date);
@@ -183,12 +174,7 @@ function selectAllChecked(id){
     }
 }
     
-  
- 
- 
- 
 
-//
 function selectAllPaid(id){
      if ($('#selectAllPaid').is(":checked") && $('#selectAllChecked').is(":checked")){
          console.log("ischecked");

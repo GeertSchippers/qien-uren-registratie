@@ -47,22 +47,7 @@ $user = Auth::user();
 
 
         <h2>Uren Declaraties</h2>
-
-
-            <div class="custom-select" style="width:200px;">
-              <select id=dag>
-                  <option value="0">Select dag:</option>
-                  <option value="1">Maandag</option>
-                  <option value="2">Dinsdag</option>
-                  <option value="3">Woensdag</option>
-                  <option value="4">Donderdag</option>
-                  <option value="5">Vrijdag</option>
-                  <option value="6">Zaterdag</option>
-                  <option value="7">Zondag</option>
-              </select>
-            </div>
-
-
+        
             <fieldset id='form'>
                 <button class="button button3" onclick="add_line()">+</button>
                 <input name=amount id=hours type="number" placeholder='Totaal Uren'>
@@ -90,7 +75,6 @@ $user = Auth::user();
 
 
         <div id="review" class="tabcontent">
-          <h3>Review</h3>
           <table>
                   <tr>
                       <th>Hoeveelheid</th>
@@ -119,8 +103,6 @@ $user = Auth::user();
 
 
         <div id="approved" class="tabcontent">
-          <h3>Goedgekeurd</h3>
-
             <table>
                   <tr>
                       <th>Hoeveelheid</th>
@@ -148,7 +130,6 @@ $user = Auth::user();
         </div>
 
          <div id="paid" class="tabcontent">
-          <h3>Betaald</h3>
           <table>
                   <tr>
                       <th>Hoeveelheid</th>
@@ -176,9 +157,6 @@ $user = Auth::user();
 </div>
 
       </div>
-
-<!---========================-Declaratie formulier 2.0------------------------------>
-
 <!---========================-Declaratie formulier------------------------------>
 
 
@@ -240,7 +218,6 @@ $user = Auth::user();
             </div>
 
             <div id="review2" class="tabcontent2">
-              <h3>Review</h3>
               <table>
               <tr>
                   <th>datum bon</th>
@@ -269,7 +246,6 @@ $user = Auth::user();
             </div>
 
             <div id="aproved2" class="tabcontent2">
-              <h3>Goedgekeurd</h3>
               <table>
               <tr>
                   <th>datum bon</th>
@@ -297,7 +273,6 @@ $user = Auth::user();
             </div>
 
              <div id="paid2" class="tabcontent2">
-              <h3>Betaald</h3>
               <table>
               <tr>
                   <th>datum bon</th>

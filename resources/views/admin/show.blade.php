@@ -91,7 +91,6 @@
                 <th>Persoon</th>
                 <th>Bedrijf</th>
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 0)
@@ -102,7 +101,6 @@
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -118,7 +116,6 @@
                 <th>Persoon</th>
                 <th>Bedrijf</th>
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 1)
@@ -129,7 +126,6 @@
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -145,7 +141,6 @@
                 <th>Persoon</th>
                 <th>Bedrijf</th>
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 2)
@@ -156,7 +151,6 @@
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->user_id}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -166,14 +160,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 0)
@@ -199,14 +193,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 1)
@@ -232,14 +226,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 2)

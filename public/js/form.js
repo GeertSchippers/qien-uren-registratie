@@ -136,7 +136,7 @@ function getMonth(id){
           $(".declarationtr:not(:contains("+date+"))").remove();
           $( "#select_button" ).hide();
         });
-       
+        window.location.reload();
 }
 
 
@@ -181,6 +181,7 @@ function selectAllChecked(id){
 
             });
     }
+    window.location.reload();
 }
     
   

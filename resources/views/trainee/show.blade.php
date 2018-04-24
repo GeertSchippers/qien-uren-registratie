@@ -176,12 +176,49 @@ use App\Declaration;
 
       </div>
 
-
+<!---========================-Declaratie formulier 2.0------------------------------>
+{!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+    <div class="form-group">
+        {{Form::label('date_receipt', 'Datum bon')}}
+        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
+    </div>  
+    <div class="form-group">
+        {{Form::label('type', 'Type')}}
+        {{Form::select('type', [    
+            'travelling' => 'reis',
+            'education' => 'Opleiding',
+            'residence' => 'verblijf',
+            'parking' => 'parkeren',
+            'phone' => 'telefoon',
+            'lunch_diner' => 'lunch/diner',
+            'outings' => 'uitjes',
+            'extra' => 'extra',
+        ])}}
+    </div>
+    <div class="form-group">
+       {{Form::label('btw', 'Btw')}}
+       {{Form::number('btw', 'btw')}}
+    </div>
+   <div class="form-group">
+       {{Form::label('total_receipt', 'Totaal')}}
+       {{Form::number('total_receipt', 'total_receipt')}}
+    </div>
+    <div class="form-group">
+        {{Form::label('description', 'Beschrijving')}}
+        {{Form::textarea('description', 'description')}}
+    </div>
+    <div class="form-group">
+        {{Form::label('include', 'Bijlagen')}}
+        {{Form::file('include')}}
+    </div> 
+    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
+{!! Form::close() !!}
 <!---========================-Declaratie formulier------------------------------>
 
 
         <div class=container-declarations>
             <div class="container">
+
               <h2>Declaraties</h2>
 
                 <div class="custom-select" style="width:200px;">
@@ -221,8 +258,6 @@ use App\Declaration;
                  <!--<div id=extraform2></div>-->
                  <input type="button" value='voer in' id="submit2" onclick=send2()>
               </fieldset>
-
-
 
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>

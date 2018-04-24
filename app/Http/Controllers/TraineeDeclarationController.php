@@ -51,7 +51,28 @@ class TraineeDeclarationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('include')){
+//            $fileNameWithExt = $request->file('include')->getClientOriginalName();
+//            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+//            $extenstion = $request->file('include')->getClientOriginalExtension();
+//            $fileNameToStore = $fileName. '-' .time().'.'.$extenstion;
+              $fileNameToStore = 'test.jpg';
+            $path = $request->file ('include')->storeAs('public/images', $fileNameToStore);
+         }else{ 
+             $fileNameToStore =  'helaas';
+         }    
+        $user = Auth::user();
+        $declaration = new Declaration;
+        $declaration->date_receipt = $request->input('date_receipt');
+        $declaration->type = $request->input('type');
+        $declaration->btw = $request->input('btw');
+        $declaration->total_receipt = $request->input('total_receipt');
+        $declaration->description = $request->input('description');
+        $declaration->user_id = $user->id;
+        $declaration->include = $fileNameToStore;
+        $declaration->save();
+        error_log($declaration);
+        return redirect()->back()->with('succes', 'Declaratie succesvol aangepast');
     }
     /**
      * Display the specified resource.

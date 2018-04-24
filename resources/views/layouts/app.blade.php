@@ -30,8 +30,6 @@
     <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
 
     <script src="{{ URL::asset('js/form.js')}}"></script>
-
-
     <style>
         body {
             font-family: 'Lato';
@@ -56,16 +54,13 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     MijnQien
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

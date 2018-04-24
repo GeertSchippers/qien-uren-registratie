@@ -51,7 +51,7 @@ class Hours_declarationController extends Controller
         $new->type = $data['type'];
         $new->statement = $data['statement'];
         $new->user_id = $user->id;
-        $new->status = 2;
+        $new->status = 0;
         $new->save();
     }
 

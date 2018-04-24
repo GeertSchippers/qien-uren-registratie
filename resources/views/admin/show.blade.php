@@ -41,7 +41,7 @@
             @endif
         @endforeach
     </table>
-    
+
     <h3>Overzicht admins</h3>
     <table>
         <tr>
@@ -76,8 +76,8 @@
             @endif
         @endforeach
     </table>
-    
-    
+
+
     <h2>Uren</h2>
 @endsection
 @section('review')
@@ -255,4 +255,3 @@
     @endforeach
     </table>
 @endsection
-

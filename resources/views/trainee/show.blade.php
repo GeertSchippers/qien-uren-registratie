@@ -47,7 +47,7 @@ $user = Auth::user();
 
 
         <h2>Uren Declaraties</h2>
-        
+
             <fieldset id='form'>
                 <input name=amount id=hours type="number" placeholder='Totaal Uren'>
                 <select name=type id="type">
@@ -204,7 +204,7 @@ $user = Auth::user();
                         </div>
                         <div class="form-group">
                             {{Form::label('description', ' ')}}
-                            {{Form::textarea('description', 'description',['rows' => '1.8','cols' => '30'], ['placeholder' => 'Beschrijving'])}}
+                            {{Form::textarea('description', '',['rows' => '1.8','cols' => '30'], ['placeholder' => 'Beschrijving'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('image', ' ')}}

@@ -104,4 +104,15 @@ class Hours_declarationController extends Controller
     {
         //
     }
+
+    public function sendDeclarations($id,$status){
+
+        $declaration = Hours_declaration::find($id);
+
+
+            $declaration->status = $status;
+            $declaration->save();
+
+    }
+
 }

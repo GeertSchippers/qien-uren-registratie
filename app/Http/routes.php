@@ -41,8 +41,6 @@ Route::get('/formulier', function(){
 
 Route::get('/admin/trainee/{id}', 'UserController@show');
 
-Route::get('/trainees/{id}/declarations/date/{date}', 'TraineeDeclarationController@show');
-
 Route::get('/bulkdeclarations/{id}/{status}', 'DeclarationController@sendDeclarations');
 
 Route::get('/storage/{filename}', function ($filename)

@@ -114,19 +114,28 @@ function send2(){
 
 
 
-function getMonth(id){
+function getMonthDeclarations(id){
 
-    var selectMonth = $( "#select_month option:selected" ).val();
-    var selectYear = $( "#select_year option:selected" ).val();
+    var selectMonth = $( "#select_month_declarations option:selected" ).val();
+    var selectYear = $( "#select_year_declarations option:selected" ).val();
 
 
     var date = selectYear+"-"+selectMonth;
         console.log(date);
-        $.get( `/trainees/${id}/declarations/date/`+date, function( ) {
-
           $(".declarationtr:not(:contains("+date+"))").remove();
-          $( "#select_button" ).hide();
-        });
+          $( "#select_button_declarations" ).hide();
+}
+
+function getMonthHourDeclarations(id){
+
+    var selectMonth = $( "#select_month_hour_declarations option:selected" ).val();
+    var selectYear = $( "#select_year_hour_declarations option:selected" ).val();
+
+
+    var date = selectYear+"-"+selectMonth;
+        console.log(date);
+          $(".hour_declarationtr:not(:contains("+date+"))").remove();
+          $( "#select_button_hour_declarations" ).hide();
 }
 
 

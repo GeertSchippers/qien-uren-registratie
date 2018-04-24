@@ -18,19 +18,19 @@ use App\Declaration;
   <link href="{{ asset('css/tabs_declarations.css') }}" rel="stylesheet">
   <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
   <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"> -->
-
-  <title>Formulier Trainee</title>
   <style>
-  .tabcontent, .tabcontent2 {
-    background-color: white;
-    margin-bottom: 50px;
-  }
+    .tabcontent, .tabcontent2 {
+        background-color: white;
+        margin-bottom: 50px;
+    }
 
-  th, td {
-    padding-right: 20px;
-  }
-
+    th, td {
+        padding-right: 20px;
+    }
   </style>
+  
+  <title>Formulier Trainee</title>
+
 </head>
 
 <header>
@@ -77,7 +77,7 @@ use App\Declaration;
                 <textarea name=statement id="statement" rows="1.8" cols="40" placeholder='Vul hier een beschrijving in'></textarea>
 
                 <!--            <div id=extraform></div>-->
-                <input type="button" value='voer in' id="submit" onclick=send()>
+                <input type="button" value='voer in' id="submit" onclick="send()">
             </fieldset>
 
 

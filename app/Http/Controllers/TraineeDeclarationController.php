@@ -66,11 +66,10 @@ class TraineeDeclarationController extends Controller
       $user = User::find($id);  
 
       return $date;
-//      echo "pietpiet";
-//     
+
 //      $declarations = Declaration::where('user_id',$id)->get();
-//      
-//      return view('admin.check')->with(compact('declarations', 'user'));
+////      
+//      return view('admin.show_trainee')->with(compact('declarations', 'user'));
     }
     /**
      * Show the form for editing the specified resource.

@@ -80,15 +80,17 @@ use App\Company;
 
         ?>
         </select>
-        <input type=button value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
-        <?php
-            if(isset($date)){
+        <input type=button id="select_button" value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
+        <input type=button value="Select All" onclick="getAll(<?php echo $user->id; ?>)">
+        
+        <?php 
+          if(isset($date)){
           echo($date);
-
-           }
-      echo "TEST";
+          }
         ?>
+        
          <table>
+             
          <tr>
              <th>Datum bon</th>
              <th>Type</th>
@@ -97,11 +99,13 @@ use App\Company;
              <th>Beschrijving</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd</th>
-             <th>Betaald</th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" <?php if($hour->status == 0){echo 'checked';} ?> ></th>
+             
+             <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" <?php if($hour->status == 2){echo 'checked';} ?> ></th>
          </tr>
          @foreach($declarations as $declaration)
-         <?php $obj = new Declaration();
+         <?php 
+                 $obj = new Declaration();
                $obj->date_receipt = $declaration->date_receipt;
                $obj->total_receipt = $declaration->total_receipt;
                $obj->type = $declaration->type;
@@ -110,7 +114,7 @@ use App\Company;
                $obj->status = $declaration->status;
                $obj->created_at = $declaration->created_at;
           ?>
-                     <tr>
+                     <tr class="declarationtr">
                          <td>{{$declaration->date_receipt}}</td>
                          <td>{{$declaration->type}}</td>
                          <td>{{$declaration->total_receipt}}</td>
@@ -118,8 +122,9 @@ use App\Company;
                          <td>{{$declaration->description}}</td>
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
-                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
-                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
+                         <td class="checked"><input class="checkbox" type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
+                         <td class="paid"><input class="checkbox_paid" type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
+                         
                      </tr>
          @endforeach
      </table>

@@ -118,7 +118,7 @@
             @endif
         @endforeach
     </table>
-<!--------------------------------- [ overzicht companies ] ---------------------------------> 
+<!--------------------------------- [ overzicht companies ] --------------------------------->
     <h3>Overzicht Bedrijven</h3>
     <table>
         <tr>
@@ -160,9 +160,9 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>gemaakt op</th> 
+                <th>gemaakt op</th>
                 <th>Laatste update</th>
-                               
+
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 0)
@@ -252,6 +252,7 @@
             <th>Gemaakt op</th>
             <th>Bewerkt op</th>
             <th>Trainee</th>
+            <th>Bijlage</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 0)
@@ -291,6 +292,7 @@
             <th>Gemaakt op</th>
             <th>Bewerkt op</th>
             <th>Trainee</th>
+            <th>Bijlage</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 1)
@@ -307,6 +309,12 @@
                                 <td>{{$user->email}}</td>
                             @endif
                         @endforeach
+                        <td>
+                          @if($declaration->include != 'No File')
+
+                            <a onclick="openFile('{{$declaration->include}}')" class='btn btn-default'>Zie Bijlage </a>
+                          @endif
+                        </td>
                 </tr>
         @endif
     @endforeach
@@ -324,6 +332,7 @@
             <th>Gemaakt op</th>
             <th>Bewerkt op</th>
             <th>Trainee</th>
+            <th>Bijlage</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 2)
@@ -340,6 +349,12 @@
                                 <td>{{$user->email}}</td>
                             @endif
                         @endforeach
+                        <td>
+                          @if($declaration->include != 'No File')
+
+                            <a onclick="openFile('{{$declaration->include}}')" class='btn btn-default'>Zie Bijlage </a>
+                          @endif
+                        </td>                        
                 </tr>
         @endif
     @endforeach

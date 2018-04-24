@@ -94,7 +94,7 @@
                           <label for="name" class="col-md-4 control-label">Contact persoon</label>
 
                           <div class="col-md-6">
-                            <input id="contact_person" type="text" class="form-control" name="name" value="{{ old('contact_person') }}">
+                            <input id="contact_person" type="text" class="form-control" name="contact_person" value="{{ old('contact_person') }}">
 
                             @if ($errors->has('contact_person'))
                             <span class="help-block">
@@ -107,7 +107,7 @@
                            <label for="name" class="col-md-4 control-label">Telefoon nummer</label>
 
                            <div class="col-md-6">
-                               <input id="employee_number" type="text" class="form-control" name="name" value="{{ old('phone_number') }}">
+                               <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
 
                                @if ($errors->has('phone_number'))
                                    <span class="help-block">

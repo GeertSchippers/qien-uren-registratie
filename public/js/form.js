@@ -19,10 +19,10 @@ function send(){
     var naamvakje = row.firstChild;
 
     var object = {};
-        object.amount = naamvakje.parentNode.children[1].value;
-        object.type = naamvakje.parentNode.children[2].value;
-        object.date = naamvakje.parentNode.children[3].value;
-        object.statement = naamvakje.parentNode.children[4].value;
+        object.amount = $('#hours').val();
+        object.type = $('#type').val();
+        object.date = $('#date').val();
+        object.statement = $('#statement').val();
 
     var objectjson = JSON.stringify(object);
 
@@ -48,7 +48,7 @@ function send(){
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-                       
+
                        document.getElementById(tabName).style.display = "block";
                        evt.currentTarget.className += " active";
     }
@@ -60,14 +60,14 @@ function send(){
 
 
     function openTab2(evt2, tabName2) {
-        
+
         var i, tabcontent, tablinks;
-            
+
             tabcontent = document.getElementsByClassName("tabcontent2");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
             }
-            
+
             tablinks = document.getElementsByClassName("tablinks2");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -131,16 +131,16 @@ function getMonth(id){
 
 
 function getAll(id){
-      location.reload();  
+      location.reload();
 }
-    
+
 function selectAllChecked(id){
-    
+
     if ($('#selectAllChecked').is(":checked")){
-    
+
             $('.checkbox').each(function(){
 
-              $(this).prop('checked',true);        
+              $(this).prop('checked',true);
                 //alert($(this).attr('id'));
                 var declaratie_id = $(this).attr('id');
                 var last2 = declaratie_id.slice(11);
@@ -148,16 +148,16 @@ function selectAllChecked(id){
 
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
 
-                          
+
 
                 });
-                
-            }); 
+
+            });
             ;
     }else{
-    
+
             $('.checkbox').each(function(){
-             
+
               $(this).removeAttr('checked');
 
                 var declaratie_id = $(this).attr('id');
@@ -170,20 +170,20 @@ function selectAllChecked(id){
                           window.location.reload();
 
                 });
-                
+
             });
-            
+
     }
 }
-    
+
 
 function selectAllPaid(id){
      if ($('#selectAllPaid').is(":checked") && $('#selectAllChecked').is(":checked")){
          console.log("ischecked");
-    
+
             $('.checkbox_paid').each(function(){
 
-              $(this).prop('checked',true);        
+              $(this).prop('checked',true);
                 //alert($(this).attr('id'));
                 var declaratie_id = $(this).attr('id');
                 var last2 = declaratie_id.slice(16);
@@ -197,15 +197,15 @@ function selectAllPaid(id){
 
             });
     }else{
-        var declaratie_id = $(this).attr('id'); 
-        
+        var declaratie_id = $(this).attr('id');
+
         if($('#selectAllChecked').not(":checked") || declaratie_id.not(":checked")) {
                 $('#selectAllPaid').removeAttr('checked');
                 alert("Eerst goedkeuren a.u.b.");
-            
+
         }
             $('.checkbox_paid').each(function(){
-             
+
               $(this).removeAttr('checked');
 
               var declaratie_id = $(this).attr('id');
@@ -222,8 +222,3 @@ function selectAllPaid(id){
             });
     }
 }
-
-
-
-
-

@@ -139,6 +139,7 @@ function getAll(id){
 }
     
 function selectAllChecked(id){
+    
     if ($('#selectAllChecked').is(":checked")){
     
             $('.checkbox').each(function(){

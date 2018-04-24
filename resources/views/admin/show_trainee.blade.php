@@ -81,7 +81,7 @@ use App\Company;
 
         ?>
         </select>
-        <input type=button value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
+        <input type=button  value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
         <input type=button value="Select All" onclick="getAll(<?php echo $user->id; ?>)">
         
         <?php 
@@ -91,6 +91,7 @@ use App\Company;
         ?>
         
          <table>
+             
          <tr>
              <th>Datum bon</th>
              <th>Type</th>
@@ -99,7 +100,7 @@ use App\Company;
              <th>Beschrijving</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" <?php if($hour->status == 1){echo 'checked';} ?> ></th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()" <?php if($hour->status == 0){echo 'checked';} ?> ></th>
              
              <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" <?php if($hour->status == 2){echo 'checked';} ?> ></th>
          </tr>

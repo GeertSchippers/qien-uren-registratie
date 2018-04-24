@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Declaration;
 
+$user = Auth::user();
 ?>
 
 <html>
@@ -28,7 +29,7 @@ use App\Declaration;
         padding-right: 20px;
     }
   </style>
-  
+
   <title>Formulier Trainee</title>
 
 </head>
@@ -76,7 +77,6 @@ use App\Declaration;
                 <input name=date id=date type="date">
                 <textarea name=statement id="statement" rows="1.8" cols="40" placeholder='Vul hier een beschrijving in'></textarea>
 
-                <!--            <div id=extraform></div>-->
                 <input type="button" value='voer in' id="submit" onclick="send()">
             </fieldset>
 
@@ -98,7 +98,6 @@ use App\Declaration;
                       <th>Bedrijf</th>
                       <th>Beschrijving</th>
                       <th>Laatste update</th>
-                      <!--<th>Wijzigen</th>-->
                   </tr>
                   @foreach($hours as $hour)
                       @if($hour->status == 0)
@@ -177,14 +176,16 @@ use App\Declaration;
       </div>
 
 <!---========================-Declaratie formulier 2.0------------------------------>
-{!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+<?php $id = Auth::user()->id; ?>
+{!! Form::open(['url' => "/trainees/$id/declarations",'method' => 'POST' , 'enctype' => 'multipart/form-data', 'files' => true ]) !!}
+
     <div class="form-group">
         {{Form::label('date_receipt', 'Datum bon')}}
         {{Form::date('date_receipt', \Carbon\Carbon::now())}}
-    </div>  
+    </div>
     <div class="form-group">
         {{Form::label('type', 'Type')}}
-        {{Form::select('type', [    
+        {{Form::select('type', [
             'travelling' => 'reis',
             'education' => 'Opleiding',
             'residence' => 'verblijf',
@@ -208,9 +209,9 @@ use App\Declaration;
         {{Form::textarea('description', 'description')}}
     </div>
     <div class="form-group">
-        {{Form::label('include', 'Bijlagen')}}
-        {{Form::file('include')}}
-    </div> 
+        {{Form::label('image', 'Bijlagen')}}
+        {{Form::file('image',['class'=>'form-control'])}}
+    </div>
     {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
 {!! Form::close() !!}
 <!---========================-Declaratie formulier------------------------------>

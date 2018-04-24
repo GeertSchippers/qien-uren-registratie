@@ -145,7 +145,6 @@
         if(isset($_POST['obj'])){
         $date = json_decode($_POST['obj'], true);
         }
-//        error_log($date);
         ?>
         @foreach($declarations as $declaration)
 

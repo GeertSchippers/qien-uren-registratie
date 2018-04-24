@@ -40,6 +40,7 @@
        top: 10px;
     }
 </style>
+<!--------------------------------- [ overzicht trainees ] --------------------------------->
   <div id="bijlageContainer">
     <a onclick=closeFile()><i class="fas fa-times-circle"></i></a>
     <img id="bijlage" />
@@ -82,7 +83,7 @@
             @endif
         @endforeach
     </table>
-
+<!--------------------------------- [ overzicht admins ] --------------------------------->
     <h3>Overzicht admins</h3>
     <table>
         <tr>
@@ -117,6 +118,35 @@
             @endif
         @endforeach
     </table>
+<!--------------------------------- [ overzicht companies ] ---------------------------------> 
+    <h3>Overzicht Bedrijven</h3>
+    <table>
+        <tr>
+            <th>Naam </th>
+            <th>Locatie</th>
+            <th>Contact persoon </th>
+            <th>E-mail</th>
+            <th>Telefoon nummer</th>
+<!--            <th>Bekijk</th>
+            <th>Wijzig</th>-->
+
+        </tr>
+        @foreach($companies as $company)
+                    <tr>
+                        <td>{{$company->name}}</td>
+                        <td>{{$company->location}}</td>
+                        <td>{{$company->contact_person}}</td>
+                        <td>{{$company->email}}</td>
+                        <td>{{$company->phone_number}}</td>
+
+                            <!--<td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>-->
+
+                            <!--<td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>-->
+
+
+                    </tr>
+        @endforeach
+    </table>
 
 
     <h2>Uren</h2>
@@ -130,9 +160,9 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th> 
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
+                               
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 0)
@@ -140,10 +170,13 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -157,9 +190,8 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th>
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 1)
@@ -167,10 +199,13 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -184,9 +219,8 @@
                 <th>Type</th>
                 <th>Maand</th>
                 <th>Persoon</th>
-                <th>Bedrijf</th>
+                <th>gemaakt op</th>
                 <th>Laatste update</th>
-                <th>Wijzigen</th>
             </tr>
             @foreach($hours as $hour)
                 @if($hour->status == 2)
@@ -194,10 +228,13 @@
                     <td>{{$hour->amount}}</td>
                     <td>{{$hour->type}}</td>
                     <td>{{$hour->date}}</td>
-                    <td>{{$hour->user_id}}</td>
-                    <td>{{$hour->user_id}}</td>
+                    @foreach($users as $user)
+                        @if($user->id === $hour->user_id)
+                            <td>{{$user->first_name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$hour->created_at}}</td>
                     <td>{{$hour->updated_at}}</td>
-                    <td><a>wijzig</a></td>
                 </tr>
                 @endif
             @endforeach
@@ -207,15 +244,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
-            <th>Bijlage</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 0)
@@ -247,14 +283,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 1)
@@ -280,15 +316,14 @@
        <h2> gemaakte declaraties</h2>
     <table>
         <tr>
-            <th>date_receipt</th>
-            <th>type</th>
-            <th>total_receipt</th>
-            <th>btw</th>
-            <th>description</th>
-            <th>created_at</th>
-            <th>updated_at</th>
-            <th>user_id</th>
-            <th>Bijlagen</th>
+            <th>Datum bon</th>
+            <th>Type</th>
+            <th>Totaal bon</th>
+            <th>Btw</th>
+            <th>Beschrijving</th>
+            <th>Gemaakt op</th>
+            <th>Bewerkt op</th>
+            <th>Trainee</th>
         </tr>
     @foreach($declarations as $declaration)
         @if($declaration->status == 2)

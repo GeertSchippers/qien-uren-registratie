@@ -47,24 +47,8 @@ $user = Auth::user();
 
 
         <h2>Uren Declaraties</h2>
-
-
-            <div class="custom-select" style="width:200px;">
-              <select id=dag>
-                  <option value="0">Select dag:</option>
-                  <option value="1">Maandag</option>
-                  <option value="2">Dinsdag</option>
-                  <option value="3">Woensdag</option>
-                  <option value="4">Donderdag</option>
-                  <option value="5">Vrijdag</option>
-                  <option value="6">Zaterdag</option>
-                  <option value="7">Zondag</option>
-              </select>
-            </div>
-
-
+        
             <fieldset id='form'>
-                <button class="button button3" onclick="add_line()">+</button>
                 <input name=amount id=hours type="number" placeholder='Totaal Uren'>
                 <select name=type id="type">
                     <option id=workhours value="workhours">gewerkte uren</option>
@@ -90,7 +74,6 @@ $user = Auth::user();
 
 
         <div id="review" class="tabcontent">
-          <h3>Review</h3>
           <table>
                   <tr>
                       <th>Hoeveelheid</th>
@@ -99,6 +82,7 @@ $user = Auth::user();
                       <th>Bedrijf</th>
                       <th>Beschrijving</th>
                       <th>Laatste update</th>
+                      <th>Wijzigen</th>
                   </tr>
                   @foreach($hours as $hour)
                       @if($hour->status == 0)
@@ -118,14 +102,13 @@ $user = Auth::user();
 
 
         <div id="approved" class="tabcontent">
-          <h3>Goedgekeurd</h3>
-
-            <table>
+           <table>
                   <tr>
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
                   </tr>
@@ -138,22 +121,21 @@ $user = Auth::user();
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-<!--                          <td><a>wijzig</a></td>-->
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
-            </table>
-
+          </table>
         </div>
 
          <div id="paid" class="tabcontent">
-          <h3>Betaald</h3>
           <table>
                   <tr>
                       <th>Hoeveelheid</th>
                       <th>Type</th>
                       <th>Maand</th>
                       <th>Bedrijf</th>
+                      <th>Beschrijving</th>
                       <th>Laatste update</th>
                       <th>Wijzigen</th>
                   </tr>
@@ -166,7 +148,7 @@ $user = Auth::user();
                           <td>{{$company->name}}</td>
                           <td>{{$hour->statement}}</td>
                           <td>{{$hour->updated_at}}</td>
-                          <!--<td><a>wijzig</a></td>-->
+                          <td><a href='/trainees/{{$user->id}}/hours_declarations/{{$hour->id}}/edit'class='btn btn-default'>wijzig</a></td>
                       </tr>
                       @endif
                   @endforeach
@@ -175,46 +157,6 @@ $user = Auth::user();
 </div>
 
       </div>
-
-<!---========================-Declaratie formulier 2.0------------------------------>
-<?php $id = Auth::user()->id; ?>
-{!! Form::open(['url' => "/trainees/$id/declarations",'method' => 'POST' , 'enctype' => 'multipart/form-data', 'files' => true ]) !!}
-
-    <div class="form-group">
-        {{Form::label('date_receipt', 'Datum bon')}}
-        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
-    </div>
-    <div class="form-group">
-        {{Form::label('type', 'Type')}}
-        {{Form::select('type', [
-            'travelling' => 'reis',
-            'education' => 'Opleiding',
-            'residence' => 'verblijf',
-            'parking' => 'parkeren',
-            'phone' => 'telefoon',
-            'lunch_diner' => 'lunch/diner',
-            'outings' => 'uitjes',
-            'extra' => 'extra',
-        ])}}
-    </div>
-    <div class="form-group">
-       {{Form::label('btw', 'Btw')}}
-       {{Form::number('btw', 'btw')}}
-    </div>
-   <div class="form-group">
-       {{Form::label('total_receipt', 'Totaal')}}
-       {{Form::number('total_receipt', 'total_receipt')}}
-    </div>
-    <div class="form-group">
-        {{Form::label('description', 'Beschrijving')}}
-        {{Form::textarea('description', '')}}
-    </div>
-    <div class="form-group">
-        {{Form::label('image', 'Bijlagen')}}
-        {{Form::file('image',['class'=>'form-control'])}}
-    </div>
-    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
-{!! Form::close() !!}
 <!---========================-Declaratie formulier------------------------------>
 
 
@@ -230,43 +172,46 @@ $user = Auth::user();
                     }
                 </style>
                 <h2>Declaraties</h2>
+
                 <div class="form">
-                {!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
-                    <div class="form-group">
-                        {{Form::label('date_receipt', ' ')}}
-                        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::label('type', ' ')}}
-                        {{Form::select('type', [
-                            'travelling' => 'reis',
-                            'education' => 'Opleiding',
-                            'residence' => 'verblijf',
-                            'parking' => 'parkeren',
-                            'phone' => 'telefoon',
-                            'lunch_diner' => 'lunch/diner',
-                            'outings' => 'uitjes',
-                            'extra' => 'extra',
-                        ])}}
-                    </div>
-                    <div class="form-group">
-                       {{Form::label('btw', ' ')}}
-                       {{Form::number('btw', 'btw', ['placeholder' => 'Btw'])}}
-                    </div>
-                   <div class="form-group">
-                       {{Form::label('total_receipt', ' ')}}
-                       {{Form::number('total_receipt', 'total_receipt', ['placeholder' => 'Totaal'])}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::label('description', ' ')}}
-                        {{Form::textarea('description', '',['rows' => '1.8'], ['placeholder' => 'Beschrijving'])}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::label('include', ' ')}}
-                        {{Form::file('include')}}
-                    </div>
-                    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
-                {!! Form::close() !!}
+                    <?php $id = Auth::user()->id; ?>
+                    {!! Form::open(['url' => "/trainees/$id/declarations",'method' => 'POST' , 'enctype' => 'multipart/form-data', 'files' => true ]) !!}
+
+                        <div class="form-group">
+                            {{Form::label('date_receipt', ' ')}}
+                            {{Form::date('date_receipt', \Carbon\Carbon::now())}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('type', ' ')}}
+                            {{Form::select('type', [
+                                'travelling' => 'reis',
+                                'education' => 'Opleiding',
+                                'residence' => 'verblijf',
+                                'parking' => 'parkeren',
+                                'phone' => 'telefoon',
+                                'lunch_diner' => 'lunch/diner',
+                                'outings' => 'uitjes',
+                                'extra' => 'extra'
+                            ])}}
+                        </div>
+                        <div class="form-group">
+                           {{Form::label('btw', ' ')}}
+                           {{Form::number('btw', 'btw', ['placeholder' => 'btw'])}}
+                        </div>
+                       <div class="form-group">
+                           {{Form::label('total_receipt', ' ')}}
+                           {{Form::number('total_receipt', 'total_receipt', ['placeholder' => 'Totaal'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('description', ' ')}}
+                            {{Form::textarea('description', 'description',['rows' => '1.8','cols' => '30'], ['placeholder' => 'Beschrijving'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('image', ' ')}}
+                            {{Form::file('image',['class'=>'form-control'])}}
+                        </div>
+                        {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
+                    {!! Form::close() !!}
                 </div>
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
@@ -276,7 +221,6 @@ $user = Auth::user();
             </div>
 
             <div id="review2" class="tabcontent2">
-              <h3>Review</h3>
               <table>
               <tr>
                   <th>datum bon</th>
@@ -295,18 +239,16 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
                               <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
-
+                          </tr>
                 @endif
               @endforeach
             </table>
             </div>
 
             <div id="aproved2" class="tabcontent2">
-              <h3>Goedgekeurd</h3>
-              <table>
+                            <table>
               <tr>
                   <th>datum bon</th>
                   <th>type</th>
@@ -324,8 +266,8 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach
@@ -333,7 +275,6 @@ $user = Auth::user();
             </div>
 
              <div id="paid2" class="tabcontent2">
-              <h3>Betaald</h3>
               <table>
               <tr>
                   <th>datum bon</th>
@@ -341,7 +282,7 @@ $user = Auth::user();
                   <th>totaal bon</th>
                   <th>btw</th>
                   <th>beschrijving</th>
-                  <!--<th>created_at</th>-->
+                  <th>created_at</th>
                   <th>laatste update</th>
               </tr>
               @foreach($declarations as $declaration)
@@ -352,8 +293,8 @@ $user = Auth::user();
                               <td>{{$declaration->total_receipt}}</td>
                               <td>{{$declaration->btw}}</td>
                               <td>{{$declaration->description}}</td>
-                              <!--<td>{{$declaration->created_at}}</td>-->
                               <td>{{$declaration->updated_at}}</td>
+                              <td><a href='/trainees/{{$user->id}}/declarations/{{$declaration->id}}/edit'class='btn btn-default'>wijzig</a></td>
                           </tr>
                 @endif
               @endforeach

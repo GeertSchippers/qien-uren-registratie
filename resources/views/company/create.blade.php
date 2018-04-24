@@ -53,6 +53,7 @@
       email : $('#email').val(),
       phone_number : $('#phone_number').val()
     }, saveOptions);
+    window.location.replace("/home");
   }
 </script>
 

@@ -127,7 +127,6 @@ function getMonth(id){
           $(".declarationtr:not(:contains("+date+"))").remove();
           $( "#select_button" ).hide();
         });
-       
 }
 
 
@@ -149,11 +148,12 @@ function selectAllChecked(id){
 
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
 
-                          console.log("All succesfully approved");
+                          
 
                 });
-
-            });             
+                
+            }); 
+            ;
     }else{
     
             $('.checkbox').each(function(){
@@ -167,10 +167,12 @@ function selectAllChecked(id){
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
 
                           console.log("All succesfully updated");
+                          window.location.reload();
 
                 });
-
+                
             });
+            
     }
 }
     
@@ -190,7 +192,7 @@ function selectAllPaid(id){
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
 
                           console.log("All succesfully updated");
-
+                          window.location.reload();
                 });
 
             });
@@ -213,6 +215,7 @@ function selectAllPaid(id){
                 $.get( "/bulkdeclarations/"+last2+"/"+status, function( data ) {
 
                           console.log("All succesfully updated");
+                          window.location.reload();
 
                 });
 

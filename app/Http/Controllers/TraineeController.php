@@ -127,7 +127,7 @@ class TraineeController extends ApiController
 
         $new->save();
 
-        return redirect()->back();
+        return redirect('admins/{id}');
     }
     /**
      * Remove the specified resource from storage.

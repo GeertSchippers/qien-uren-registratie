@@ -64,8 +64,8 @@ use App\Company;
              <th>Datum</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd</th>
-             <th>Betaald</th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllCheckedHourDeclarations" onchange="selectAllCheckedHourDeclarations()"  ></th>
+             <th>Betaald<input type='checkbox' id="selectAllPaidHourDeclarations" onchange="selectAllPaidHourDeclarations()" ></th>
          </tr>
          @foreach($hours as $hour)
           <?php $obj = new Hours_declaration();
@@ -83,8 +83,8 @@ use App\Company;
                          <td>{{$hour->date}}</td>
                          <td>{{$hour->created_at}}</td>
                          <td>{{$hour->updated_at}}</td>
-                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 1){echo 'checked';} ?> ></td>
-                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 2){echo 'checked';} ?> ></td>
+                         <td class="checked"><input class="checkbox_hour_declarations" type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 1){echo 'checked';} ?> ></td>
+                         <td class="paid"><input class="checkbox_paid_hour_declarations" type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 2){echo 'checked';} ?> ></td>
                      </tr>
          @endforeach
 
@@ -134,9 +134,9 @@ use App\Company;
              <th>Beschrijving</th>
              <th>Aangemaakt</th>
              <th>Gewijzigd</th>
-             <th>Goedgekeurd<input type='checkbox' id="selectAllChecked" onchange="selectAllChecked()"  ></th>
+             <th>Goedgekeurd<input type='checkbox' id="selectAllCheckedDeclarations" onchange="selectAllCheckedDeclarations()"  ></th>
 
-             <th>Betaald<input type='checkbox' id="selectAllPaid" onchange="selectAllPaid()" ></th>
+             <th>Betaald<input type='checkbox' id="selectAllPaidDeclarations" onchange="selectAllPaidDeclarations()" ></th>
          </tr>
          @foreach($declarations as $declaration)
          <?php
@@ -157,8 +157,8 @@ use App\Company;
                          <td>{{$declaration->description}}</td>
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
-                         <td class="checked"><input class="checkbox" type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
-                         <td class="paid"><input class="checkbox_paid" type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
+                         <td class="checked"><input class="checkbox_declarations" type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
+                         <td class="paid"><input class="checkbox_paid_declarations" type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
 
                      </tr>
          @endforeach

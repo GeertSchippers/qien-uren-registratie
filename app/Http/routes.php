@@ -43,6 +43,8 @@ Route::get('/admin/trainee/{id}', 'UserController@show');
 
 Route::get('/bulkdeclarations/{id}/{status}', 'DeclarationController@sendDeclarations');
 
+Route::get('/bulkhourdeclarations/{id}/{status}', 'Hours_declarationController@sendDeclarations');
+
 Route::get('/storage/{filename}', function ($filename)
 {
     $file = Storage::disk('local')->get($filename);

@@ -117,18 +117,24 @@ function send2(){
 
 function getMonth(id){
 
-    var selectMonth = document.getElementById('select_month');
-    var selectYear = document.getElementById('select_year');
+//    var selectMonth = document.getElementById('select_month');
+//    var selectMonth = $( "#myselect option:selected" ).text();
+    var selectMonth = $( "#select_month option:selected" ).val();
+    var selectYear = $( "#select_year option:selected" ).val();
 
-    var selectedMonth = selectMonth.selectedOptions[0].value;
-    var selectedYear = selectYear.selectedOptions[0].value;
 
-    var date = selectedYear+"-"+selectedMonth;
 
+//    var selectYear = document.getElementById('select_year');
+
+//    var selectedMonth = selectMonth.selectedOptions[0].value;
+//    var selectedYear = selectYear.selectedOptions[0].value;
+
+    var date = selectYear+"-"+selectMonth;
+        console.log(date);
         $.get( `/trainees/${id}/declarations/date/`+date, function( ) {
 
           $(".declarationtr:not(:contains("+date+"))").remove();
-     
+          $( "#select_button" ).hide();
         });
        
 }

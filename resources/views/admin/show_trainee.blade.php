@@ -81,7 +81,7 @@ use App\Company;
 
         ?>
         </select>
-        <input type=button  value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
+        <input type=button id="select_button" value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
         <input type=button value="Select All" onclick="getAll(<?php echo $user->id; ?>)">
         
         <?php 

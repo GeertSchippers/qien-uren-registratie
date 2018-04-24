@@ -53,7 +53,7 @@ class DeclarationController extends Controller
         $new->btw = $data['btw'];
         $new->description = $data['description'];
         $new->user_id = $user->id;
-        $new->paid = 0;
+        $new->status = 2;
         $new->save();
 
     }

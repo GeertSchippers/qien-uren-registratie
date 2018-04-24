@@ -51,7 +51,7 @@ class Hours_declarationController extends Controller
         $new->type = $data['type'];
         $new->statement = $data['statement'];
         $new->user_id = $user->id;
-        $new->paid = 0;
+        $new->status = 2;
         $new->save();
     }
 
@@ -63,7 +63,7 @@ class Hours_declarationController extends Controller
      */
     public function show($id)
     {
-      
+
     }
 
     /**

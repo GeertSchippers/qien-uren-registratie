@@ -7,6 +7,11 @@ use App\Company;
  @extends('layouts.admin')
  @section('content')
 
+ <script>
+
+
+ </script>
+
  <style>
      th, td{
          border: 1px solid;
@@ -36,8 +41,7 @@ use App\Company;
                 $obj->date = $hour->date;
                 $obj->type = $hour->type;
                 $obj->statement = $hour->statement;
-                $obj->paid = $hour->paid;
-                $obj->approved = $hour->approved;
+                $obj->status = $hour->status;
                 $obj->created_at = $hour->created_at;
            ?>
                      <tr>
@@ -46,8 +50,8 @@ use App\Company;
                          <td>{{$hour->statement}}</td>
                          <td>{{$hour->created_at}}</td>
                          <td>{{$hour->updated_at}}</td>
-                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->approved == 1){echo 'checked';} ?> ></td>
-                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->paid == 1){echo 'checked';} ?> ></td>
+                         <td><input type='checkbox' id="hours_declaration{{ $hour->id }}" onchange="approveHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 1){echo 'checked';} ?> ></td>
+                         <td><input type='checkbox' id="hours_declaration_paid{{ $hour->id }}" onchange="payHoursDeclaration({{ $hour->id }}, {{ $obj }})" <?php if($hour->status == 2){echo 'checked';} ?> ></td>
                      </tr>
          @endforeach
      </table>
@@ -64,26 +68,26 @@ use App\Company;
            <option>09</option>
            <option>10</option>
            <option>11</option>
-           <option>12</option>    
+           <option>12</option>
        </select>
-       
-       <select id="select_year">    
+
+       <select id="select_year">
         <?php
-           $currentYear = date('Y');          
+           $currentYear = date('Y');
            echo '<option>'.$currentYear.'</option>';
-           
-       
+
+
 
         ?>
         </select>
         <input type=button value="Select Maand" onclick="getMonth(<?php echo $user->id; ?>)">
-        <?php 
+        <?php
             if(isset($date)){
           echo($date);
-           
+
            }
       echo "TEST";
-        ?>        
+        ?>
          <table>
          <tr>
              <th>Datum bon</th>
@@ -103,8 +107,7 @@ use App\Company;
                $obj->type = $declaration->type;
                $obj->btw = $declaration->btw;
                $obj->description = $declaration->description;
-               $obj->paid = $declaration->paid;
-               $obj->approved = $declaration->approved;
+               $obj->status = $declaration->status;
                $obj->created_at = $declaration->created_at;
           ?>
                      <tr>
@@ -115,8 +118,8 @@ use App\Company;
                          <td>{{$declaration->description}}</td>
                          <td>{{$declaration->created_at}}</td>
                          <td>{{$declaration->updated_at}}</td>
-                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->approved == 1){echo 'checked';} ?>></td>
-                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->paid == 1){echo 'checked';} ?>></td>
+                         <td><input type='checkbox' id="declaration{{ $declaration->id }}" onchange="approveDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 1){echo 'checked';} ?>></td>
+                         <td><input type='checkbox' id="declaration_paid{{ $declaration->id }}" onchange="payDeclaration({{ $declaration->id }}, {{ $obj }})" <?php if($declaration->status == 2){echo 'checked';} ?>></td>
                      </tr>
          @endforeach
      </table>
@@ -134,14 +137,13 @@ use App\Company;
             </tr>
             <tr>
             @foreach($hours as $hour)
-            <?php 
+            <?php
                 $obj = new Hours_declaration();
                 $obj->amount = $hour->amount;
                 $obj->date = $hour->date;
                 $obj->type = $hour->type;
                 $obj->statement = $hour->statement;
-                $obj->paid = $hour->paid;
-                $obj->approved = $hour->approved;
+                $obj->status = $hour->status;
                 $obj->created_at = $hour->created_at;
            ?>
             <td>{{$hour->date}}</td>
@@ -151,9 +153,9 @@ use App\Company;
             <td>@if($hour->type == 'holiday'){{$hour->amount}}@endif</td>
             <td>@if($hour->type == 'sick'){{$hour->amount}}@endif</td>
             <td>@if($hour->type == 'extra'){{$hour->amount}}@endif</td>
-            <td>{{$hour->statement}}</td>           
+            <td>{{$hour->statement}}</td>
         </tr>
         @endforeach
-    <table>
+    </table>
         <br><br><br><br><br><br>
  @endsection

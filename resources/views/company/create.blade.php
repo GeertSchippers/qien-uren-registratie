@@ -7,11 +7,39 @@
       urlRoot: '/companies'
     });
 
+    var User = Backbone.Model.extend({
+      urlRoot: '/register'
+    })
+
     var company = new Company();
 
     var saveOptions = {
       success: function (model, response, options) {
-        console.log('Succesfully saved');
+        console.log('Succesfully saved company with id: '+response);
+        var data = new FormData() ;
+        data.append('first_name', model.attributes.name);
+        data.append('last_name', model.attributes.contact_person);
+        data.append('email', model.attributes.email);
+        data.append('password','tijdelijkwachtwoord');
+        data.append('password_confirmation','tijdelijkwachtwoord');
+        data.append('company_id', response);
+        data.append('employee_number', '');
+        data.append('role', 2);
+
+        $.ajax({
+          type: "POST",
+          url: '/register',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(){
+            console.log('User voor bedrijf opgeslagen');
+          },
+          error: function(){
+            console.log('User aanmaken mislukt');
+          },
+        });
+
       },
       error: function (model, response, options) {
           console.log("Could not save");

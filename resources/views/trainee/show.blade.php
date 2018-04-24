@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Declaration;
 
+$user = Auth::user();
 ?>
 
 <html>
@@ -28,7 +29,7 @@ use App\Declaration;
         padding-right: 20px;
     }
   </style>
-  
+
   <title>Formulier Trainee</title>
 
 </head>
@@ -77,7 +78,7 @@ use App\Declaration;
                 <textarea name=statement id="statement" rows="1.8" cols="40" placeholder='Vul hier een beschrijving in'></textarea>
 
                 <!--            <div id=extraform></div>-->
-                <input type="button" value='voer in' id="submit" onclick="send()">
+                <input type="button" class="btn btn-primany" value='voer in' id="submit" onclick="send()">
             </fieldset>
 
 
@@ -98,7 +99,6 @@ use App\Declaration;
                       <th>Bedrijf</th>
                       <th>Beschrijving</th>
                       <th>Laatste update</th>
-                      <!--<th>Wijzigen</th>-->
                   </tr>
                   @foreach($hours as $hour)
                       @if($hour->status == 0)
@@ -177,14 +177,16 @@ use App\Declaration;
       </div>
 
 <!---========================-Declaratie formulier 2.0------------------------------>
-{!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+<?php $id = Auth::user()->id; ?>
+{!! Form::open(['url' => "/trainees/$id/declarations",'method' => 'POST' , 'enctype' => 'multipart/form-data', 'files' => true ]) !!}
+
     <div class="form-group">
         {{Form::label('date_receipt', 'Datum bon')}}
         {{Form::date('date_receipt', \Carbon\Carbon::now())}}
-    </div>  
+    </div>
     <div class="form-group">
         {{Form::label('type', 'Type')}}
-        {{Form::select('type', [    
+        {{Form::select('type', [
             'travelling' => 'reis',
             'education' => 'Opleiding',
             'residence' => 'verblijf',
@@ -205,12 +207,12 @@ use App\Declaration;
     </div>
     <div class="form-group">
         {{Form::label('description', 'Beschrijving')}}
-        {{Form::textarea('description', 'description')}}
+        {{Form::textarea('description', '')}}
     </div>
     <div class="form-group">
-        {{Form::label('include', 'Bijlagen')}}
-        {{Form::file('include')}}
-    </div> 
+        {{Form::label('image', 'Bijlagen')}}
+        {{Form::file('image',['class'=>'form-control'])}}
+    </div>
     {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
 {!! Form::close() !!}
 <!---========================-Declaratie formulier------------------------------>
@@ -218,47 +220,54 @@ use App\Declaration;
 
         <div class=container-declarations>
             <div class="container">
-
-              <h2>Declaraties</h2>
-
-                <div class="custom-select" style="width:200px;">
-                  <select id=dag_dec>
-                      <option value="0">Select dag:</option>
-                      <option value="1">Maandag</option>
-                      <option value="2">Dinsdag</option>
-                      <option value="3">Woensdag</option>
-                      <option value="4">Donderdag</option>
-                      <option value="5">Vrijdag</option>
-                      <option value="6">Zaterdag</option>
-                      <option value="7">Zondag</option>
-                  </select>
+                <style>
+                    .form-group{
+                        display:inline-block;
+                        margin-bottom: 0;
+                    }
+                    .form{
+                        margin-bottom: 15px;
+                    }
+                </style>
+                <h2>Declaraties</h2>
+                <div class="form">
+                {!! Form::open(['action' => ['TraineeDeclarationController@store', $user->id, 'method' => 'POST' , 'enctype' => 'multipart/form-data']]) !!}
+                    <div class="form-group">
+                        {{Form::label('date_receipt', ' ')}}
+                        {{Form::date('date_receipt', \Carbon\Carbon::now())}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('type', ' ')}}
+                        {{Form::select('type', [
+                            'travelling' => 'reis',
+                            'education' => 'Opleiding',
+                            'residence' => 'verblijf',
+                            'parking' => 'parkeren',
+                            'phone' => 'telefoon',
+                            'lunch_diner' => 'lunch/diner',
+                            'outings' => 'uitjes',
+                            'extra' => 'extra',
+                        ])}}
+                    </div>
+                    <div class="form-group">
+                       {{Form::label('btw', ' ')}}
+                       {{Form::number('btw', 'btw', ['placeholder' => 'Btw'])}}
+                    </div>
+                   <div class="form-group">
+                       {{Form::label('total_receipt', ' ')}}
+                       {{Form::number('total_receipt', 'total_receipt', ['placeholder' => 'Totaal'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('description', ' ')}}
+                        {{Form::textarea('description', '',['rows' => '1.8'], ['placeholder' => 'Beschrijving'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('include', ' ')}}
+                        {{Form::file('include')}}
+                    </div>
+                    {{Form::submit('Submit', ['class' => 'btn btn-primany'])}}
+                {!! Form::close() !!}
                 </div>
-
-
-
-
-
-              <fieldset id=form_declarations>
-                <button class="button2 button3" onclick="add_lineDeclarations()">+</button>
-                <input id=date_receipt type="date">
-                <select  id=type>
-                    <option id=education value="education">opleiding</option>
-                    <option id=travelling value="travelling">reis</option>
-                    <option id=residence value="residence">verblijf</option>
-                    <option id=parking value="parking">parkeren</option>
-                    <option id=phone value="phone">telefoon</option>
-                    <option id=lunch_diner value="sick">lunch/diner</option>
-                    <option id=outings value="outings">uitjes</option>
-                    <option id=extra value="extra">overig</option>
-                </select>
-                    <input id=total_receipt type="number" placeholder='Totaal Bon'>
-                    <input id=btw type="number" placeholder='BTW'>
-                    <textarea id="description" rows="1.8" cols="30" placeholder='Vul hier een beschrijving in'></textarea>
-
-                 <!--<div id=extraform2></div>-->
-                 <input type="button" value='voer in' id="submit2" onclick=send2()>
-              </fieldset>
-
             <div class="tab2">
               <button class="tablinks2" onclick="openTab2(event, 'review2')" id="defaultOpen2">Review</button>
               <button class="tablinks2" onclick="openTab2(event, 'aproved2')">Goedgekeurd</button>

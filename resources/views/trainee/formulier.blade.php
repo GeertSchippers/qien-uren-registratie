@@ -163,7 +163,7 @@ use App\User;
       </div>
 
 
-<!---========================-Declaratie formulier------------------------------>
+<!------------------------------Declaratie formulier------------------------------>
 
     <div class=container-declarations>
       <div class="container">

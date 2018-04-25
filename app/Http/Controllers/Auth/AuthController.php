@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -74,6 +75,19 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
+
+     public function register(Request $request)
+ {
+     $validator = $this->validator($request->all());
+     if ($validator->fails()) {
+         $this->throwValidationException(
+             $request, $validator
+         );
+     }
+     $this->create($request->all());
+     return redirect($this->redirectPath());
+ }
+
     protected function create(array $data)
     {
 

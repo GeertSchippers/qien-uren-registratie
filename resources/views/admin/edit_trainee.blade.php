@@ -38,12 +38,16 @@
                 {{Form::select('company', $select , $user->company_id ,['name' => 'company', 'id' => 'company', 'class'=>'form-control'])}}
 
             </div>
-
-
             <div class="form-group">
-                {{Form::label('admin', 'admin')}}
-                {{Form::number('admin', $user->role, ['name' => 'admin', 'id' => 'admin', 'class' => 'form-control input-sm'])}}
+                {{Form::label('admin', 'Rol')}}
+                {{Form::select('admin', [
+                    0 => 'Trainee',
+                    1 => 'Admin',
+                    2 => 'Bedrijf'
+                ], $user->role, ['name' => 'admin', 'id' => 'admin', 'class'=>'form-control'])}}
             </div>
+
+
 
             <div class="form-group">
                 {{Form::file('cover_image')}}

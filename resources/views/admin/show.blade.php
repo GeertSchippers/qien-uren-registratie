@@ -128,7 +128,7 @@
                         <td>{{$company->location}}</td>
                         <td>{{$company->contact_person}}</td>
                         <td>{{$company->email}}</td>
-                        <td>{{$company->phone_number}}</td>
+                        <td>0{{$company->phone_number}}</td>
 
                             <!--<td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>-->
 

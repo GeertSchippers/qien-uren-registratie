@@ -7,7 +7,7 @@
 
     <div class=container-hours>
       <div class="container">
-        <h2>Wijzig Trainee gegevens</h2>
+        <h2>Wijzig Gebruiker gegevens</h2>
 
         <h3><a href=''class='btn btn-default'>terug</a><h3>
 
@@ -38,6 +38,7 @@
                 {{Form::select('company', $select , $user->company_id ,['name' => 'company', 'id' => 'company', 'class'=>'form-control'])}}
 
             </div>
+
 
             <div class="form-group">
                 {{Form::label('admin', 'admin')}}

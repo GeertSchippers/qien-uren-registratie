@@ -90,7 +90,6 @@
             <th>Voornaam </th>
             <th>Achternaam</th>
             <th>email </th>
-            <th>Bekijk</th>
             <th>Wijzig</th>
 
         </tr>
@@ -100,8 +99,6 @@
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
-                            <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
-
                             <td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
 
 

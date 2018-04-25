@@ -101,16 +101,16 @@ $companies = Company::all();
                                 <!--<input id="company_id" type="text" class="form-control" name="company_id" value="{{ old('company_id') }}">-->
                                 <select id="company_id" name="company_id">
                                     <option id="company_id" name="company_id" selected="selected" value="" class="form-control">Geen bedrijf</option>
-                                       
+
                                         <?php
                                              foreach($companies as $company) {  ?>
-                                    
+
                                                 <option name="company_id" value='{{$company->id}}' class="form-control">{{$company->name}}</option>
-                                        
-                                        <?php } ?>  
-                                                
-                                </select> 
-                                
+
+                                        <?php } ?>
+
+                                </select>
+
                                 @if ($errors->has('company_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('company_id') }}</strong>
@@ -126,11 +126,11 @@ $companies = Company::all();
                                 <!--<input id="role" type="text" class="form-control" name="role" value="{{ old('role') }}">-->
                                 <select id="role" name="role">
                                     <option id="role" name="role" selected="selected" value=0 class="form-control">Trainee</option>
-                                    <option id="role" name="role" selected="selected" value=1 class="form-control">Admin</option>
-                                    <option id="role" name="role" selected="selected" value=2 class="form-control">Bedrijf</option>
-                                               
-                                </select> 
-     
+                                    <option id="role" name="role" value=1 class="form-control">Admin</option>
+                                    <option id="role" name="role" value=2 class="form-control">Bedrijf</option>
+
+                                </select>
+
                                 @if ($errors->has('role'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>

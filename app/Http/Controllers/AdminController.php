@@ -46,10 +46,10 @@ class AdminController extends Controller
 
     public function showMonth(Request $request, $id)
     {
-        
+
 
     }
-    
+
     public function show($id)
     {
         $admin = User::find($id);
@@ -57,10 +57,10 @@ class AdminController extends Controller
         $declarations = Declaration::all();
         $hours = Hours_declaration::all();
         $users = User::all();
-          
-       
-        
-        
+
+
+
+
         return view('admin.show')->with(compact('users','hours','declarations','companies','admin', 'date'));
     }
     /**
@@ -83,8 +83,8 @@ class AdminController extends Controller
     public function update(Request $request)
     {
 //        $admin = User::find($id);
-        
-        
+
+
 //        $user = Auth::user();
 
     }

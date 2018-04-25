@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-  <title>Wijzig trainee gegevens</title>
+  <title>Wijzig gebruiker gegevens</title>
 
 <!-- ======================== Urenregistratie formulier ------------------------------>
 
@@ -38,7 +38,7 @@
                 {{Form::select('company', $select , $user->company_id ,['name' => 'company', 'id' => 'company', 'class'=>'form-control'])}}
 
             </div>
-       
+
             <div class="form-group">
                 {{Form::label('admin', 'admin')}}
                 {{Form::number('admin', $user->role, ['name' => 'admin', 'id' => 'admin', 'class' => 'form-control input-sm'])}}

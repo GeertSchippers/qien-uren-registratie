@@ -30,6 +30,10 @@
                 {{Form::label('email', 'Email')}}
                 {{Form::text('email', $user->email, ['name' => 'email', 'id' => 'email', 'class' => 'form-control input-sm'])}}
             </div>
+            <div class="form-group">
+                {{Form::label('employee_number', 'Werknemersnummer')}}
+                {{Form::text('employee_number', $user->employee_number, ['name' => 'employee_number', 'id' => 'employee_number', 'class' => 'form-control input-sm'])}}
+            </div>
 
             <div class="form-group">
                 {{Form::label('bedrijf', 'Bedrijf')}}

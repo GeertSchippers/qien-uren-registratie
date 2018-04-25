@@ -122,6 +122,7 @@ class TraineeController extends ApiController
         $new->first_name = $request->input('first_name');
         $new->last_name = $request->input('last_name');
         $new->email = $request->input('email');
+        $new->employee_number = $request->input('employee_number');
 
         if($request->input('company') != ''){
           $new->company_id = $request->input('company');

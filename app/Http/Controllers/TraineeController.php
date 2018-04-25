@@ -66,7 +66,7 @@ class TraineeController extends ApiController
     public function show($id)
     {
       $user = User::find($id);
-      
+
       $hours = Hours_declaration::where('user_id',$id)->get();
       $declarations = Declaration::where('user_id',$id)->get();
       if(isset($user->company_id)){
@@ -100,6 +100,7 @@ class TraineeController extends ApiController
 
         $companies = Company::all();
         $select = [];
+        $select[''] = "Geen bedrijf";
         foreach($companies as $company2){
             $select[$company2->id] = $company2->name;
 
@@ -121,8 +122,13 @@ class TraineeController extends ApiController
         $new->first_name = $request->input('first_name');
         $new->last_name = $request->input('last_name');
         $new->email = $request->input('email');
+        $new->employee_number = $request->input('employee_number');
 
-        $new->company_id = $request->input('company');
+        if($request->input('company') != ''){
+          $new->company_id = $request->input('company');
+        } else {
+          $new->company_id = null;
+        }
         $new->role = $request->input('admin');
 
         $new->save();

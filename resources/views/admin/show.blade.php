@@ -90,8 +90,6 @@
             <th>Voornaam </th>
             <th>Achternaam</th>
             <th>email </th>
-            <th>Werknemers nr</th>
-            <th>Bedrijf</th>
             <th>Bekijk</th>
             <th>Wijzig</th>
 
@@ -102,13 +100,6 @@
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->employee_number}}</td>
-                            @foreach($companies as $company)
-                                @if ($company->id == $user->company_id)
-                                    <td>{{$company->name}}</td>
-                                @endif
-                            @endforeach
-
                             <td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>
 
                             <td><a href='/trainees/{{$user->id}}/edit'class='btn btn-default'>Wijzig</a></td>
@@ -137,7 +128,7 @@
                         <td>{{$company->location}}</td>
                         <td>{{$company->contact_person}}</td>
                         <td>{{$company->email}}</td>
-                        <td>{{$company->phone_number}}</td>
+                        <td>0{{$company->phone_number}}</td>
 
                             <!--<td><a href='/trainees/{{$user->id}}'class='btn btn-default'>Bekijk</a></td>-->
 
@@ -354,7 +345,7 @@
 
                             <a onclick="openFile('{{$declaration->include}}')" class='btn btn-default'>Zie Bijlage </a>
                           @endif
-                        </td>                        
+                        </td>
                 </tr>
         @endif
     @endforeach
